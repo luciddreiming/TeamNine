@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Services Portal</title>
+    <link rel="stylesheet" href="TeamNine.css">
+</head>
+<body>
+    <div class="login-container" id="loginPage">
+        <div class="login-box">
+            <h1>Community Portal Login</h1>
+            <form id="loginForm">
+                <input type="text" id="username" placeholder="Username" required>
+                <input type="password" id="password" placeholder="Password" required>
+                <button type="submit">Login</button>
+                <p class="form-footer">Don't have an account? <a href="#" id="showSignup">Sign up</a></p>
+            </form>
+        </div>
+    </div>
+
+    <div class="login-container" id="signupPage" style="display: none;">
+        <div class="login-box">
+            <h1>Create Account</h1>
+            <form id="signupForm">
+                <input type="text" id="signupName" placeholder="Full Name" required>
+                <input type="email" id="signupEmail" placeholder="Email" required>
+                <input type="text" id="signupUsername" placeholder="Username" required>
+                <input type="password" id="signupPassword" placeholder="Password" required>
+                <input type="password" id="signupConfirmPassword" placeholder="Confirm Password" required>
+                <button type="submit">Sign Up</button>
+                <p class="form-footer">Already have an account? <a href="#" id="showLogin">Log in</a></p>
+            </form>
+        </div>
+    </div>
+
+    <div class="main-content" id="serviceSelectionPage" style="display: none;">
+        <header>
+            <div class="container">
+                <button class="logout-btn" id="logoutBtn">Logout</button>
+                <h1>Community Services Portal</h1>
+            </div>
+        </header>
+
+        <div class="container service-selection">
+            <h2>Select a Service</h2>
+            <div class="service-options">
+                <button id="schoolSurveyBtn" class="service-btn">
+                    <h3>School Classroom Survey</h3>
+                    <p>Provide feedback on classroom experiences</p>
+                </button>
+                <button id="healthMonitorBtn" class="service-btn">
+                    <h3>Barangay Health Monitoring</h3>
+                    <p>Report health status and COVID-19 information</p>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-content" id="schoolSurveyContent" style="display: none;">
+        <header>
+            <div class="container">
+                <button class="logout-btn" id="schoolLogoutBtn">Logout</button>
+                <h1>School Classroom Feedback Survey</h1>
+            </div>
+        </header>
+
+        <div class="container">
+            <form class="survey-form" id="schoolSurveyForm">
+                <h2>Share Your Classroom Experience</h2>
+                
+                <div class="form-group">
+                    <label for="studentName">Your Name</label>
+                    <input type="text" id="studentName" placeholder="Enter your name">
+                </div>
+
+                <div class="form-group">
+                    <label for="teacherName">Teacher's Name</label>
+                    <input type="text" id="teacherName" placeholder="Enter teacher's name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="gradeSection">Grade & Section</label>
+                    <select id="gradeSection" required>
+                        <option value="" disabled selected>Select your grade & section</option>
+                        <option value="Grade 7-A">Grade 7-A</option>
+                        <option value="Grade 7-B">Grade 7-B</option>
+                        <option value="Grade 8-A">Grade 8-A</option>
+                        <option value="Grade 8-B">Grade 8-B</option>
+                        <option value="Grade 9-A">Grade 9-A</option>
+                        <option value="Grade 9-B">Grade 9-B</option>
+                        <option value="Grade 10-A">Grade 10-A</option>
+                        <option value="Grade 10-B">Grade 10-B</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="className">Subject</label>
+                    <select id="className" required>
+                        <option value="" disabled selected>Select your subject</option>
+                        <option value="Math">Math</option>
+                        <option value="Science">Science</option>
+                        <option value="English">English</option>
+                        <option value="Filipino">Filipino</option>
+                        <option value="Araling Panlipunan">Araling Panlipunan</option>
+                        <option value="MAPEH">MAPEH</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Teacher Rating</label>
+                    <div class="rating-container">
+                        <input type="radio" id="teacher5" name="teacherRating" value="5">
+                        <label for="teacher5" class="star"></label>
+                        <input type="radio" id="teacher4" name="teacherRating" value="4">
+                        <label for="teacher4" class="star"></label>
+                        <input type="radio" id="teacher3" name="teacherRating" value="3">
+                        <label for="teacher3" class="star"></label>
+                        <input type="radio" id="teacher2" name="teacherRating" value="2">
+                        <label for="teacher2" class="star"></label>
+                        <input type="radio" id="teacher1" name="teacherRating" value="1">
+                        <label for="teacher1" class="star"></label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="favoriteLesson">Favorite Lesson:</label>
+                    <input type="text" id="favoriteLesson" placeholder="What was your favorite lesson?">
+                </div>
+
+                <div class="form-group">
+                    <label for="suggestions">Suggestions for Improvement:</label>
+                    <textarea id="suggestions" placeholder="Drop your suggestions"></textarea>
+                </div>
+
+                <div class="form-group checkbox-group">
+                    <input type="checkbox" id="anonymousSubmission" name="anonymousSubmission">
+                    <label for="anonymousSubmission">Submit anonymously</label>
+                </div>
+
+                <button type="submit" class="submit-btn">Submit Feedback</button>
+            </form>
+
+            <div class="filter-controls">
+                <h2>Survey Results</h2>
+                <div class="filter-group">
+                    <label for="filterSubject">Filter by Subject:</label>
+                    <select id="filterSubject">
+                        <option value="All Subjects">All Subjects</option>
+                        <option value="Math">Math</option>
+                        <option value="Science">Science</option>
+                        <option value="English">English</option>
+                        <option value="Filipino">Filipino</option>
+                        <option value="Araling Panlipunan">Araling Panlipunan</option>
+                        <option value="MAPEH">MAPEH</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="filterRating">Filter by Rating (≥):</label>
+                    <select id="filterRating">
+                        <option value="0">All Ratings</option>
+                        <option value="1">1 Stars</option>
+                        <option value="2">2 Stars</option>
+                        <option value="3">3 Stars</option>
+                        <option value="4">4 Stars</option>
+                        <option value="5">5 Stars</option>
+                    </select>
+                </div>
+                <button id="resetFilters" class="filter-btn">Reset Filters</button>
+            </div>
+
+            <table class="results-table">
+                <thead>
+                    <tr>
+                        <th>Student</th>
+                        <th>Teacher</th>
+                        <th>Grade & Section</th>
+                        <th>Subject</th>
+                        <th>Rating</th>
+                        <th>Favorite Lesson</th>
+                        <th>Suggestions</th>
+                    </tr>
+                </thead>
+                <tbody id="surveyResults">
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="main-content" id="healthMonitorContent" style="display: none;">
+        <header>
+            <div class="container">
+                <button class="logout-btn" id="healthLogoutBtn">Logout</button>
+                <div class="header-actions">
+                    <h1>Barangay Health Monitoring System</h1>
+                    <button id="printHealthBtn" class="print-btn">Print Records</button>
+                </div>
+            </div>
+        </header>
+
+        <div class="container health-form">
+            <form id="healthSurveyForm">
+                <h2>Health Information Survey</h2>
+                
+                <div class="form-section">
+                    <h3>Personal Information</h3>
+                    <div class="form-group">
+                        <label for="fullName">Full Name</label>
+                        <input type="text" id="fullName" name="fullName" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="age">Age</label>
+                        <input type="number" id="age" name="age" min="1" max="120" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Gender</label>
+                        <div class="radio-group">
+                            <label><input type="radio" name="gender" value="Male" required> Male</label>
+                            <label><input type="radio" name="gender" value="Female"> Female</label>
+                            <label><input type="radio" name="gender" value="Other"> Other</label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="address">Address (Purok)</label>
+                        <select id="address" name="address" required>
+                            <option value="">Select Purok</option>
+                            <option value="Purok 1">Purok 1</option>
+                            <option value="Purok 2">Purok 2</option>
+                            <option value="Purok 3">Purok 3</option>
+                            <option value="Purok 4">Purok 4</option>
+                            <option value="Purok 5">Purok 5</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-section">
+                    <h3>Health Status</h3>
+                    <div class="form-group">
+                        <label for="vaccinationStatus">Vaccination Status</label>
+                        <select id="vaccinationStatus" name="vaccinationStatus" required>
+                            <option value="">Select Status</option>
+                            <option value="Vaccinated">✔️ Vaccinated</option>
+                            <option value="Unvaccinated">❌ Unvaccinated</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Recent Symptoms (check all that apply)</label>
+                        <div class="checkbox-group">
+                            <label><input type="checkbox" name="symptoms" value="Fever"> Fever</label>
+                            <label><input type="checkbox" name="symptoms" value="Cough"> Cough</label>
+                            <label><input type="checkbox" name="symptoms" value="Fatigue"> Fatigue</label>
+                            <label><input type="checkbox" name="symptoms" value="Shortness of breath"> Shortness of breath</label>
+                            <label><input type="checkbox" name="symptoms" value="Loss of taste/smell"> Loss of taste/smell</label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="lastCheckup">Last Medical Checkup</label>
+                        <input type="date" id="lastCheckup" name="lastCheckup">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="healthNotes">Additional Health Notes</label>
+                        <textarea id="healthNotes" name="healthNotes" rows="4"></textarea>
+                    </div>
+                </div>
+                
+                <button type="submit" class="submit-btn health-btn">Submit Health Information</button>
+            </form>
+        </div>
+
+        <div class="container health-records print-only">
+            <h2>Barangay Health Records</h2>
+            <table id="healthRecordsTable">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Purok</th>
+                        <th>Vaccination</th>
+                        <th>Symptoms</th>
+                        <th>Last Checkup</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="TeamNine.js"></script>
+</body>
+</html>
