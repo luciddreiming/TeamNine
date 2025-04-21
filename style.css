@@ -1,103 +1,39 @@
-:root {
-  --primary-color: #166088;
-  --secondary-color: #4a6fa5;
-  --accent-color: #4fc3f7;
-  --light-color: #f8f9fa;
-  --dark-color: #343a40;
-  --success-color: #28a745;
-  --health-color: #2ecc71;
-  --education-color: #3498db;
-  --barangay-green: #27ae60;
-  --barangay-blue: #2980b9;
-}
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-body {
-  background-color: #f5f5f5;
-  color: var(--dark-color);
-  line-height: 1.6;
-}
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-.login-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background: linear-gradient(135deg, var(--barangay-blue), var(--barangay-green));
-}
-
-.login-box {
-  background: white;
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+.form-group input,
+.form-group select,
+.form-group textarea {
   width: 100%;
-  max-width: 400px;
-  text-align: center;
-}
-
-.login-box h1 {
-  margin-bottom: 1.5rem;
-  color: var(--barangay-blue);
-}
-
-.login-box input {
-  width: 100%;
-  padding: 12px;
-  margin-bottom: 1rem;
+  max-width: 100%;
+  padding: 10px;
+  font-size: 16px;
   border: 1px solid #ddd;
   border-radius: 4px;
-  font-size: 16px;
+  box-sizing: border-box; 
+  word-wrap: break-word; 
 }
 
+.login-box input,
 .login-box button {
   width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
   padding: 12px;
-  background-color: var(--barangay-blue);
-  color: white;
-  border: none;
-  border-radius: 4px;
   font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s;
 }
 
-.login-box button:hover {
-  background-color: var(--barangay-green);
+.service-btn,
+.submit-btn {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
-.form-footer {
-  margin-top: 1rem;
-  color: #666;
+.service-btn h3 {
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+  font-size: 16px; 
 }
 
-.form-footer a {
-  color: var(--barangay-blue);
-  text-decoration: none;
-  font-weight: 600;
-}
-
-.form-footer a:hover {
-  text-decoration: underline;
-}
-
-.service-selection {
-  text-align: center;
-  padding: 2rem 0;
-}
-
+/* Flex container adjustments */
 .service-options {
   display: flex;
   flex-wrap: wrap;
@@ -112,380 +48,62 @@ body {
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   padding: 2rem;
-  width: 300px;
+  width: calc(50% - 1rem); 
   cursor: pointer;
   transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.service-btn:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-}
-
-.service-btn h3 {
-  margin-bottom: 1rem;
-  color: var(--primary-color);
-}
-
-#schoolSurveyBtn {
-  border-top: 5px solid var(--education-color);
-}
-
-#healthMonitorBtn {
-  border-top: 5px solid var(--health-color);
-}
-
-.main-content {
-  display: none;
-  padding: 20px 0;
-}
-
-header {
-  background-color: var(--primary-color);
-  color: white;
-  padding: 1rem 0;
-  margin-bottom: 2rem;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-header h1 {
-  text-align: center;
-}
-
-.header-actions {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.logout-btn, .print-btn {
-  padding: 8px 16px;
-  background-color: var(--light-color);
-  color: var(--primary-color);
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background-color 0.3s;
-}
-
-.logout-btn:hover, .print-btn:hover {
-  background-color: #e0e0e0;
-}
-
-.survey-form, .health-form {
-  background: white;
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  margin-bottom: 2rem;
-}
-
-.survey-form h2 {
-  color: var(--education-color);
-  margin-bottom: 1.5rem;
-  text-align: center;
-}
-
-.health-form h2 {
-  color: var(--health-color);
-  margin-bottom: 1.5rem;
-  text-align: center;
-}
-
-.form-section {
-  margin-bottom: 2rem;
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid #eee;
-}
-
-.form-section h3 {
-  color: var(--secondary-color);
-  margin-bottom: 1rem;
-}
-
-.form-group {
-  margin-bottom: 1.5rem;
-}
-
-.form-group label {
-  display: block;
-  margin-bottom: 0.5rem;
-  font-weight: 600;
-  color: var(--dark-color);
-}
-
-.form-group input[type="text"],
-.form-group input[type="number"],
-.form-group input[type="date"],
-.form-group select,
-.form-group textarea {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 16px;
-}
-
-.form-group textarea {
-  resize: vertical;
-  height: 100px;
-}
-
-.radio-group,
-.checkbox-group {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.radio-group label,
-.checkbox-group label {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-weight: normal;
-  cursor: pointer;
-}
-
-.checkbox-group input {
-  margin-right: 10px;
-}
-
-.rating-container {
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: flex-end;
-  margin: 10px 0;
-}
-
-.rating-container input {
-  display: none;
-}
-
-.rating-container label {
-  color: #ddd;
-  font-size: 24px;
-  padding: 0 5px;
-  cursor: pointer;
-  transition: color 0.2s;
-}
-
-.rating-container input:not(:checked) ~ label:hover,
-.rating-container input:not(:checked) ~ label:hover ~ label {
-  color: #ffc107;
-}
-
-.rating-container input:checked ~ label {
-  color: #ffc107;
-}
-
-.star::before {
-  content: "★";
-}
-
-.submit-btn {
-  width: 100%;
-  padding: 12px;
-  color: #fff;
-  background-color: #34b7db;
-  border: none;
-  border-radius: 4px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  margin-top: 1rem;
-}
-
-.health-btn {
-  background-color: var(--health-color);
-}
-
-.health-btn:hover {
-  background-color: #27ae60;
-}
-
-.education-btn {
-  background-color: var(--education-color);
-}
-
-.education-btn:hover {
-  background-color: #2980b9;
-}
-
-.filter-controls {
-  background: white;
-  padding: 1.5rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  margin-bottom: 1.5rem;
-}
-
-.filter-group {
-  margin-bottom: 1rem;
-  display: flex;
-  align-items: center;
-}
-
-.filter-group label {
-  margin-right: 10px;
-  min-width: 120px;
-}
-
-.filter-group select {
-  padding: 8px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  flex-grow: 1;
-}
-
-.filter-btn {
-  padding: 8px 16px;
-  background-color: var(--primary-color);
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 14px;
-}
-
-.filter-btn:hover {
-  background-color: var(--secondary-color);
-}
-
-.results-table, .health-records table {
-  width: 100%;
-  border-collapse: collapse;
-  background: white;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  overflow: hidden;
-  margin-bottom: 2rem;
-}
-
-.results-table th,
-.results-table td,
-.health-records th,
-.health-records td {
-  padding: 12px 15px;
-  text-align: left;
-  border-bottom: 1px solid #ddd;
-}
-
-.results-table th,
-.health-records th {
-  background-color: var(--primary-color);
-  color: white;
-  position: sticky;
-  top: 0;
-}
-
-.results-table tr:nth-child(even),
-.health-records tr:nth-child(even) {
-  background-color: #f2f2f2;
-}
-
-.results-table tr:hover,
-.health-records tr:hover {
-  background-color: #e9e9e9;
-}
-
-.health-records {
-  display: none;
-  background: white;
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  margin-bottom: 2rem;
-}
-
-.health-records h2 {
-  color: var(--health-color);
-  margin-bottom: 1.5rem;
-  text-align: center;
-}
-
-@media print {
-  body * {
-      visibility: hidden;
-  }
-  .print-only, .print-only * {
-      visibility: visible;
-  }
-  .print-only {
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 100%;
-  }
-  .no-print {
-      display: none;
-  }
+  box-sizing: border-box;
 }
 
 @media (max-width: 768px) {
   .login-box {
-      padding: 1.5rem;
-      margin: 0 20px;
+    padding: 1.5rem;
+    margin: 0 20px;
   }
 
   .service-options {
-      flex-direction: column;
-      align-items: center;
-  }
-  
-  .school-form, .health-form, .survey-form {
-      padding: 1.5rem;
-  }
-  
-  .header-actions {
-      flex-direction: column;
-      gap: 1rem;
-  }
-
-  .filter-group {
-      flex-direction: column;
-      align-items: flex-start;
-  }
-
-  .filter-group label {
-      margin-bottom: 5px;
-  }
-
-  .filter-group select {
-      width: 100%;
-  }
-
-  .results-table, .health-records table {
-      display: block;
-      overflow-x: auto;
+    flex-direction: column;
+    align-items: center;
   }
 
   .service-btn {
-    width: 100%;
+    width: calc(100% - 1rem);
   }
-}
 
-@media (max-width: 480px) {
-  .login-box {
-      padding: 1rem;
+  .login-box input,
+  .login-box button {
+    font-size: 14px;
+    padding: 10px;
   }
 
   .form-group input,
   .form-group select,
   .form-group textarea {
-      font-size: 14px;
+    font-size: 14px;
+    padding: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-box {
+    padding: 1rem;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    font-size: 14px;
+    padding: 8px;
   }
 
   .rating-container label {
-      font-size: 20px;
+    font-size: 20px;
   }
 
   .results-table th,
   .results-table td,
   .health-records th,
   .health-records td {
-      padding: 8px 10px;
-      font-size: 14px;
+    padding: 8px 10px;
+    font-size: 14px;
   }
 }
