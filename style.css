@@ -297,7 +297,6 @@ header h1 {
   margin-top: 1rem;
 }
 
-
 .health-btn {
   background-color: var(--health-color);
 }
@@ -460,6 +459,10 @@ header h1 {
   .results-table, .health-records table {
       display: block;
       overflow-x: auto;
+  }
+
+  .service-btn {
+    width: 100%;
   }
 }
 
