@@ -345,68 +345,115 @@ document.addEventListener('DOMContentLoaded', function() {
     function printHealthRecords() {
         printDate.textContent = new Date().toLocaleString();
         recordCount.textContent = healthRecords.length;
-
-        document.getElementById('printSection').style.display = 'block';
-
-        // Create mobile-friendly print styles
-        const style = document.createElement('style');
-        style.id = 'print-styles';
-        style.innerHTML = `
+        document.getElementById('printSection').style.display = 'block';   
+        const printStyle = document.createElement('style');
+        printStyle.id = 'print-styles';
+        printStyle.innerHTML = `
             @media print {
-                body {
-                    margin: 0;
-                    padding: 0;
-                    font-size: 12px;
+                body * {
+                    visibility: hidden;
+                    margin: 0 !important;
+                    padding: 0 !important;
                 }
-                table {
-                    width: 100% !important;
-                    page-break-inside: auto;
-                    font-size: 10px;
-                }
-                tr {
-                    page-break-inside: avoid;
-                    page-break-after: auto;
+                #printSection, #printSection * {
+                    visibility: visible;
                 }
                 #printSection {
                     position: absolute;
-                    top: 0;
                     left: 0;
+                    top: 0;
                     width: 100%;
-                    margin: 0;
-                    padding: 5px;
+                    margin: 0 !important;
+                    padding: 10px !important;
+                    background: white;
+                }
+                table {
+                    width: 100% !important;
+                    border-collapse: collapse;
+                    font-size: 12px;
+                }
+                th, td {
+                    padding: 6px 8px !important;
+                    border: 1px solid #ddd !important;
+                }
+                th {
+                    background-color: #166088 !important;
+                    color: white !important;
+                }
+                .print-header, .print-footer {
+                    text-align: center;
+                    margin: 10px 0;
+                }
+                @page {
+                    size: auto;
+                    margin: 5mm;
+                }
+            }
+            
+            @media print and (max-width: 768px) {
+                table {
+                    font-size: 10px !important;
                 }
                 th, td {
                     padding: 4px 6px !important;
                 }
+                .print-header h2 {
+                    font-size: 18px !important;
+                }
+            }
+            
+            @media print and (max-width: 480px) {
+                table {
+                    font-size: 8px !important;
+                }
+                th, td {
+                    padding: 3px 4px !important;
+                }
+                .print-header h2 {
+                    font-size: 16px !important;
+                }
             }
         `;
-        document.head.appendChild(style);
-
-        // For mobile devices, we might need to use a print-friendly layout
-        if (window.innerWidth <= 768) {
-            const printStyle = document.createElement('style');
-            printStyle.innerHTML = `
-                @media print {
-                    table {
-                        font-size: 8px;
-                    }
-                    th, td {
-                        padding: 2px 4px !important;
-                    }
-                }
-            `;
-            document.head.appendChild(printStyle);
-        }
-
+        document.head.appendChild(printStyle);
+    
         setTimeout(() => {
-            window.print();
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                const printWindow = window.open('', '_blank');
+                printWindow.document.write(`
+                    <!DOCTYPE html>
+                    <html>
+                    <head>
+                        <title>Health Records</title>
+                        <style>
+                            body { font-family: Arial, sans-serif; margin: 0; padding: 10px; }
+                            table { width: 100%; border-collapse: collapse; font-size: 12px; }
+                            th, td { padding: 6px 8px; border: 1px solid #ddd; }
+                            th { background-color: #166088; color: white; }
+                            .print-header { text-align: center; margin-bottom: 15px; }
+                            .print-footer { text-align: center; margin-top: 15px; font-size: 12px; }
+                        </style>
+                    </head>
+                    <body>
+                        <div class="print-header">
+                            <h2>Barangay Health Records</h2>
+                            <p>Printed on: ${new Date().toLocaleString()}</p>
+                            <p>Total records: ${healthRecords.length}</p>
+                        </div>
+                        ${document.getElementById('printSection').innerHTML}
+                    </body>
+                    </html>
+                `);
+                printWindow.document.close();
+                setTimeout(() => {
+                    printWindow.print();
+                    printWindow.close();
+                }, 500);
+            } else {
+                window.print();
+            }
             document.getElementById('printSection').style.display = 'none';
-            // Remove all print-related styles
-            const printStyles = document.querySelectorAll('style#print-styles, style[media="print"]');
-            printStyles.forEach(style => document.head.removeChild(style));
+            document.head.removeChild(printStyle);
         }, 100);
     }
-
-    // Initialize all event listeners when the DOM is fully loaded
     initEventListeners();
 });
