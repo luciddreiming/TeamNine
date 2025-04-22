@@ -84,6 +84,7 @@ document.addEventListener('DOMContentLoaded', function() {
         resetFilters.addEventListener('click', resetSchoolFilters);
         printHealthBtn.addEventListener('click', printHealthRecords);
     }
+
     function togglePasswordVisibility(inputField, toggleButton) {
         if (inputField.type === 'password') {
             inputField.type = 'text';
@@ -342,12 +343,12 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function printHealthRecords() {
-
         printDate.textContent = new Date().toLocaleString();
         recordCount.textContent = healthRecords.length;
 
         document.getElementById('printSection').style.display = 'block';
 
+        // Create mobile-friendly print styles
         const style = document.createElement('style');
         style.id = 'print-styles';
         style.innerHTML = `
@@ -360,6 +361,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 table {
                     width: 100% !important;
                     page-break-inside: auto;
+                    font-size: 10px;
                 }
                 tr {
                     page-break-inside: avoid;
@@ -371,17 +373,40 @@ document.addEventListener('DOMContentLoaded', function() {
                     left: 0;
                     width: 100%;
                     margin: 0;
-                    padding: 10px;
+                    padding: 5px;
+                }
+                th, td {
+                    padding: 4px 6px !important;
                 }
             }
         `;
         document.head.appendChild(style);
 
+        // For mobile devices, we might need to use a print-friendly layout
+        if (window.innerWidth <= 768) {
+            const printStyle = document.createElement('style');
+            printStyle.innerHTML = `
+                @media print {
+                    table {
+                        font-size: 8px;
+                    }
+                    th, td {
+                        padding: 2px 4px !important;
+                    }
+                }
+            `;
+            document.head.appendChild(printStyle);
+        }
+
         setTimeout(() => {
             window.print();
             document.getElementById('printSection').style.display = 'none';
-            document.head.removeChild(style);
+            // Remove all print-related styles
+            const printStyles = document.querySelectorAll('style#print-styles, style[media="print"]');
+            printStyles.forEach(style => document.head.removeChild(style));
         }, 100);
     }
+
+    // Initialize all event listeners when the DOM is fully loaded
     initEventListeners();
 });
