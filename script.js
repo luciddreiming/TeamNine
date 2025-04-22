@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // DOM Elements
     const loginPage = document.getElementById('loginPage');
     const signupPage = document.getElementById('signupPage');
     const serviceSelectionPage = document.getElementById('serviceSelectionPage');
@@ -22,15 +21,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const filterSubject = document.getElementById('filterSubject');
     const filterRating = document.getElementById('filterRating');
     const resetFilters = document.getElementById('resetFilters');
-    
-    // Data storage
+
     let userAccounts = [
         { username: 'admin', password: 'admin', name: 'Administrator', email: 'admin@community.gov' }
     ];
     let healthRecords = [];
     let schoolSurveyData = [];
 
-    // Navigation between login and signup
     showSignup.addEventListener('click', function(e) {
         e.preventDefault();
         loginPage.style.display = 'none';
@@ -43,7 +40,6 @@ document.addEventListener('DOMContentLoaded', function() {
         loginPage.style.display = 'flex';
     });
 
-    // Login functionality
     loginForm.addEventListener('submit', function(e) {
         e.preventDefault();
         
@@ -64,7 +60,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Signup functionality
     signupForm.addEventListener('submit', function(e) {
         e.preventDefault();
         
@@ -97,7 +92,6 @@ document.addEventListener('DOMContentLoaded', function() {
         alert('Account created successfully! Please login.');
     });
 
-    // Logout functionality
     function logout() {
         loginPage.style.display = 'flex';
         signupPage.style.display = 'none';
@@ -105,7 +99,6 @@ document.addEventListener('DOMContentLoaded', function() {
         schoolSurveyContent.style.display = 'none';
         healthMonitorContent.style.display = 'none';
         
-        // Reset forms
         loginForm.reset();
         signupForm.reset();
         healthSurveyForm.reset();
@@ -116,24 +109,21 @@ document.addEventListener('DOMContentLoaded', function() {
     healthLogoutBtn.addEventListener('click', logout);
     schoolLogoutBtn.addEventListener('click', logout);
 
-    // Service selection buttons
     schoolSurveyBtn.addEventListener('click', function() {
         serviceSelectionPage.style.display = 'none';
         schoolSurveyContent.style.display = 'block';
-        updateSchoolSurveyTable(); // Initialize table when page loads
+        updateSchoolSurveyTable(); 
     });
 
     healthMonitorBtn.addEventListener('click', function() {
         serviceSelectionPage.style.display = 'none';
         healthMonitorContent.style.display = 'block';
-        updateHealthRecordsTable(); // Initialize table when page loads
+        updateHealthRecordsTable();
     });
 
-    // Health form submission
     healthSurveyForm.addEventListener('submit', function(e) {
         e.preventDefault();
-        
-        // Collect form data
+
         const formData = {
             fullName: document.getElementById('fullName').value,
             age: document.getElementById('age').value,
@@ -146,26 +136,20 @@ document.addEventListener('DOMContentLoaded', function() {
             submissionDate: new Date().toLocaleString()
         };
         
-        // Add to records
         healthRecords.push(formData);
         updateHealthRecordsTable();
         
-        // Show confirmation
         alert('Thank you for submitting your health information!');
-        
-        // Reset form
         this.reset();
         
-        // Return to service selection
-        healthMonitorContent.style.display = 'none';
-        serviceSelectionPage.style.display = 'block';
+        // Removed the page transfer code - stays on the same page
+        // healthMonitorContent.style.display = 'none';
+        // serviceSelectionPage.style.display = 'block';
     });
 
-    // School form submission
     schoolSurveyForm.addEventListener('submit', function(e) {
         e.preventDefault();
         
-        // Get form values
         const isAnonymous = document.getElementById('anonymousSubmission').checked;
         const studentName = isAnonymous ? 'Anonymous' : document.getElementById('studentName').value || 'Anonymous';
         const teacherName = document.getElementById('teacherName').value;
@@ -174,8 +158,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const teacherRating = document.querySelector('input[name="teacherRating"]:checked')?.value;
         const favoriteLesson = document.getElementById('favoriteLesson').value || 'Not specified';
         const suggestions = document.getElementById('suggestions').value || 'No suggestions';
-        
-        // Validate required fields
+
         if (!teacherName || !gradeSection || !className || !teacherRating) {
             alert('Please fill in all required fields');
             return;
@@ -199,7 +182,6 @@ document.addEventListener('DOMContentLoaded', function() {
         alert('Thank you for your feedback!');
     });
 
-    // Filter event listeners
     filterSubject.addEventListener('change', updateSchoolSurveyTable);
     filterRating.addEventListener('change', updateSchoolSurveyTable);
     resetFilters.addEventListener('click', function() {
@@ -208,7 +190,6 @@ document.addEventListener('DOMContentLoaded', function() {
         updateSchoolSurveyTable();
     });
 
-    // Update health records table
     function updateHealthRecordsTable() {
         const tbody = healthRecordsTable.querySelector('tbody');
         tbody.innerHTML = '';
@@ -229,7 +210,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Update school survey table with fixed rating filter
     function updateSchoolSurveyTable() {
         surveyResults.innerHTML = '';
         
@@ -237,12 +217,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const ratingFilter = parseInt(filterRating.value);
         
         const filteredData = schoolSurveyData.filter(entry => {
-            // Subject filter
             const matchesSubject = subjectFilter === "All Subjects" || entry.className === subjectFilter;
-            
-            // Rating filter - fixed comparison
-            const matchesRating = ratingFilter === 0 || entry.teacherRating === ratingFilter;
-            
+            const matchesRating = ratingFilter === 0 || entry.teacherRating === ratingFilter; 
             return matchesSubject && matchesRating;
         });
         
@@ -271,7 +247,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Print health records
     printHealthBtn.addEventListener('click', function() {
         document.querySelector('.health-records').style.display = 'block';
         window.print();
