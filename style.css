@@ -473,7 +473,24 @@ header h1 {
 .print-btn:hover {
   background-color: var(--secondary-color);
 }
+@media print {
+  body {
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+  }
+  
+  .no-print {
+      display: none !important;
+  }
+}
 
+table {
+  page-break-inside: auto;
+}
+tr {
+  page-break-inside: avoid;
+  page-break-after: auto;
+}
 @media print {
     @page {
         size: auto;
