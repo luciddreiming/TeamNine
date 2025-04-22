@@ -141,10 +141,6 @@ document.addEventListener('DOMContentLoaded', function() {
         
         alert('Thank you for submitting your health information!');
         this.reset();
-        
-        // Removed the page transfer code - stays on the same page
-        // healthMonitorContent.style.display = 'none';
-        // serviceSelectionPage.style.display = 'block';
     });
 
     schoolSurveyForm.addEventListener('submit', function(e) {
@@ -235,8 +231,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <td>${starsDisplay}</td>
                 <td>${entry.favoriteLesson}</td>
                 <td>${entry.suggestions}</td>
-            `;
-            
+            `;           
             surveyResults.appendChild(row);
         });
         
@@ -248,8 +243,10 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     printHealthBtn.addEventListener('click', function() {
-        document.querySelector('.health-records').style.display = 'block';
+        document.getElementById('printDate').textContent = new Date().toLocaleString();
+        document.getElementById('recordCount').textContent = healthRecords.length;
+        document.getElementById('printSection').style.display = 'block';
         window.print();
-        document.querySelector('.health-records').style.display = 'none';
+        document.getElementById('printSection').style.display = 'none';
     });
 });
