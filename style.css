@@ -458,125 +458,156 @@ header h1 {
   color: #666;
 }
 
+.print-btn {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 15px;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 10px 0;
+  transition: background-color 0.3s;
+}
+
+.print-btn:hover {
+  background-color: var(--secondary-color);
+}
+
 @media print {
     @page {
-        size: landscape;
+        size: auto;
+        margin: 5mm;
     }
-  body * {
-    visibility: hidden;
-  }
-  
-  #printSection, #printSection * {
-    visibility: visible;
-  }
-  
-  #printSection {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-  }
+    body * {
+        visibility: hidden;
+    }
+    
+    #printSection, #printSection * {
+        visibility: visible;
+    }
+    
+    #printSection {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        margin: 0;
+        padding: 10px;
+        font-size: 14px;
+    }
 
-  table {
-    width: 100% !important;
-    font-size: 12px;
-  }
-  
-  /* Prevent row breaks */
-  tr {
-    page-break-inside: avoid;
-  }
+    table {
+        width: 100% !important;
+        font-size: 12px;
+    }
+    
+    /* Prevent row breaks */
+    tr {
+        page-break-inside: avoid;
+    }
 
-  th, td {
-    padding: 6px 8px !important;
-  }
-  
-  @page {
-    size: auto;
-    margin: 10mm;
-  }
+    th, td {
+        padding: 6px 8px !important;
+        white-space: nowrap;
+    }
 }
 
 @media (max-width: 768px) {
-  .login-box {
-    padding: 1.5rem;
-    margin: 0 20px;
-  }
+    .login-box {
+        padding: 1.5rem;
+        margin: 0 20px;
+    }
 
-  .service-options {
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .school-form, .health-form, .survey-form {
-    padding: 1.5rem;
-  }
-  
-  .header-actions {
-    flex-direction: column;
-    gap: 1rem;
-  }
+    .service-options {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .school-form, .health-form, .survey-form {
+        padding: 1.5rem;
+    }
+    
+    .header-actions {
+        flex-direction: column;
+        gap: 1rem;
+    }
 
-  .filter-group {
-    flex-direction: column;
-    align-items: flex-start;
-  }
+    .filter-group {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 
-  .filter-group label {
-    margin-bottom: 5px;
-  }
+    .filter-group label {
+        margin-bottom: 5px;
+    }
 
-  .filter-group select {
-    width: 100%;
-  }
+    .filter-group select {
+        width: 100%;
+    }
 
-  .results-table, .health-records table {
-    display: block;
-    overflow-x: auto;
-  }
+    .results-table, .health-records table {
+        display: block;
+        overflow-x: auto;
+    }
+    
+    /* Adjust print button for mobile */
+    .print-btn {
+        padding: 12px;
+        font-size: 14px;
+        width: 100%;
+        margin: 10px 0;
+    }
 }
 
 @media (max-width: 600px) {
-  #survey-form {
-    padding: 20px;
-    width: 90%;
-  }
+    #survey-form {
+        padding: 20px;
+        width: 90%;
+    }
 
-  .form-group {
-    display: block;
-    width: 100%;
-  }
+    .form-group {
+        display: block;
+        width: 100%;
+    }
 
-  .form-group label,
-  .form-group input,
-  .form-group textarea {
-    width: 100%;
-    display: block;
-  }
+    .form-group label,
+    .form-group input,
+    .form-group textarea {
+        width: 100%;
+        display: block;
+    }
 
-  .form-group input[type="checkbox"],
-  .form-group input[type="radio"] {
-    margin-right: 10px;
-    width: auto;
-    display: inline-block;
-  }
+    .form-group input[type="checkbox"],
+    .form-group input[type="radio"] {
+        margin-right: 10px;
+        width: auto;
+        display: inline-block;
+    }
 
-  .form-group label {
-    margin-bottom: 8px;
-  }
+    .form-group label {
+        margin-bottom: 8px;
+    }
 
-  #symptoms .form-group {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
+    #symptoms .form-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
 
-  #symptoms .form-group label {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
+    #symptoms .form-group label {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    
+    @media print {
+        table {
+            font-size: 8px;
+        }
+        th, td {
+            padding: 2px 4px !important;
+        }
+    }
 }
