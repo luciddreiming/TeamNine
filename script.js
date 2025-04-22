@@ -345,99 +345,46 @@ document.addEventListener('DOMContentLoaded', function() {
     function printHealthRecords() {
         printDate.textContent = new Date().toLocaleString();
         recordCount.textContent = healthRecords.length;
+    
         const printSection = document.getElementById('printSection');
         printSection.style.display = 'block';
-        const printContent = printSection.cloneNode(true);
-        printContent.style.display = 'block';
-        printContent.style.position = 'absolute';
-        printContent.style.left = '-9999px';
-        document.body.appendChild(printContent);
-
-        const printStyle = document.createElement('style');
-        printStyle.id = 'print-styles';
-        printStyle.innerHTML = `
-            @media print {
-                body * {
-                    visibility: hidden;
-                    margin: 0 !important;
-                    padding: 0 !important;
-                }
-                #print-clone, #print-clone * {
-                    visibility: visible;
-                }
-                #print-clone {
-                    position: absolute;
-                    left: 0;
-                    top: 0;
-                    width: 100%;
-                    margin: 0 !important;
-                    padding: 10px !important;
-                    background: white;
-                }
-                table {
-                    width: 100% !important;
-                    border-collapse: collapse;
-                    font-size: 12px;
-                }
-                th, td {
-                    padding: 6px 8px !important;
-                    border: 1px solid #ddd !important;
-                }
-                th {
-                    background-color: #166088 !important;
-                    color: white !important;
-                    -webkit-print-color-adjust: exact;
-                }
-                .print-header, .print-footer {
-                    text-align: center;
-                    margin: 10px 0;
-                }
-                @page {
-                    size: auto;
-                    margin: 5mm;
-                }
-            }
-        `;
-        document.head.appendChild(printStyle);
-        printContent.id = 'print-clone';
+    
+        const originalDisplay = document.body.innerHTML;
+        const printContents = printSection.innerHTML;
     
         if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-            const printHtml = `
-                <!DOCTYPE html>
+            const printWindow = window.open('', '_blank');
+            printWindow.document.open();
+            printWindow.document.write(`
                 <html>
                 <head>
                     <title>Health Records</title>
                     <meta name="viewport" content="width=device-width, initial-scale=1.0">
                     <style>
-                        body { 
-                            font-family: Arial, sans-serif; 
-                            margin: 0; 
-                            padding: 10px; 
-                            -webkit-text-size-adjust: 100%; 
+                        body {
+                            font-family: Arial, sans-serif;
+                            padding: 10px;
+                            -webkit-text-size-adjust: none;
+                            background: white;
                         }
-                        table { 
-                            width: 100%; 
-                            border-collapse: collapse; 
-                            font-size: 12px; 
+                        table {
+                            width: 100%;
+                            border-collapse: collapse;
+                            font-size: 12px;
                             word-break: break-word;
                         }
-                        th, td { 
-                            padding: 6px 8px; 
-                            border: 1px solid #ddd; 
+                        th, td {
+                            border: 1px solid #ddd;
+                            padding: 6px 8px;
                         }
-                        th { 
-                            background-color: #166088; 
-                            color: white; 
+                        th {
+                            background-color: #166088;
+                            color: white;
                             -webkit-print-color-adjust: exact;
                         }
-                        .print-header { 
-                            text-align: center; 
-                            margin-bottom: 15px; 
-                        }
-                        .print-footer { 
-                            text-align: center; 
-                            margin-top: 15px; 
-                            font-size: 12px; 
+                        .print-header, .print-footer {
+                            text-align: center;
+                            margin: 10px 0;
                         }
                         @page {
                             size: auto;
@@ -446,32 +393,70 @@ document.addEventListener('DOMContentLoaded', function() {
                     </style>
                 </head>
                 <body>
-                    ${printContent.innerHTML}
+                    ${printContents}
                     <script>
-                        // Automatically trigger print after content loads
-                        setTimeout(function() {
+                        setTimeout(() => {
                             window.print();
-                            setTimeout(function() {
-                                window.close();
-                            }, 100);
+                            setTimeout(() => window.close(), 200);
                         }, 500);
                     </script>
                 </body>
                 </html>
-            `;
-    
-            // Open a new window with the print content
-            const printWindow = window.open('', '_blank');
-            printWindow.document.open();
-            printWindow.document.write(printHtml);
+            `);
             printWindow.document.close();
         } else {
-     
-            setTimeout(function() {
-                window.print();
-                cleanupPrint();
-            }, 100);
+            const printStyles = document.createElement('style');
+            printStyles.innerHTML = `
+                @media print {
+                    body * {
+                        visibility: hidden !important;
+                    }
+                    #printSection, #printSection * {
+                        visibility: visible !important;
+                    }
+                    #printSection {
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        width: 100%;
+                        background: white;
+                        padding: 10px;
+                    }
+                    table {
+                        width: 100%;
+                        border-collapse: collapse;
+                        font-size: 12px;
+                    }
+                    th, td {
+                        padding: 6px 8px;
+                        border: 1px solid #ddd;
+                    }
+                    th {
+                        background-color: #166088;
+                        color: white;
+                        -webkit-print-color-adjust: exact;
+                    }
+                    @page {
+                        size: auto;
+                        margin: 5mm;
+                    }
+                }
+            `;
+            document.head.appendChild(printStyles);
+    
+            window.print();
+    
+            setTimeout(() => {
+                if (printStyles.parentNode) {
+                    printStyles.parentNode.removeChild(printStyles);
+                }
+            }, 1000);
         }
+    
+        setTimeout(() => {
+            printSection.style.display = 'none';
+        }, 1000);
+    }    
         printSection.style.display = 'none';
     
         function cleanupPrint() {
@@ -484,6 +469,5 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
         setTimeout(cleanupPrint, 5000);
-    }
     initEventListeners();
 });
