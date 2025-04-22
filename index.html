@@ -7,18 +7,27 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Login Page -->
     <div class="login-container" id="loginPage">
         <div class="login-box">
             <h1>Community Portal Login</h1>
             <form id="loginForm">
                 <input type="text" id="username" placeholder="Username" required>
-                <input type="password" id="password" placeholder="Password" required>
+                <div class="password-container">
+                    <input type="password" id="password" placeholder="Password" required>
+                    <span class="toggle-password" id="togglePasswordLogin"><svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 6c-3.95 0-7.2 2.3-9 6 1.8 3.7 5.05 6 9 6s7.2-2.3 9-6c-1.8-3.7-5.05-6-9-6zm0 10c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm0-6.5A2.5 2.5 0 0 0 9.5 12 2.5 2.5 0 0 0 12 14.5 2.5 2.5 0 0 0 14.5 12 2.5 2.5 0 0 0 12 9.5z"/>
+                      </svg>
+                    </span>
+                </div>
+                <p class="caps-warning" id="capsWarningLogin" style="display: none;">⚠️ Caps Lock is on</p>
                 <button type="submit">Login</button>
                 <p class="form-footer">Don't have an account? <a href="#" id="showSignup">Sign up</a></p>
             </form>
         </div>
     </div>
 
+    <!-- Signup Page -->
     <div class="login-container" id="signupPage" style="display: none;">
         <div class="login-box">
             <h1>Create Account</h1>
@@ -26,14 +35,28 @@
                 <input type="text" id="signupName" placeholder="Full Name" required>
                 <input type="email" id="signupEmail" placeholder="Email" required>
                 <input type="text" id="signupUsername" placeholder="Username" required>
-                <input type="password" id="signupPassword" placeholder="Password" required>
-                <input type="password" id="signupConfirmPassword" placeholder="Confirm Password" required>
+                <div class="password-container">
+                    <input type="password" id="signupPassword" placeholder="Password" required>
+                    <span class="toggle-password" id="togglePasswordSignup"><svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 6c-3.95 0-7.2 2.3-9 6 1.8 3.7 5.05 6 9 6s7.2-2.3 9-6c-1.8-3.7-5.05-6-9-6zm0 10c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm0-6.5A2.5 2.5 0 0 0 9.5 12 2.5 2.5 0 0 0 12 14.5 2.5 2.5 0 0 0 14.5 12 2.5 2.5 0 0 0 12 9.5z"/>
+                      </svg>
+                      </span>
+                </div>
+                <p class="caps-warning" id="capsWarningSignup" style="display: none;">⚠️Caps Lock is on</p>
+                <div class="password-container">
+                    <input type="password" id="signupConfirmPassword" placeholder="Confirm Password" required>
+                    <span class="toggle-password" id="toggleConfirmPassword"><svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 6c-3.95 0-7.2 2.3-9 6 1.8 3.7 5.05 6 9 6s7.2-2.3 9-6c-1.8-3.7-5.05-6-9-6zm0 10c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm0-6.5A2.5 2.5 0 0 0 9.5 12 2.5 2.5 0 0 0 12 14.5 2.5 2.5 0 0 0 14.5 12 2.5 2.5 0 0 0 12 9.5z"/>
+                      </svg>
+                    </span>
+                </div>
                 <button type="submit">Sign Up</button>
                 <p class="form-footer">Already have an account? <a href="#" id="showLogin">Log in</a></p>
             </form>
         </div>
     </div>
 
+    <!-- Service Selection Page -->
     <div class="main-content" id="serviceSelectionPage" style="display: none;">
         <header>
             <div class="container">
@@ -57,6 +80,7 @@
         </div>
     </div>
 
+    <!-- School Survey Page -->
     <div class="main-content" id="schoolSurveyContent" style="display: none;">
         <header>
             <div class="container">
@@ -187,6 +211,7 @@
         </div>
     </div>
 
+    <!-- Health Monitor Page -->
     <div class="main-content" id="healthMonitorContent" style="display: none;">
         <header>
             <div class="container">
@@ -205,13 +230,35 @@
                 <div class="form-section">
                     <h3>Personal Information</h3>
                     <div class="form-group">
-                        <label for="fullName">Full Name</label>
+                        <label for="fullName">Name</label>
                         <input type="text" id="fullName" name="fullName" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="purok">Purok</label>
+                        <select id="purok" name="purok" required>
+                            <option value="">Select Purok</option>
+                            <option value="Purok 1">Purok 1</option>
+                            <option value="Purok 2">Purok 2</option>
+                            <option value="Purok 3">Purok 3</option>
+                            <option value="Purok 4">Purok 4</option>
+                            <option value="Purok 5">Purok 5</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="streetAddress">Street Address</label>
+                        <input type="text" id="streetAddress" name="streetAddress" placeholder="Enter street address" required>
                     </div>
                     
                     <div class="form-group">
                         <label for="age">Age</label>
                         <input type="number" id="age" name="age" min="1" max="120" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="contactNumbers">Contact</label>
+                        <input type="text" id="contactNumbers" name="contactNumbers" placeholder="Enter contact number(s)" required>
                     </div>
                     
                     <div class="form-group">
@@ -221,18 +268,6 @@
                             <label><input type="radio" name="gender" value="Female"> Female</label><br>
                             <label><input type="radio" name="gender" value="Other"> Other</label>
                         </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="address">Address (Purok)</label>
-                        <select id="address" name="address" required>
-                            <option value="">Select Purok</option>
-                            <option value="Purok 1">Purok 1</option>
-                            <option value="Purok 2">Purok 2</option>
-                            <option value="Purok 3">Purok 3</option>
-                            <option value="Purok 4">Purok 4</option>
-                            <option value="Purok 5">Purok 5</option>
-                        </select>
                     </div>
                 </div>
                 
@@ -250,11 +285,13 @@
                     <div class="form-group">
                         <label>Recent Symptoms (check all that apply)</label>
                         <div id="symptoms" class="form-group">
+                            <label><input type="checkbox" name="symptoms" value="None"> None</label><br>
                             <label><input type="checkbox" name="symptoms" value="Fever"> Fever</label><br>
                             <label><input type="checkbox" name="symptoms" value="Cough"> Cough</label><br>
                             <label><input type="checkbox" name="symptoms" value="Fatigue"> Fatigue</label><br>
                             <label><input type="checkbox" name="symptoms" value="Shortness of breath"> Shortness of breath</label><br>
-                            <label><input type="checkbox" name="symptoms" value="Loss of taste/smell"> Loss of taste/smell</label>
+                            <label><input type="checkbox" name="symptoms" value="Loss of taste/smell"> Loss of taste/smell</label><br>
+                            <label>Other symptoms: <input type="text" id="otherSymptoms" name="otherSymptoms" placeholder="Specify other symptoms"></label>
                         </div>
                     </div>
                     
@@ -285,8 +322,10 @@
                 <thead>
                     <tr>
                         <th>Name</th>
-                        <th>Age</th>
                         <th>Purok</th>
+                        <th>Address</th>
+                        <th>Age</th>
+                        <th>Contact</th>
                         <th>Vaccination</th>
                         <th>Symptoms</th>
                         <th>Last Checkup</th>
