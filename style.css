@@ -93,6 +93,35 @@ body {
   text-decoration: underline;
 }
 
+.password-container {
+  position: relative;
+  margin-bottom: 0.5rem;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  user-select: none;
+}
+
+.caps-warning {
+  color: #ff9800;
+  font-size: 0.8rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.password-container input[type="password"],
+.password-container input[type="text"] {
+  padding-right: 40px;
+  width: 100%;
+}
+
 .service-selection {
   text-align: center;
   padding: 2rem 0;
@@ -430,6 +459,9 @@ header h1 {
 }
 
 @media print {
+    @page {
+        size: landscape;
+    }
   body * {
     visibility: hidden;
   }
@@ -443,31 +475,22 @@ header h1 {
     left: 0;
     top: 0;
     width: 100%;
-    height: auto;
     margin: 0;
-    padding: 20px;
-    box-shadow: none;
+    padding: 0;
   }
-  
+
   table {
-    page-break-inside: auto;
+    width: 100% !important;
+    font-size: 12px;
   }
   
+  /* Prevent row breaks */
   tr {
     page-break-inside: avoid;
-    page-break-after: auto;
   }
-  
-  thead {
-    display: table-header-group;
-  }
-  
-  tfoot {
-    display: table-footer-group;
-  }
-  
-  .no-print {
-    display: none;
+
+  th, td {
+    padding: 6px 8px !important;
   }
   
   @page {
