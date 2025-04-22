@@ -273,8 +273,14 @@
             </form>
         </div>
 
-        <div class="container health-records print-only">
-            <h2>Barangay Health Records</h2>
+        <div class="container health-records print-only" id="printSection">
+            <div class="print-header">
+                <h2>Barangay Health Records</h2>
+                <div class="print-info">
+                    <p>Printed on: <span id="printDate"></span></p>
+                    <p>Total records: <span id="recordCount"></span></p>
+                </div>
+            </div>
             <table id="healthRecordsTable">
                 <thead>
                     <tr>
@@ -289,6 +295,9 @@
                 <tbody>
                 </tbody>
             </table>
+            <div class="print-footer">
+                <p>Barangay Health Monitoring System - Confidential</p>
+            </div>
         </div>
     </div>
 
