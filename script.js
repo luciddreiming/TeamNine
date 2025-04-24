@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() { 
+document.addEventListener('DOMContentLoaded', function() {
     const loginPage = document.getElementById('loginPage');
     const signupPage = document.getElementById('signupPage');
     const serviceSelectionPage = document.getElementById('serviceSelectionPage');
@@ -35,8 +35,8 @@ document.addEventListener('DOMContentLoaded', function() {
     let userAccounts = [
         { username: 'admin', password: 'admin', name: 'Administrator', email: 'admin@community.gov' }
     ];
-    let healthRecords = []; 
-    let schoolSurveyData = []; 
+    let healthRecords = [];
+    let schoolSurveyData = [];
 
     function initEventListeners() {
         showSignup.addEventListener('click', function(e) {
@@ -54,11 +54,11 @@ document.addEventListener('DOMContentLoaded', function() {
         togglePasswordLogin.addEventListener('click', function() {
             togglePasswordVisibility(passwordLogin, togglePasswordLogin);
         });
-        
+
         togglePasswordSignup.addEventListener('click', function() {
             togglePasswordVisibility(passwordSignup, togglePasswordSignup);
         });
-        
+
         toggleConfirmPassword.addEventListener('click', function() {
             togglePasswordVisibility(confirmPassword, toggleConfirmPassword);
         });
@@ -86,27 +86,12 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function togglePasswordVisibility(inputField, toggleButton) {
-        if (inputField.type === 'password') {
-            inputField.type = 'text';
-            toggleButton.innerHTML = `
-                <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 6c-3.95 0-7.2 2.3-9 6 1.8 3.7 5.05 6 9 6s7.2-2.3 9-6c-1.8-3.7-5.05-6-9-6zm0 10c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm0-6.5A2.5 2.5 0 0 0 9.5 12 2.5 2.5 0 0 0 12 14.5 2.5 2.5 0 0 0 14.5 12 2.5 2.5 0 0 0 12 9.5z"/>
-                    <path d="M22 2L2 22" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                </svg>
-            `;
-        } else {
-            inputField.type = 'password';
-            toggleButton.innerHTML = `
-                <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 6c-3.95 0-7.2 2.3-9 6 1.8 3.7 5.05 6 9 6s7.2-2.3 9-6c-1.8-3.7-5.05-6-9-6zm0 10c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm0-6.5A2.5 2.5 0 0 0 9.5 12 2.5 2.5 0 0 0 12 14.5 2.5 2.5 0 0 0 14.5 12 2.5 2.5 0 0 0 12 9.5z"/>
-                </svg>
-            `;
-        }
+        inputField.type = inputField.type === 'password' ? 'text' : 'password';
     }
 
     function checkCapsLock(e) {
         const isCapsLockOn = e.getModifierState && e.getModifierState('CapsLock');
-        
+
         if (e.target === passwordLogin) {
             capsWarningLogin.style.display = isCapsLockOn ? 'block' : 'none';
         } else if (e.target === passwordSignup || e.target === confirmPassword) {
@@ -116,14 +101,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function handleLogin(e) {
         e.preventDefault();
-        
+
         const username = document.getElementById('username').value;
         const password = document.getElementById('password').value;
-        
-        const user = userAccounts.find(account => 
-            account.username === username && account.password === password
-        );
-        
+
+        const user = userAccounts.find(account => account.username === username && account.password === password);
+
         if (user) {
             loginPage.style.display = 'none';
             signupPage.style.display = 'none';
@@ -136,30 +119,25 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function handleSignup(e) {
         e.preventDefault();
-        
+
         const name = document.getElementById('signupName').value;
         const email = document.getElementById('signupEmail').value;
         const username = document.getElementById('signupUsername').value;
         const password = document.getElementById('signupPassword').value;
         const confirmPassword = document.getElementById('signupConfirmPassword').value;
-        
+
         if (password !== confirmPassword) {
             alert('Passwords do not match');
             return;
         }
-        
+
         if (userAccounts.some(account => account.username === username)) {
             alert('Username already exists');
             return;
         }
-        
-        userAccounts.push({
-            username: username,
-            password: password,
-            name: name,
-            email: email
-        });
-        
+
+        userAccounts.push({ username, password, name, email });
+
         signupPage.style.display = 'none';
         loginPage.style.display = 'flex';
         signupForm.reset();
@@ -172,7 +150,7 @@ document.addEventListener('DOMContentLoaded', function() {
         serviceSelectionPage.style.display = 'none';
         schoolSurveyContent.style.display = 'none';
         healthMonitorContent.style.display = 'none';
-        
+
         loginForm.reset();
         signupForm.reset();
         healthSurveyForm.reset();
@@ -182,7 +160,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function showSchoolSurvey() {
         serviceSelectionPage.style.display = 'none';
         schoolSurveyContent.style.display = 'block';
-        updateSchoolSurveyTable(); 
+        updateSchoolSurveyTable();
     }
 
     function showHealthMonitor() {
@@ -195,23 +173,11 @@ document.addEventListener('DOMContentLoaded', function() {
         e.preventDefault();
 
         const checkedSymptoms = Array.from(document.querySelectorAll('input[name="symptoms"]:checked')).map(el => el.value);
-
-        let finalSymptoms = checkedSymptoms.includes("None") ? ["None"] : checkedSymptoms;
+        const finalSymptoms = checkedSymptoms.includes("None") ? ["None"] : checkedSymptoms;
 
         const otherSymptoms = document.getElementById('otherSymptoms').value.trim();
         if (otherSymptoms && !finalSymptoms.includes("None")) {
             finalSymptoms.push(otherSymptoms);
-        }
-
-        if (!document.getElementById('fullName').value || 
-            !document.getElementById('purok').value ||
-            !document.getElementById('streetAddress').value ||
-            !document.getElementById('age').value ||
-            !document.getElementById('contactNumbers').value ||
-            !document.querySelector('input[name="gender"]:checked') ||
-            !document.getElementById('vaccinationStatus').value) {
-            alert('Please fill in all required fields');
-            return;
         }
 
         const formData = {
@@ -227,23 +193,22 @@ document.addEventListener('DOMContentLoaded', function() {
             healthNotes: document.getElementById('healthNotes').value,
             submissionDate: new Date().toLocaleString()
         };
-        
+
         healthRecords.push(formData);
         updateHealthRecordsTable();
-        
         alert('Thank you for submitting your health information!');
-        this.reset();
+        healthSurveyForm.reset();
     }
 
     function handleSchoolFormSubmit(e) {
         e.preventDefault();
-        
+
         const isAnonymous = document.getElementById('anonymousSubmission').checked;
         const studentName = isAnonymous ? 'Anonymous' : document.getElementById('studentName').value || 'Anonymous';
         const teacherName = document.getElementById('teacherName').value;
         const gradeSection = document.getElementById('gradeSection').value;
         const className = document.getElementById('className').value;
-        const teacherRating = document.querySelector('input[name="teacherRating"]:checked')?.value;
+        const teacherRating = parseInt(document.querySelector('input[name="teacherRating"]:checked')?.value);
         const favoriteLesson = document.getElementById('favoriteLesson').value || 'Not specified';
         const suggestions = document.getElementById('suggestions').value || 'No suggestions';
 
@@ -251,15 +216,15 @@ document.addEventListener('DOMContentLoaded', function() {
             alert('Please fill in all required fields');
             return;
         }
- 
+
         const newEntry = {
-            studentName: studentName,
-            teacherName: teacherName,
-            gradeSection: gradeSection,
-            className: className,
-            teacherRating: parseInt(teacherRating),
-            favoriteLesson: favoriteLesson,
-            suggestions: suggestions,
+            studentName,
+            teacherName,
+            gradeSection,
+            className,
+            teacherRating,
+            favoriteLesson,
+            suggestions,
             submissionDate: new Date().toLocaleDateString()
         };
 
@@ -279,17 +244,14 @@ document.addEventListener('DOMContentLoaded', function() {
     function updateHealthRecordsTable() {
         const tbody = healthRecordsTable.querySelector('tbody');
         tbody.innerHTML = '';
-        
+
         if (healthRecords.length === 0) {
-            const row = document.createElement('tr');
-            row.innerHTML = `<td colspan="8" style="text-align: center;">No health records found</td>`;
-            tbody.appendChild(row);
+            tbody.innerHTML = `<tr><td colspan="8" style="text-align: center;">No health records found</td></tr>`;
             return;
         }
-        
+
         healthRecords.forEach(record => {
             const row = document.createElement('tr');
-            
             row.innerHTML = `
                 <td>${record.fullName}</td>
                 <td>${record.purok}</td>
@@ -298,201 +260,41 @@ document.addEventListener('DOMContentLoaded', function() {
                 <td>${record.contactNumbers}</td>
                 <td>${record.vaccinationStatus}</td>
                 <td>${record.symptoms.join(', ')}</td>
-                <td>${record.lastCheckup || 'N/A'}</td>
-            `;
-            
+                <td>${record.lastCheckup || 'N/A'}</td>`;
             tbody.appendChild(row);
         });
     }
 
-function updateSchoolSurveyTable() {
-    surveyResults.innerHTML = '';
-    
-    const subjectFilter = filterSubject.value;
-    const ratingFilter = parseInt(filterRating.value);
-    
-    const filteredData = schoolSurveyData.filter(entry => {
-        const matchesSubject = subjectFilter === "All Subjects" || entry.className === subjectFilter;
-        const matchesRating = ratingFilter === 0 || entry.teacherRating >= ratingFilter; 
-        return matchesSubject && matchesRating;
-    });
-    
-    if (filteredData.length === 0) {
-        const row = document.createElement('tr');
-        row.innerHTML = `<td colspan="7" style="text-align: center;">No survey results found matching your filters</td>`;
-        surveyResults.appendChild(row);
-        return;
-    }
-    
-    filteredData.forEach(entry => {
-        const row = document.createElement('tr');
-        
-        const starsDisplay = '★'.repeat(entry.teacherRating) + '☆'.repeat(5 - entry.teacherRating);
-        
-        row.innerHTML = `
-            <td>${entry.studentName}</td>
-            <td>${entry.teacherName}</td>
-            <td>${entry.gradeSection}</td>
-            <td>${entry.className}</td>
-            <td>${starsDisplay}</td>
-            <td>${entry.favoriteLesson}</td>
-            <td>${entry.suggestions}</td>
-        `;           
-        surveyResults.appendChild(row);
-    });
-}
+    function updateSchoolSurveyTable() {
+        surveyResults.innerHTML = '';
 
-    function printHealthRecords() {
-        printDate.textContent = new Date().toLocaleString();
-        recordCount.textContent = healthRecords.length;
+        const subjectFilter = filterSubject.value;
+        const ratingFilter = parseInt(filterRating.value);
 
-        const printHtml = `
-    <!DOCTYPE html>
-    <html>
-    <head>
-        <title>Barangay Health Records</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <style>
-            body { 
-                font-family: Arial, sans-serif; 
-                margin: 0; 
-                padding: 15px; 
-                -webkit-text-size-adjust: 100%;
-            }
-            .print-header { 
-                text-align: center; 
-                margin-bottom: 20px;
-                padding-bottom: 10px;
-                border-bottom: 1px solid #eee;
-            }
-            .print-info {
-                display: flex;
-                justify-content: space-between;
-                margin-bottom: 15px;
-                font-size: 14px;
-                color: #666;
-            }
-            table {
-                width: 100%;
-                border-collapse: collapse;
-                margin-bottom: 20px;
-                font-size: 12px;
-            }
-            th, td {
-                padding: 8px;
-                text-align: left;
-                border-bottom: 1px solid #ddd;
-            }
-            th {
-                background-color: #166088;
-                color: white;
-            }
-            tr:nth-child(even) {
-                background-color: #f2f2f2;
-            }
-            .print-footer {
-                text-align: center;
-                margin-top: 20px;
-                padding-top: 10px;
-                border-top: 1px solid #eee;
-                font-size: 12px;
-                color: #666;
-            }
-            @page {
-                size: auto;
-                margin: 10mm;
-            }
-            @media print {
-                body {
-                    padding: 0;
-                    font-size: 10px;
-                }
-                table {
-                    font-size: 10px;
-                }
-                th, td {
-                    padding: 5px;
-                }
-            }
-        </style>
-    </head>
-    <body>
-        <div class="print-header">
-            <h2>Barangay Health Records</h2>
-            <div class="print-info">
-                <p>Printed on: <span id="printDate">${new Date().toLocaleString()}</span></p>
-                <p>Total records: <span id="recordCount">${healthRecords.length}</span></p>
-            </div>
-        </div>
-        <table>
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Purok</th>
-                    <th>Address</th>
-                    <th>Age</th>
-                    <th>Contact</th>
-                    <th>Vaccination</th>
-                    <th>Symptoms</th>
-                    <th>Last Checkup</th>
-                </tr>
-            </thead>
-            <tbody>
-                ${healthRecords.map(record => `
-                    <tr>
-                        <td>${record.fullName}</td>
-                        <td>${record.purok}</td>
-                        <td>${record.streetAddress}</td>
-                        <td>${record.age}</td>
-                        <td>${record.contactNumbers}</td>
-                        <td>${record.vaccinationStatus}</td>
-                        <td>${record.symptoms.join(', ')}</td>
-                        <td>${record.lastCheckup || 'N/A'}</td>
-                    </tr>
-                `).join('')}
-            </tbody>
-        </table>
-        <div class="print-footer">
-            <p>Barangay Health Monitoring System - Confidential</p>
-        </div>
-        <script>
-            // Try to print automatically after a short delay
-            setTimeout(function() {
-                try {
-                    window.print();
-                } catch(e) {
-                    console.log('Printing not available', e);
-                }
-            }, 300);
-        </script>
-    </body>
-    </html>
-        `;
-        const printWindow = window.open('', '_blank');
-        printWindow.document.open();
-        printWindow.document.write(printHtml);
-        printWindow.document.close();
+        const filteredData = schoolSurveyData.filter(entry => {
+            const matchesSubject = subjectFilter === 'All Subjects' || entry.className === subjectFilter;
+            const matchesRating = ratingFilter === 0 || entry.teacherRating === ratingFilter;
+            return matchesSubject && matchesRating;
+        });
 
-        setTimeout(() => {
-            try {
-                printWindow.focus();
-            } catch(e) {
-                console.log('Could not focus window', e);
-            }
-        }, 500);
-    }
-        printSection.style.display = 'none';
-    
-        function cleanupPrint() {
-            if (printContent.parentNode) {
-                printContent.parentNode.removeChild(printContent);
-            }
-            const style = document.getElementById('print-styles');
-            if (style) {
-                style.parentNode.removeChild(style);
-            }
+        if (filteredData.length === 0) {
+            surveyResults.innerHTML = `<tr><td colspan="7">No survey results found</td></tr>`;
+            return;
         }
-        setTimeout(cleanupPrint, 5000);
+
+        filteredData.forEach(entry => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${entry.studentName}</td>
+                <td>${entry.teacherName}</td>
+                <td>${entry.gradeSection}</td>
+                <td>${entry.className}</td>
+                <td>${entry.teacherRating}</td>
+                <td>${entry.favoriteLesson}</td>
+                <td>${entry.suggestions}</td>`;
+            surveyResults.appendChild(row);
+        });
+    }
+
     initEventListeners();
 });
