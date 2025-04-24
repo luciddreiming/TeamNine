@@ -284,12 +284,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
         filteredData.forEach(entry => {
             const row = document.createElement('tr');
+            const starsDisplay = '★'.repeat(entry.teacherRating) + '☆'.repeat(5 - entry.teacherRating);
             row.innerHTML = `
                 <td>${entry.studentName}</td>
                 <td>${entry.teacherName}</td>
                 <td>${entry.gradeSection}</td>
                 <td>${entry.className}</td>
-                <td>${entry.teacherRating}</td>
+                <td>${starsDisplay}</td>
                 <td>${entry.favoriteLesson}</td>
                 <td>${entry.suggestions}</td>`;
             surveyResults.appendChild(row);
