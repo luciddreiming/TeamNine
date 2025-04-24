@@ -226,40 +226,41 @@ function handleSchoolFormSubmit(e) {
     document.querySelectorAll('input[name="teacherRating"]').forEach(input => input.checked = false);
     alert('Thank you for your feedback!');
 }
-    function handleSchoolFormSubmit(e) {
-        e.preventDefault();
-        
-        const isAnonymous = document.getElementById('anonymousSubmission').checked;
-        const studentName = isAnonymous ? 'Anonymous' : document.getElementById('studentName').value || 'Anonymous';
-        const teacherName = document.getElementById('teacherName').value;
-        const gradeSection = document.getElementById('gradeSection').value;
-        const className = document.getElementById('className').value;
-        const teacherRating = document.querySelector('input[name="teacherRating"]:checked')?.value;
-        const favoriteLesson = document.getElementById('favoriteLesson').value || 'Not specified';
-        const suggestions = document.getElementById('suggestions').value || 'No suggestions';
+function handleSchoolFormSubmit(e) {
+    e.preventDefault();
+    
+    const isAnonymous = document.getElementById('anonymousSubmission').checked;
+    const studentName = isAnonymous ? 'Anonymous' : document.getElementById('studentName').value || 'Anonymous';
+    const teacherName = document.getElementById('teacherName').value;
+    const gradeSection = document.getElementById('gradeSection').value;
+    const className = document.getElementById('className').value;
+    const ratingInput = document.querySelector('input[name="teacherRating"]:checked');
+    const favoriteLesson = document.getElementById('favoriteLesson').value || 'Not specified';
+    const suggestions = document.getElementById('suggestions').value || 'No suggestions';
 
-        if (!teacherName || !gradeSection || !className || !teacherRating) {
-            alert('Please fill in all required fields');
-            return;
-        }
- 
-        const newEntry = {
-            studentName: studentName,
-            teacherName: teacherName,
-            gradeSection: gradeSection,
-            className: className,
-            teacherRating: parseInt(teacherRating),
-            favoriteLesson: favoriteLesson,
-            suggestions: suggestions,
-            submissionDate: new Date().toLocaleDateString()
-        };
-
-        schoolSurveyData.push(newEntry);
-        updateSchoolSurveyTable();
-        schoolSurveyForm.reset();
-        document.querySelectorAll('input[name="teacherRating"]').forEach(input => input.checked = false);
-        alert('Thank you for your feedback!');
+    if (!teacherName || !gradeSection || !className || !ratingInput) {
+        alert('Please fill in all required fields');
+        return;
     }
+    const teacherRating = parseInt(ratingInput.value);
+    const newEntry = {
+        studentName: studentName,
+        teacherName: teacherName,
+        gradeSection: gradeSection,
+        className: className,
+        teacherRating: teacherRating, // Now definitely a number
+        favoriteLesson: favoriteLesson,
+        suggestions: suggestions,
+        submissionDate: new Date().toLocaleDateString(),
+        isAnonymous: isAnonymous
+    };
+
+    schoolSurveyData.push(newEntry);
+    updateSchoolSurveyTable();
+    schoolSurveyForm.reset();
+    document.querySelectorAll('input[name="teacherRating"]').forEach(input => input.checked = false);
+    alert('Thank you for your feedback!');
+}
 
     function resetSchoolFilters() {
         filterSubject.value = 'All Subjects';
@@ -304,7 +305,8 @@ function updateSchoolSurveyTable() {
     
     const filteredData = schoolSurveyData.filter(entry => {
         const matchesSubject = subjectFilter === "All Subjects" || entry.className === subjectFilter;
-        const matchesRating = ratingFilter === 0 || entry.teacherRating >= ratingFilter;
+        const matchesRating = ratingFilter === 0 || 
+                            (entry.teacherRating && entry.teacherRating >= ratingFilter);
         return matchesSubject && matchesRating;
     });
     
@@ -317,15 +319,17 @@ function updateSchoolSurveyTable() {
     
     filteredData.forEach(entry => {
         const row = document.createElement('tr');
-        
-        const starsDisplay = '★'.repeat(entry.teacherRating) + '☆'.repeat(5 - entry.teacherRating);
+        const rating = typeof entry.teacherRating === 'number' ? 
+                      entry.teacherRating : 
+                      parseInt(entry.teacherRating);       
+        const starsDisplay = '★'.repeat(rating) + '☆'.repeat(5 - rating);
         
         row.innerHTML = `
             <td>${entry.studentName}</td>
             <td>${entry.teacherName}</td>
             <td>${entry.gradeSection}</td>
             <td>${entry.className}</td>
-            <td>${starsDisplay} (${entry.teacherRating})</td>
+            <td>${starsDisplay}</td>
             <td>${entry.favoriteLesson}</td>
             <td>${entry.suggestions}</td>
         `;
