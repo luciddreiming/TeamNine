@@ -320,7 +320,7 @@ function updateSchoolSurveyTable() {
         const filterRatingNum = Number(ratingFilter);
         
         const matchesSubject = subjectFilter === "All Subjects" || entry.className === subjectFilter;
-        const matchesRating = filterRatingNum === 0 || entryRating >= filterRatingNum;
+        const matchesRating = filterRatingNum === 0 || entryRating === filterRatingNum;
         
         return matchesSubject && matchesRating;
     });
