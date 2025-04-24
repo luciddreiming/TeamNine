@@ -296,5 +296,158 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    function printHealthRecords() {
+    printDate.textContent = new Date().toLocaleString();
+    recordCount.textContent = healthRecords.length;
+
+        const printHtml = `
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Barangay Health Records</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            body { 
+                font-family: Arial, sans-serif; 
+                margin: 0; 
+                padding: 15px; 
+                -webkit-text-size-adjust: 100%;
+            }
+            .print-header { 
+                text-align: center; 
+                margin-bottom: 20px;
+                padding-bottom: 10px;
+                border-bottom: 1px solid #eee;
+            }
+            .print-info {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 15px;
+                font-size: 14px;
+                color: #666;
+            }
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-bottom: 20px;
+                font-size: 12px;
+            }
+            th, td {
+                padding: 8px;
+                text-align: left;
+                border-bottom: 1px solid #ddd;
+            }
+            th {
+                background-color: #166088;
+                color: white;
+            }
+            tr:nth-child(even) {
+                background-color: #f2f2f2;
+            }
+            .print-footer {
+                text-align: center;
+                margin-top: 20px;
+                padding-top: 10px;
+                border-top: 1px solid #eee;
+                font-size: 12px;
+                color: #666;
+            }
+            @page {
+                size: auto;
+                margin: 10mm;
+            }
+            @media print {
+                body {
+                    padding: 0;
+                    font-size: 10px;
+                }
+                table {
+                    font-size: 10px;
+                }
+                th, td {
+                    padding: 5px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="print-header">
+            <h2>Barangay Health Records</h2>
+            <div class="print-info">
+                <p>Printed on: <span id="printDate">${new Date().toLocaleString()}</span></p>
+                <p>Total records: <span id="recordCount">${healthRecords.length}</span></p>
+            </div>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Purok</th>
+                    <th>Address</th>
+                    <th>Age</th>
+                    <th>Contact</th>
+                    <th>Vaccination</th>
+                    <th>Symptoms</th>
+                    <th>Last Checkup</th>
+                </tr>
+            </thead>
+            <tbody>
+                ${healthRecords.map(record => `
+                    <tr>
+                        <td>${record.fullName}</td>
+                        <td>${record.purok}</td>
+                        <td>${record.streetAddress}</td>
+                        <td>${record.age}</td>
+                        <td>${record.contactNumbers}</td>
+                        <td>${record.vaccinationStatus}</td>
+                        <td>${record.symptoms.join(', ')}</td>
+                        <td>${record.lastCheckup || 'N/A'}</td>
+                    </tr>
+                `).join('')}
+            </tbody>
+        </table>
+        <div class="print-footer">
+            <p>Barangay Health Monitoring System - Confidential</p>
+        </div>
+        <script>
+            // Try to print automatically after a short delay
+            setTimeout(function() {
+                try {
+                    window.print();
+                } catch(e) {
+                    console.log('Printing not available', e);
+                }
+            }, 300);
+        </script>
+    </body>
+    </html>
+        `;
+        const printWindow = window.open('', '_blank');
+        printWindow.document.open();
+        printWindow.document.write(printHtml);
+        printWindow.document.close();
+
+        setTimeout(() => {
+            try {
+                printWindow.focus();
+            } catch(e) {
+                console.log('Could not focus window', e);
+            }
+        }, 500);
+    }
+        printSection.style.display = 'none';
+    
+        function cleanupPrint() {
+            if (printContent.parentNode) {
+                printContent.parentNode.removeChild(printContent);
+            }
+            const style = document.getElementById('print-styles');
+            if (style) {
+                style.parentNode.removeChild(style);
+            }
+        }
+        setTimeout(cleanupPrint, 5000);
+
     initEventListeners();
 });
