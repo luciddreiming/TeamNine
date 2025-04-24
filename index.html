@@ -211,30 +211,49 @@
         </div>
     </div>
 
+    
     <!-- Health Monitor Page -->
-    <div class="main-content" id="healthMonitorContent" style="display: none;">
-        <header>
-            <div class="container">
+    <!--I added id on each form field-->
+    <div class="main-content" id="healthMonitorContent">
+        <!--Changed <header> to <div class="header">-->
+        <div class="header">
+            <!--changed the class from container to health-container-->
+            <div class="health-container">
                 <button class="logout-btn" id="healthLogoutBtn">Logout</button>
                 <div class="header-actions">
                     <h1>Barangay Health Monitoring System</h1>
-                    <button id="printHealthBtn" class="print-btn">Print Records</button>
+                    <!--I added a print icon, feel free to fix it!-->
+                    <button id="printHealthBtn" class="print-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 -3 24 24"><path fill="currentColor" d="M8 21q-.825 0-1.412-.587T6 19v-2H4q-.825 0-1.412-.587T2 15v-4q0-1.275.875-2.137T5 8h14q1.275 0 2.138.863T22 11v4q0 .825-.587 1.413T20 17h-2v2q0 .825-.587 1.413T16 21zm-4-6h2q0-.825.588-1.412T8 13h8q.825 0 1.413.588T18 15h2v-4q0-.425-.288-.712T19 10H5q-.425 0-.712.288T4 11zm12-7V5H8v3H6V5q0-.825.588-1.412T8 3h8q.825 0 1.413.588T18 5v3zm2 4.5q.425 0 .713-.288T19 11.5t-.288-.712T18 10.5t-.712.288T17 11.5t.288.713t.712.287M16 19v-4H8v4zM4 10h16z"/>
+                        </svg>
+                        Print Records
+                    </button>
                 </div>
             </div>
-        </header>
+        </div>
 
         <div class="container health-form">
             <form id="healthSurveyForm">
                 <h2>Health Information Survey</h2>
-                
+                <h3>Personal Information</h3>
                 <div class="form-section">
-                    <h3>Personal Information</h3>
-                    <div class="form-group">
+                    <!--changed the class name to health-form-group-->
+                    <div class="health-form-group">
                         <label for="fullName">Name</label>
                         <input type="text" id="fullName" name="fullName" required placeholder="Please enter your name." required>
                     </div>
-                    
-                    <div class="form-group">
+                        <!--I changed the placement of age-->
+                    <div class="health-form-group">
+                        <label for="age">Age</label>
+                        <input type="number" id="age" name="age" min="1" max="100" required placeholder="Please enter your age." required>
+                    </div>
+                        <!--I changed the placemen of contact number-->
+                    <div class="health-form-group">
+                        <label for="contactNumbers">Contact</label>
+                        <input type="text" id="contactNumbers" name="contactNumbers" placeholder="Please enter your contact numbers." required>
+                    </div>
+
+                    <div class="health-form-group">
                         <label for="purok">Purok</label>
                         <select id="purok" name="purok" required>
                             <option value="">Select Purok</option>
@@ -246,22 +265,12 @@
                         </select>
                     </div>
                     
-                    <div class="form-group">
+                    <div class="health-form-group">
                         <label for="streetAddress">Street Address</label>
                         <input type="text" id="streetAddress" name="streetAddress" placeholder="Please enter your street address." required>
                     </div>
                     
-                    <div class="form-group">
-                        <label for="age">Age</label>
-                        <input type="number" id="age" name="age" min="1" max="100" required placeholder="Please enter your age." required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="contactNumbers">Contact</label>
-                        <input type="text" id="contactNumbers" name="contactNumbers" placeholder="Please enter your contact numbers." required>
-                    </div>
-                    
-                    <div class="form-group">
+                    <div class="health-form-group">
                         <label>Gender</label>
                         <div class="radio-group">
                             <label><input type="radio" name="gender" value="Male" required> Male</label><br>
@@ -270,10 +279,10 @@
                         </div>
                     </div>
                 </div>
-                
+
+                <h3>Health Status</h3>
                 <div class="form-section">
-                    <h3>Health Status</h3>
-                    <div class="form-group">
+                    <div class="health-form-group">
                         <label for="vaccinationStatus">Vaccination Status</label>
                         <select id="vaccinationStatus" name="vaccinationStatus" required>
                             <option value="">Select Status</option>
@@ -282,25 +291,25 @@
                         </select>
                     </div>
                     
-                    <div class="form-group">
+                    <div class="health-form-group">
                         <label>Recent Symptoms (check all that apply)</label>
-                        <div id="symptoms" class="form-group">
-                            <label><input type="checkbox" name="symptoms" value="None"> None</label><br>
-                            <label><input type="checkbox" name="symptoms" value="Fever"> Fever</label><br>
-                            <label><input type="checkbox" name="symptoms" value="Cough"> Cough</label><br>
-                            <label><input type="checkbox" name="symptoms" value="Fatigue"> Fatigue</label><br>
-                            <label><input type="checkbox" name="symptoms" value="Shortness of breath"> Shortness of breath</label><br>
+                        <div id="symptoms" class="health-form-group">
+                            <label><input type="checkbox" name="symptoms" value="None"> None</label>
+                            <label><input type="checkbox" name="symptoms" value="Fever"> Fever</label>
+                            <label><input type="checkbox" name="symptoms" value="Cough"> Cough</label>
+                            <label><input type="checkbox" name="symptoms" value="Fatigue"> Fatigue</label>
+                            <label><input type="checkbox" name="symptoms" value="Shortness of breath"> Shortness of breath</label>
                             <label><input type="checkbox" name="symptoms" value="Loss of taste/smell"> Loss of taste/smell</label><br>
                             <label>Other symptoms: <input type="text" id="otherSymptoms" name="otherSymptoms" placeholder="Specify other symptoms"></label>
                         </div>
                     </div>
                     
-                    <div class="form-group">
+                    <div class="health-form-group">
                         <label for="lastCheckup">Last Medical Checkup</label>
                         <input type="date" id="lastCheckup" name="lastCheckup">
                     </div>
                     
-                    <div class="form-group">
+                    <div class="health-form-group">
                         <label for="healthNotes">Additional Health Notes</label>
                         <textarea id="healthNotes" name="healthNotes" rows="4"></textarea>
                     </div>
@@ -309,6 +318,7 @@
                 <button type="submit" class="submit-btn health-btn">Submit Health Information</button>
             </form>
         </div>
+
 
         <div class="container health-records print-only" id="printSection">
             <div class="print-header">
