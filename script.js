@@ -284,6 +284,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         filteredData.forEach(entry => {
             const row = document.createElement('tr');
+            const starsDisplay = '★'.repeat(entry.teacherRating) + '☆'.repeat(5 - entry.teacherRating);
             row.innerHTML = `
                 <td>${entry.studentName}</td>
                 <td>${entry.teacherName}</td>
