@@ -191,41 +191,50 @@ document.addEventListener('DOMContentLoaded', function() {
         updateHealthRecordsTable();
     }
 
-function handleSchoolFormSubmit(e) {
-    e.preventDefault();
-    
-    const isAnonymous = document.getElementById('anonymousSubmission').checked;
-    const studentName = isAnonymous ? 'Anonymous' : document.getElementById('studentName').value || 'Anonymous';
-    const teacherName = document.getElementById('teacherName').value;
-    const gradeSection = document.getElementById('gradeSection').value;
-    const className = document.getElementById('className').value;
-    const teacherRating = document.querySelector('input[name="teacherRating"]:checked')?.value;
-    const favoriteLesson = document.getElementById('favoriteLesson').value || 'Not specified';
-    const suggestions = document.getElementById('suggestions').value || 'No suggestions';
+    function handleHealthFormSubmit(e) {
+        e.preventDefault();
 
-    if (!teacherName || !gradeSection || !className || !teacherRating) {
-        alert('Please fill in all required fields');
-        return;
+        const checkedSymptoms = Array.from(document.querySelectorAll('input[name="symptoms"]:checked')).map(el => el.value);
+
+        let finalSymptoms = checkedSymptoms.includes("None") ? ["None"] : checkedSymptoms;
+
+        const otherSymptoms = document.getElementById('otherSymptoms').value.trim();
+        if (otherSymptoms && !finalSymptoms.includes("None")) {
+            finalSymptoms.push(otherSymptoms);
+        }
+
+        if (!document.getElementById('fullName').value || 
+            !document.getElementById('purok').value ||
+            !document.getElementById('streetAddress').value ||
+            !document.getElementById('age').value ||
+            !document.getElementById('contactNumbers').value ||
+            !document.querySelector('input[name="gender"]:checked') ||
+            !document.getElementById('vaccinationStatus').value) {
+            alert('Please fill in all required fields');
+            return;
+        }
+
+        const formData = {
+            fullName: document.getElementById('fullName').value,
+            purok: document.getElementById('purok').value,
+            streetAddress: document.getElementById('streetAddress').value,
+            age: document.getElementById('age').value,
+            contactNumbers: document.getElementById('contactNumbers').value,
+            gender: document.querySelector('input[name="gender"]:checked').value,
+            vaccinationStatus: document.getElementById('vaccinationStatus').value,
+            symptoms: finalSymptoms,
+            lastCheckup: document.getElementById('lastCheckup').value,
+            healthNotes: document.getElementById('healthNotes').value,
+            submissionDate: new Date().toLocaleString()
+        };
+        
+        healthRecords.push(formData);
+        updateHealthRecordsTable();
+        
+        alert('Thank you for submitting your health information!');
+        this.reset();
     }
 
-    const newEntry = {
-        studentName: studentName,
-        teacherName: teacherName,
-        gradeSection: gradeSection,
-        className: className,
-        teacherRating: parseInt(teacherRating), // Ensure this is stored as a number
-        favoriteLesson: favoriteLesson,
-        suggestions: suggestions,
-        submissionDate: new Date().toLocaleDateString(),
-        isAnonymous: isAnonymous // Add this flag to track anonymous submissions
-    };
-
-    schoolSurveyData.push(newEntry);
-    updateSchoolSurveyTable();
-    schoolSurveyForm.reset();
-    document.querySelectorAll('input[name="teacherRating"]').forEach(input => input.checked = false);
-    alert('Thank you for your feedback!');
-}
 function handleSchoolFormSubmit(e) {
     e.preventDefault();
     
@@ -242,19 +251,22 @@ function handleSchoolFormSubmit(e) {
         alert('Please fill in all required fields');
         return;
     }
-    const teacherRating = parseInt(ratingInput.value);
+    const teacherRating = parseInt(ratingInput.value, 10);
+    if (isNaN(teacherRating) || teacherRating < 1 || teacherRating > 5) {
+        alert('Invalid rating value');
+        return;
+    }
     const newEntry = {
         studentName: studentName,
         teacherName: teacherName,
         gradeSection: gradeSection,
         className: className,
-        teacherRating: teacherRating, // Now definitely a number
+        teacherRating: teacherRating,
         favoriteLesson: favoriteLesson,
         suggestions: suggestions,
         submissionDate: new Date().toLocaleDateString(),
         isAnonymous: isAnonymous
     };
-
     schoolSurveyData.push(newEntry);
     updateSchoolSurveyTable();
     schoolSurveyForm.reset();
@@ -304,9 +316,12 @@ function updateSchoolSurveyTable() {
     const ratingFilter = parseInt(filterRating.value);
     
     const filteredData = schoolSurveyData.filter(entry => {
+        const entryRating = Number(entry.teacherRating);
+        const filterRatingNum = Number(ratingFilter);
+        
         const matchesSubject = subjectFilter === "All Subjects" || entry.className === subjectFilter;
-        const matchesRating = ratingFilter === 0 || 
-                            (entry.teacherRating && entry.teacherRating >= ratingFilter);
+        const matchesRating = filterRatingNum === 0 || entryRating >= filterRatingNum;
+        
         return matchesSubject && matchesRating;
     });
     
@@ -319,9 +334,8 @@ function updateSchoolSurveyTable() {
     
     filteredData.forEach(entry => {
         const row = document.createElement('tr');
-        const rating = typeof entry.teacherRating === 'number' ? 
-                      entry.teacherRating : 
-                      parseInt(entry.teacherRating);       
+        const rating = Number(entry.teacherRating); // Ensure numeric value
+        
         const starsDisplay = '★'.repeat(rating) + '☆'.repeat(5 - rating);
         
         row.innerHTML = `
@@ -329,7 +343,7 @@ function updateSchoolSurveyTable() {
             <td>${entry.teacherName}</td>
             <td>${entry.gradeSection}</td>
             <td>${entry.className}</td>
-            <td>${starsDisplay}</td>
+            <td>${starsDisplay} (${rating})</td>
             <td>${entry.favoriteLesson}</td>
             <td>${entry.suggestions}</td>
         `;
