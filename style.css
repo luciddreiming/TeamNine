@@ -18,7 +18,7 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-body, html{
+body, html {
   margin: 0;
   padding: 0;
 }
@@ -27,6 +27,34 @@ body {
   background-color: #f5f5f5;
   color: var(--dark-color);
   line-height: 1.6;
+}
+
+/* Logo positioning */
+.logo-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.login-container .logo-container {
+  position: absolute;
+}
+
+.logo-container img {
+  height: 50px;
+  width: auto;
+  max-width: 100%;
+}
+
+@media (max-width: 768px) {
+  .logo-container {
+    top: 10px;
+    right: 10px;
+  }
+  .logo-container img {
+    height: 40px;
+  }
 }
 
 .container {
@@ -41,6 +69,7 @@ body {
   align-items: center;
   height: 100vh;
   background: linear-gradient(135deg, var(--barangay-blue), var(--barangay-green));
+  position: relative;
 }
 
 .login-box {
@@ -331,7 +360,6 @@ header h1 {
   margin-top: 1rem;
 }
 
-/*changed the background and hover of health-btn*/
 .health-btn {
   background: linear-gradient(135deg, var(--barangay-blue), var(--barangay-green));
 }
@@ -464,7 +492,6 @@ header h1 {
   color: #666;
 }
 
-/*changed the button color for print button*/
 .print-btn {
   background-color: var(--light-color);
   color: var(--primary-color);
@@ -476,7 +503,7 @@ header h1 {
   margin: 10px 0;
   transition: background-color 0.3s;
 }
-/*changed hover*/
+
 .print-btn:hover {
   filter: brightness(1);
 }
@@ -527,7 +554,6 @@ tr {
         font-size: 12px;
     }
     
-    /* Prevent row breaks */
     tr {
         page-break-inside: avoid;
     }
@@ -575,9 +601,6 @@ tr {
         display: block;
         overflow-x: auto;
     }
-    
-  /*changed the line location of printbtn for mobile*/
-
 }
 
 @media (max-width: 600px) {
@@ -608,8 +631,6 @@ tr {
     .form-group label {
         margin-bottom: 8px;
     }
-
-/*deleted the css for #symptoms and copy pasted it on health  monitoring css*/
     
     @media print {
         table {
@@ -620,8 +641,6 @@ tr {
         }
     }
 }
-
-/*health monitoring*/
 
 .header{
   padding: 250px;
@@ -758,7 +777,6 @@ tr {
 }
 
 @media (max-width: 600px) {
-
   .header-actions{
     flex-direction: column;
     align-items: flex-start;
@@ -779,9 +797,7 @@ tr {
     margin-left: 0vh;
   }
   
-  /* Adjust print button for mobile */
   .print-btn {
-    /*adjusted font-size, width, and margin*/
     padding: 12px;
     font-size: 20px;
     width: 60%;
@@ -796,5 +812,4 @@ tr {
   .health-form{
     margin-top: 70vh;
   } 
-
 }
