@@ -419,7 +419,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         <td>${record.age}</td>
                         <td>${record.contactNumbers}</td>
                         <td>${record.vaccinationStatus}</td>
-                        <td>${record.symptoms || 'N/A'}</td>
+                        <td>${record.symptoms.length > 0 ? record.symptoms.join(', ') : 'N/A'}</td>
                         <td>${record.lastCheckup || 'N/A'}</td>
                         <td>${record.healthNotes || 'N/A'}</td>
                     </tr>
