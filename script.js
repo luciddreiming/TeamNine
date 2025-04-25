@@ -189,11 +189,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const checkedSymptoms = Array.from(document.querySelectorAll('input[name="symptoms"]:checked')).map(el => el.value);
         const finalSymptoms = checkedSymptoms.includes("None") ? ["None"] : checkedSymptoms;
-
         const otherSymptoms = document.getElementById('otherSymptoms').value.trim();
         if (otherSymptoms && !finalSymptoms.includes("None")) {
             finalSymptoms.push(otherSymptoms);
-        }
+    }
+
 
         const formData = {
             fullName: document.getElementById('fullName').value,
@@ -274,8 +274,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 <td>${record.age}</td>
                 <td>${record.contactNumbers}</td>
                 <td>${record.vaccinationStatus}</td>
-                <td>${record.symptoms.join(', ')}</td>
-                <td>${record.lastCheckup || 'N/A'}</td>`;
+                <td>${record.symptoms || 'N/A'}</td>
+                <td>${record.lastCheckup || 'N/A'}</td>
+                <td>${record.healthNotes || 'N/A'}</td>`;
             tbody.appendChild(row);
         });
     }
