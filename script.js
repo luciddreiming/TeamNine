@@ -408,6 +408,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <th>Vaccination</th>
                     <th>Symptoms</th>
                     <th>Last Checkup</th>
+                    <th>Additional Health Notes</th>
                 </tr>
             </thead>
             <tbody>
@@ -421,6 +422,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         <td>${record.vaccinationStatus}</td>
                         <td>${record.symptoms.join(', ')}</td>
                         <td>${record.lastCheckup || 'N/A'}</td>
+                        <td>${record.healthNotes || 'N/A'}</td>`;
                     </tr>
                 `).join('')}
             </tbody>
