@@ -187,15 +187,13 @@ document.addEventListener('DOMContentLoaded', function() {
     function handleHealthFormSubmit(e) {
         e.preventDefault();
 
-        let checkedSymptoms = Array.from(document.querySelectorAll('input[name="symptoms"]:checked')).map(el => el.value);
-        if (checkedSymptoms.length === 0) {
-            checkedSymptoms = ["None"];
-    }
+        const checkedSymptoms = Array.from(document.querySelectorAll('input[name="symptoms"]:checked')).map(el => el.value);
+        const finalSymptoms = checkedSymptoms.includes("None") ? ["None"] : checkedSymptoms;
 
         const otherSymptoms = document.getElementById('otherSymptoms').value.trim();
-        if (otherSymptoms && !checkedSymptoms.includes("None")) {
-            checkedSymptoms.push(otherSymptoms);
-    }
+        if (otherSymptoms && !finalSymptoms.includes("None")) {
+            finalSymptoms.push(otherSymptoms);
+        }
 
         const formData = {
             fullName: document.getElementById('fullName').value,
@@ -207,7 +205,7 @@ document.addEventListener('DOMContentLoaded', function() {
             vaccinationStatus: document.getElementById('vaccinationStatus').value,
             symptoms: finalSymptoms,
             lastCheckup: document.getElementById('lastCheckup').value,
-            healthNotes: document.getElementById('healthNotes').value.trim() || "None",
+            healthNotes: document.getElementById('healthNotes').value,
             submissionDate: new Date().toLocaleString()
         };
 
@@ -408,7 +406,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     <th>Vaccination</th>
                     <th>Symptoms</th>
                     <th>Last Checkup</th>
-                    <th>Additional Health Notes</th>
                 </tr>
             </thead>
             <tbody>
@@ -422,7 +419,6 @@ document.addEventListener('DOMContentLoaded', function() {
                         <td>${record.vaccinationStatus}</td>
                         <td>${record.symptoms.join(', ')}</td>
                         <td>${record.lastCheckup || 'N/A'}</td>
-                        <td>${record.healthNotes || 'N/A'}</td>`;
                     </tr>
                 `).join('')}
             </tbody>
