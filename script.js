@@ -419,9 +419,9 @@ document.addEventListener('DOMContentLoaded', function() {
                         <td>${record.age}</td>
                         <td>${record.contactNumbers}</td>
                         <td>${record.vaccinationStatus}</td>
-                        <td>${record.symptoms.length > 0 ? record.symptoms.join(', ') : 'N/A'}</td>
-                        <td>${record.lastCheckup || 'N/A'}</td>
-                        <td>${record.healthNotes || 'N/A'}</td>
+                        <td>${record.symptoms.length > 0 ? record.symptoms.join(', ') : 'None'}</td>
+                        <td>${record.lastCheckup || 'None'}</td>
+                        <td>${record.healthNotes || 'None'}</td>
                     </tr>
                 `).join('')}
             </tbody>
