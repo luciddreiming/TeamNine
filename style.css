@@ -1,360 +1,764 @@
+:root {
+  --primary-color: #166088;
+  --secondary-color: #4a6fa5;
+  --accent-color: #4fc3f7;
+  --light-color: #f8f9fa;
+  --dark-color: #343a40;
+  --success-color: #28a745;
+  --health-color: #2ecc71;
+  --education-color: #3498db;
+  --barangay-green: #27ae60;
+  --barangay-blue: #2980b9;
+}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Community Services Portal</title>
-    <link rel="stylesheet" href="TeamNine.css">
-</head>
-<body>
-    <!-- Login Page -->
-    <div class="login-container" id="loginPage">
-        <div class="login-box">
-            <h1>Community Portal Login</h1>
-            <form id="loginForm">
-                <input type="text" id="username" placeholder="Username" required>
-                <div class="password-container">
-                    <input type="password" id="password" placeholder="Password" required>
-                    <span class="toggle-password" id="togglePasswordLogin"><svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M12 6c-3.95 0-7.2 2.3-9 6 1.8 3.7 5.05 6 9 6s7.2-2.3 9-6c-1.8-3.7-5.05-6-9-6zm0 10c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm0-6.5A2.5 2.5 0 0 0 9.5 12 2.5 2.5 0 0 0 12 14.5 2.5 2.5 0 0 0 14.5 12 2.5 2.5 0 0 0 12 9.5z"/>
-                      </svg>
-                    </span>
-                </div>
-                <p class="caps-warning" id="capsWarningLogin" style="display: none;">⚠️ Caps Lock is on</p>
-                <button type="submit">Login</button>
-                <p class="form-footer">Don't have an account? <a href="#" id="showSignup">Sign up</a></p>
-            </form>
-        </div>
-    </div>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
-    <!-- Signup Page -->
-    <div class="login-container" id="signupPage" style="display: none;">
-        <div class="login-box">
-            <h1>Create Account</h1>
-            <form id="signupForm">
-                <input type="text" id="signupName" placeholder="Full Name" required>
-                <input type="email" id="signupEmail" placeholder="Email" required>
-                <input type="text" id="signupUsername" placeholder="Username" required>
-                <div class="password-container">
-                    <input type="password" id="signupPassword" placeholder="Password" required>
-                    <span class="toggle-password" id="togglePasswordSignup"><svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 6c-3.95 0-7.2 2.3-9 6 1.8 3.7 5.05 6 9 6s7.2-2.3 9-6c-1.8-3.7-5.05-6-9-6zm0 10c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm0-6.5A2.5 2.5 0 0 0 9.5 12 2.5 2.5 0 0 0 12 14.5 2.5 2.5 0 0 0 14.5 12 2.5 2.5 0 0 0 12 9.5z"/>
-                      </svg>
-                      </span>
-                </div>
-                <p class="caps-warning" id="capsWarningSignup" style="display: none;">⚠️Caps Lock is on</p>
-                <div class="password-container">
-                    <input type="password" id="signupConfirmPassword" placeholder="Confirm Password" required>
-                    <span class="toggle-password" id="toggleConfirmPassword"><svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 6c-3.95 0-7.2 2.3-9 6 1.8 3.7 5.05 6 9 6s7.2-2.3 9-6c-1.8-3.7-5.05-6-9-6zm0 10c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm0-6.5A2.5 2.5 0 0 0 9.5 12 2.5 2.5 0 0 0 12 14.5 2.5 2.5 0 0 0 14.5 12 2.5 2.5 0 0 0 12 9.5z"/>
-                      </svg>
-                    </span>
-                </div>
-                <button type="submit">Sign Up</button>
-                <p class="form-footer">Already have an account? <a href="#" id="showLogin">Log in</a></p>
-            </form>
-        </div>
-    </div>
+body, html {
+  margin: 0;
+  padding: 0;
+}
 
-    <!-- Service Selection Page -->
-    <div class="main-content" id="serviceSelectionPage" style="display: none;">
-        <header>
-            <div class="container">
-                <button class="logout-btn" id="logoutBtn">Logout</button>
-                <h1>Community Services Portal</h1>
-            </div>
-        </header>
+body {
+  background-color: #f5f5f5;
+  color: var(--dark-color);
+  line-height: 1.6;
+}
 
-        <div class="container service-selection">
-            <h2>Select a Service</h2>
-            <div class="service-options">
-                <button id="schoolSurveyBtn" class="service-btn">
-                    <h3>School Classroom Survey</h3>
-                    <p>Provide feedback on classroom experiences</p>
-                </button>
-                <button id="healthMonitorBtn" class="service-btn">
-                    <h3>Barangay Health Monitoring</h3>
-                    <p>Report health status and COVID-19 information</p>
-                </button>
-            </div>
-        </div>
-    </div>
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
 
-    <!-- School Survey Page -->
-    <div class="main-content" id="schoolSurveyContent" style="display: none;">
-        <header>
-            <div class="container">
-                <button class="logout-btn" id="schoolLogoutBtn">Logout</button>
-                <h1>School Classroom Feedback Survey</h1>
-            </div>
-        </header>
+/* Login Styles */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, var(--barangay-blue), var(--barangay-green));
+}
 
-        <div class="container">
-            <form class="survey-form" id="schoolSurveyForm">
-                <h2>Share Your Classroom Experience</h2>
-                
-                <div class="form-group">
-                    <label for="studentName">Your Name</label>
-                    <input type="text" id="studentName" placeholder="Enter your name">
-                </div>
+.login-box {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
 
-                <div class="form-group">
-                    <label for="teacherName">Teacher's Name</label>
-                    <input type="text" id="teacherName" placeholder="Enter teacher's name" required>
-                </div>
+.login-box h1 {
+  margin-bottom: 1.5rem;
+  color: var(--barangay-blue);
+}
 
-                <div class="form-group">
-                    <label for="gradeSection">Grade & Section</label>
-                    <select id="gradeSection" required>
-                        <option value="" disabled selected>Select your grade & section</option>
-                        <option value="Grade 7-A">Grade 7-A</option>
-                        <option value="Grade 7-B">Grade 7-B</option>
-                        <option value="Grade 8-A">Grade 8-A</option>
-                        <option value="Grade 8-B">Grade 8-B</option>
-                        <option value="Grade 9-A">Grade 9-A</option>
-                        <option value="Grade 9-B">Grade 9-B</option>
-                        <option value="Grade 10-A">Grade 10-A</option>
-                        <option value="Grade 10-B">Grade 10-B</option>
-                    </select>
-                </div>
+.login-box input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+}
 
-                <div class="form-group">
-                    <label for="className">Subject</label>
-                    <select id="className" required>
-                        <option value="" disabled selected>Select your subject</option>
-                        <option value="Math">Math</option>
-                        <option value="Science">Science</option>
-                        <option value="English">English</option>
-                        <option value="Filipino">Filipino</option>
-                        <option value="Araling Panlipunan">Araling Panlipunan</option>
-                        <option value="MAPEH">MAPEH</option>
-                    </select>
-                </div>
+.login-box button {
+  width: 100%;
+  padding: 12px;
+  background-color: var(--barangay-blue);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
 
-                <div class="form-group">
-                    <label>Teacher Rating</label>
-                    <div class="rating-container">
-                        <input type="radio" id="teacher5" name="teacherRating" value="5">
-                        <label for="teacher5" class="star"></label>
-                        <input type="radio" id="teacher4" name="teacherRating" value="4">
-                        <label for="teacher4" class="star"></label>
-                        <input type="radio" id="teacher3" name="teacherRating" value="3">
-                        <label for="teacher3" class="star"></label>
-                        <input type="radio" id="teacher2" name="teacherRating" value="2">
-                        <label for="teacher2" class="star"></label>
-                        <input type="radio" id="teacher1" name="teacherRating" value="1">
-                        <label for="teacher1" class="star"></label>
-                    </div>
-                </div>
+.login-box button:hover {
+  background-color: var(--barangay-green);
+}
 
-                <div class="form-group">
-                    <label for="favoriteLesson">Favorite Lesson:</label>
-                    <input type="text" id="favoriteLesson" placeholder="What was your favorite lesson?">
-                </div>
+.form-footer {
+  margin-top: 1rem;
+  color: #666;
+}
 
-                <div class="form-group">
-                    <label for="suggestions">Suggestions for Improvement:</label>
-                    <textarea id="suggestions" placeholder="Drop your suggestions"></textarea>
-                </div>
+.form-footer a {
+  color: var(--barangay-blue);
+  text-decoration: none;
+  font-weight: 600;
+}
 
-                <div class="form-group checkbox-group">
-                    <input type="checkbox" id="anonymousSubmission" name="anonymousSubmission">
-                    <label for="anonymousSubmission">Submit anonymously</label>
-                </div>
+.form-footer a:hover {
+  text-decoration: underline;
+}
 
-                <button type="submit" class="submit-btn">Submit Feedback</button>
-            </form>
+/* Form Elements */
+.password-container {
+  position: relative;
+  margin-bottom: 0.5rem;
+}
 
-            <div class="filter-controls">
-                <h2>Survey Results</h2>
-                <div class="filter-group">
-                    <label for="filterSubject">Filter by Subject:</label>
-                    <select id="filterSubject">
-                        <option value="All Subjects">All Subjects</option>
-                        <option value="Math">Math</option>
-                        <option value="Science">Science</option>
-                        <option value="English">English</option>
-                        <option value="Filipino">Filipino</option>
-                        <option value="Araling Panlipunan">Araling Panlipunan</option>
-                        <option value="MAPEH">MAPEH</option>
-                    </select>
-                </div>
-                <div class="filter-group">
-                    <label for="filterRating">Filter by Rating (≥):</label>
-                    <select id="filterRating">
-                        <option value="0">All Ratings</option>
-                        <option value="1">1 Stars</option>
-                        <option value="2">2 Stars</option>
-                        <option value="3">3 Stars</option>
-                        <option value="4">4 Stars</option>
-                        <option value="5">5 Stars</option>
-                    </select>
-                </div>
-                <button id="resetFilters" class="filter-btn">Reset Filters</button>
-            </div>
+.password-container input[type="password"],
+.password-container input[type="text"] {
+  padding-right: 40px;
+  width: 100%;
+}
 
-            <table class="results-table">
-                <thead>
-                    <tr>
-                        <th>Student</th>
-                        <th>Teacher</th>
-                        <th>Grade & Section</th>
-                        <th>Subject</th>
-                        <th>Rating</th>
-                        <th>Favorite Lesson</th>
-                        <th>Suggestions</th>
-                    </tr>
-                </thead>
-                <tbody id="surveyResults">
-                </tbody>
-            </table>
-        </div>
-    </div>
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  user-select: none;
+}
 
-    
-    <!-- Health Monitor Page -->
-    <!--I added id on each form field-->
-    <div class="main-content" id="healthMonitorContent">
-        <!--Changed <header> to <div class="header">-->
-        <div class="header">
-            <!--changed the class from container to health-container-->
-            <div class="health-container">
-                <button class="logout-btn" id="healthLogoutBtn">Logout</button>
-                <div class="header-actions">
-                    <!--added the logos-->
-                    <div class="health-logo">
-                        <img src="images/barangay_seal.png" alt="barangay_seal" width="100px" height="100px">
-                        <img src="images/municipal_health.png" alt="municipal_health" width="100px" height="100px">
-                    </div>
-                    <h1>Barangay Health Monitoring System</h1>
-                    <!--I added a print icon, feel free to fix it!-->
-                    <button id="printHealthBtn" class="print-btn">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 -3 24 24"><path fill="currentColor" d="M8 21q-.825 0-1.412-.587T6 19v-2H4q-.825 0-1.412-.587T2 15v-4q0-1.275.875-2.137T5 8h14q1.275 0 2.138.863T22 11v4q0 .825-.587 1.413T20 17h-2v2q0 .825-.587 1.413T16 21zm-4-6h2q0-.825.588-1.412T8 13h8q.825 0 1.413.588T18 15h2v-4q0-.425-.288-.712T19 10H5q-.425 0-.712.288T4 11zm12-7V5H8v3H6V5q0-.825.588-1.412T8 3h8q.825 0 1.413.588T18 5v3zm2 4.5q.425 0 .713-.288T19 11.5t-.288-.712T18 10.5t-.712.288T17 11.5t.288.713t.712.287M16 19v-4H8v4zM4 10h16z"/>
-                        </svg>
-                        Print
-                    </button>
-                </div>
-            </div>
-        </div>
+.caps-warning {
+  color: #ff9800;
+  font-size: 0.8rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
 
-        <div class="container health-form">
-            <form id="healthSurveyForm">
-                <h2>Health Information Survey</h2>
-                <h3>Personal Information</h3>
-                <div class="form-section">
-                    <!--changed the class name to health-form-group-->
-                    <div class="health-form-group">
-                        <label for="fullName">Name</label>
-                        <input type="text" id="fullName" name="fullName" required placeholder="Please enter your name." required>
-                    </div>
-                        <!--I changed the placement of age-->
-                    <div class="health-form-group">
-                        <label for="age">Age</label>
-                        <input type="number" id="age" name="age" min="1" max="100" required placeholder="Please enter your age." required>
-                    </div>
-                        <!--I changed the placemen of contact number-->
-                    <div class="health-form-group">
-                        <label for="contactNumbers">Contact</label>
-                        <input type="text" id="contactNumbers" name="contactNumbers" placeholder="Please enter your contact numbers." required>
-                    </div>
+/* Service Selection */
+.service-selection {
+  text-align: center;
+  padding: 2rem 0;
+}
 
-                    <div class="health-form-group">
-                        <label for="purok">Purok</label>
-                        <select id="purok" name="purok" required>
-                            <option value="">Select Purok</option>
-                            <option value="Purok 1">Purok 1</option>
-                            <option value="Purok 2">Purok 2</option>
-                            <option value="Purok 3">Purok 3</option>
-                            <option value="Purok 4">Purok 4</option>
-                            <option value="Purok 5">Purok 5</option>
-                        </select>
-                    </div>
-                    
-                    <div class="health-form-group">
-                        <label for="streetAddress">Street Address</label>
-                        <input type="text" id="streetAddress" name="streetAddress" placeholder="Please enter your street address." required>
-                    </div>
-                    
-                    <div class="health-form-group">
-                        <label>Gender</label>
-                        <div class="radio-group">
-                            <label><input type="radio" name="gender" value="Male" required> Male</label><br>
-                            <label><input type="radio" name="gender" value="Female"> Female</label><br>
-                            <label><input type="radio" name="gender" value="Other"> Other</label>
-                        </div>
-                    </div>
-                </div>
+.service-options {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
 
-                <h3>Health Status</h3>
-                <div class="form-section">
-                    <div class="health-form-group">
-                        <label for="vaccinationStatus">Vaccination Status</label>
-                        <select id="vaccinationStatus" name="vaccinationStatus" required>
-                            <option value="">Select Status</option>
-                            <option value="Vaccinated">✔️ Vaccinated</option>
-                            <option value="Unvaccinated">❌ Unvaccinated</option>
-                        </select>
-                    </div>
-                    
-                    <div class="health-form-group">
-                        <label>Recent Symptoms (check all that apply)</label>
-                        <div id="symptoms" class="health-form-group">
-                            <label><input type="checkbox" name="symptoms" value="Fever"> Fever</label>
-                            <label><input type="checkbox" name="symptoms" value="Cough"> Cough</label>
-                            <label><input type="checkbox" name="symptoms" value="Fatigue"> Fatigue</label>
-                            <label><input type="checkbox" name="symptoms" value="Shortness of breath"> Shortness of breath</label>
-                            <label><input type="checkbox" name="symptoms" value="Loss of taste/smell"> Loss of taste/smell</label><br>
-                            <label>Other symptoms: <input type="text" id="otherSymptoms" name="otherSymptoms" placeholder="Specify other symptoms"></label>
-                        </div>
-                    </div>
-                    
-                    <div class="health-form-group">
-                        <label for="lastCheckup">Last Medical Checkup</label>
-                        <input type="date" id="lastCheckup" name="lastCheckup">
-                    </div>
-                    
-                    <div class="health-form-group">
-                        <label for="healthNotes">Additional Health Notes</label>
-                        <textarea id="healthNotes" name="healthNotes" rows="4"></textarea>
-                    </div>
-                </div>
-                
-                <button type="submit" class="submit-btn health-btn">Submit Health Information</button>
-            </form>
-        </div>
+.service-btn {
+  background: white;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  width: 300px;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
 
+.service-btn:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
 
-        <div class="container health-records print-only" id="printSection">
-            <div class="print-header">
-                <h2>Barangay Health Records</h2>
-                <div class="print-info">
-                    <p>Printed on: <span id="printDate"></span></p>
-                    <p>Total records: <span id="recordCount"></span></p>
-                </div>
-            </div>
-            <table id="healthRecordsTable">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Purok</th>
-                        <th>Address</th>
-                        <th>Age</th>
-                        <th>Contact</th>
-                        <th>Vaccination</th>
-                        <th>Symptoms</th>
-                        <th>Last Checkup</th>
-                    </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
-            <div class="print-footer">
-                <p>Barangay Health Monitoring System - Confidential</p>
-            </div>
-        </div>
-    </div>
+.service-btn h3 {
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+}
 
-    <script src="TeamNine.js"></script>
-</body>
-</html>
+#schoolSurveyBtn {
+  border-top: 5px solid var(--education-color);
+}
+
+#healthMonitorBtn {
+  border-top: 5px solid var(--health-color);
+}
+
+/* Main Content */
+.main-content {
+  display: none;
+  padding: 20px 0;
+}
+
+header {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 1rem 0;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+  text-align: center;
+}
+
+.header-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  padding: 20px;
+}
+
+/* Print Button - Fixed Version */
+.print-btn {
+  /* Fixed size properties */
+  width: auto;
+  min-width: 100px;
+  padding: 8px 16px;
+  
+  /* Flex layout for icon+text */
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  
+  /* Visual styling */
+  background-color: var(--light-color);
+  color: var(--primary-color);
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  
+  /* Positioning */
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 10;
+}
+
+.print-btn:hover {
+  background-color: #e0e0e0;
+}
+
+.print-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Buttons */
+.logout-btn {
+  padding: 8px 16px;
+  background-color: var(--light-color);
+  color: var(--primary-color);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.logout-btn:hover {
+  background-color: #e0e0e0;
+}
+
+/* Forms */
+.survey-form, .health-form {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+.survey-form h2 {
+  color: var(--education-color);
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.health-form h2 {
+  color: var(--health-color);
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.form-section {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #eee;
+}
+
+.form-section h3 {
+  color: var(--secondary-color);
+  margin-bottom: 1rem;
+}
+
+.form-group, .health-form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label, .health-form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: var(--dark-color);
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group input[type="date"],
+.form-group select,
+.form-group textarea,
+.health-form-group input[type="text"],
+.health-form-group input[type="number"],
+.health-form-group input[type="date"],
+.health-form-group select,
+.health-form-group textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.form-group textarea, .health-form-group textarea {
+  resize: vertical;
+  height: 100px;
+}
+
+.radio-group,
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.radio-group label,
+.checkbox-group label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: normal;
+  cursor: pointer;
+}
+
+.checkbox-group input,
+.health-form-group input[type="checkbox"],
+.health-form-group input[type="radio"] {
+  margin-right: 10px;
+  width: auto;
+  display: inline-block;
+}
+
+/* Rating */
+.rating-container {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  margin: 10px 0;
+}
+
+.rating-container input {
+  display: none;
+}
+
+.rating-container label {
+  color: #ddd;
+  font-size: 24px;
+  padding: 0 5px;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.rating-container input:not(:checked) ~ label:hover,
+.rating-container input:not(:checked) ~ label:hover ~ label {
+  color: #ffc107;
+}
+
+.rating-container input:checked ~ label {
+  color: #ffc107;
+}
+
+.star::before {
+  content: "★";
+}
+
+/* Submit Buttons */
+.submit-btn {
+  width: 100%;
+  padding: 12px;
+  color: #fff;
+  background-color: #34b7db;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 1rem;
+}
+
+.health-btn {
+  background: linear-gradient(135deg, var(--barangay-blue), var(--barangay-green));
+}
+
+.health-btn:hover {
+  filter: brightness(.9);
+}
+
+.education-btn {
+  background-color: var(--education-color);
+}
+
+.education-btn:hover {
+  background-color: #2980b9;
+}
+
+/* Filter Controls */
+.filter-controls {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1.5rem;
+}
+
+.filter-group {
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.filter-group label {
+  margin-right: 10px;
+  min-width: 120px;
+}
+
+.filter-group select {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  flex-grow: 1;
+}
+
+.filter-btn {
+  padding: 8px 16px;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.filter-btn:hover {
+  background-color: var(--secondary-color);
+}
+
+/* Tables */
+.results-table, .health-records table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.results-table th,
+.results-table td,
+.health-records th,
+.health-records td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.results-table th,
+.health-records th {
+  background-color: var(--primary-color);
+  color: white;
+  position: sticky;
+  top: 0;
+}
+
+.results-table tr:nth-child(even),
+.health-records tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.results-table tr:hover,
+.health-records tr:hover {
+  background-color: #e9e9e9;
+}
+
+.health-records {
+  display: none;
+}
+
+/* Print Styles */
+.print-header {
+  text-align: center;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.print-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  font-size: 0.9em;
+  color: #666;
+}
+
+.print-footer {
+  text-align: center;
+  margin-top: 20px;
+  padding-top: 10px;
+  border-top: 1px solid #eee;
+  font-size: 0.8em;
+  color: #666;
+}
+
+@media print {
+  body {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  
+  .no-print {
+    display: none !important;
+  }
+  
+  body * {
+    visibility: hidden;
+  }
+  
+  #printSection, #printSection * {
+    visibility: visible;
+  }
+  
+  #printSection {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    margin: 0;
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  table {
+    width: 100% !important;
+    font-size: 12px;
+    page-break-inside: auto;
+  }
+  
+  tr {
+    page-break-inside: avoid;
+    page-break-after: auto;
+  }
+
+  th, td {
+    padding: 6px 8px !important;
+    white-space: nowrap;
+  }
+}
+
+/* Health Monitoring Specific */
+.header {
+  padding: 250px;
+  width: 100%;
+  position: fixed;
+  z-index: 0;
+}
+
+.header h1 {
+  color: white;
+}
+
+.header .health-container {
+  background-image: url('https://external-preview.redd.it/JMWYV3NtnAzO6Ux56z4Pi56bM4WVESZ_cdIwacuEIzo.jpg?width=1080&crop=smart&auto=webp&s=86505f9ae35b09ecbda2bb93b7523c68a538904b');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position-x: center;
+  background-position-y: bottom;
+  max-width: none;
+  margin: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: -1;
+}
+
+.health-container {
+  padding: 70px;
+  padding-bottom: 200px;
+  justify-content: center;
+  align-items: center;
+}
+
+.health-logo, .header h1 {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.health-logo {
+  margin-left: 6vh;
+}
+
+.header-actions h1 {
+  margin-right: 22vh;
+}
+
+.health-container #healthLogoutBtn {
+  margin-top: -15vh;
+  margin-left: 6vh;
+}
+
+.health-form {
+  margin-top: 35vh;
+  position: relative;
+  z-index: 1;
+}
+
+#healthSurveyForm h2 {
+  font-size: 2rem;
+}
+
+#healthSurveyForm h3 {
+  font-size: 1.5em;
+  color: var(--secondary-color);
+  margin-bottom: 1rem;
+}
+
+.health-form .form-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.health-form-group {
+  flex: 0 0 48%;
+  margin-bottom: 1rem;
+}
+
+#symptoms {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 2fr));
+  margin-bottom: 1rem;
+  gap: 5px;
+}
+
+#symptoms label {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+#symptoms label:last-child {
+  grid-column: 1 / -1;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .login-box {
+    padding: 1.5rem;
+    margin: 0 20px;
+  }
+
+  .service-options {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .school-form, .health-form, .survey-form {
+    padding: 1.5rem;
+  }
+  
+  .header-actions {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .filter-group {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .filter-group label {
+    margin-bottom: 5px;
+  }
+
+  .filter-group select {
+    width: 100%;
+  }
+
+  .results-table, .health-records table {
+    display: block;
+    overflow-x: auto;
+  }
+
+  /* Print Button Mobile Fix */
+  .print-btn {
+    position: relative;
+    top: auto;
+    right: auto;
+    margin: 10px 0;
+    width: auto;
+  }
+}
+
+@media (max-width: 600px) {
+  #survey-form {
+    padding: 20px;
+    width: 90%;
+  }
+
+  .form-group {
+    display: block;
+    width: 100%;
+  }
+
+  .form-group label,
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+    display: block;
+  }
+
+  .form-group input[type="checkbox"],
+  .form-group input[type="radio"] {
+    margin-right: 10px;
+    width: auto;
+    display: inline-block;
+  }
+
+  .form-group label {
+    margin-bottom: 8px;
+  }
+
+  /* Health Monitoring Mobile */
+  .header-actions {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .health-logo {
+    margin-left: 0;
+  }
+
+  .header h1 {
+    float: none;
+    width: 100%;
+    text-align: left;
+  }
+
+  .health-container #healthLogoutBtn {
+    margin-top: 0;
+    margin-left: 0;
+  }
+  
+  .health-form-group {
+    flex: 0 0 100%;
+  }
+
+  .health-form {
+    margin-top: 70vh;
+  }
+}
