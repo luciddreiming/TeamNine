@@ -418,7 +418,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         <td>${record.age}</td>
                         <td>${record.contactNumbers}</td>
                         <td>${record.vaccinationStatus}</td>
-                        <td>${record.symptoms.join(', ')}</td>
+                        <td>${record.symptoms || 'N/A'}</td>
                         <td>${record.lastCheckup || 'N/A'}</td>
                         <td>${record.healthNotes || 'N/A'}</td>
                     </tr>
