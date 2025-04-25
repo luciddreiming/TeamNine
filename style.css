@@ -1,3 +1,4 @@
+
 :root {
   --primary-color: #166088;
   --secondary-color: #4a6fa5;
@@ -613,7 +614,7 @@ tr {
 
 /*deleted the css for #symptoms and copy pasted it on health  monitoring css*/
     
-    @media print {
+@media print {
         table {
             font-size: 8px;
         }
@@ -659,14 +660,15 @@ tr {
   align-items: center;
 }
 
-.header-actions{
+.header-actions {
   display: flex;
   justify-content: space-between;
-  flex-wrap: wrap;
-  margin-top: 5vh;
   align-items: center;
-  gap: 20px;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 0 1rem;
 }
+
 
 .health-logo, .header h1{
   display: inline-block;
@@ -760,43 +762,38 @@ tr {
 }
 
 @media (max-width: 600px) {
-
-  .header-actions{
+  .header-actions {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
+    gap: 10px;
+    padding: 0 10px;
   }
 
-  .health-logo{
-    margin-left: 0vh;
-  }
-
-  .header h1{
-    float: none;
-    width: 100%;
-    text-align: left;
-  }
-
-  .health-container #healthLogoutBtn{
-    margin-top: 0vh;
-    margin-left: 0vh;
-  }
-  
-  /* Adjust print button for mobile */
+  .logout-btn,
   .print-btn {
-    /*adjusted font-size, width, and margin*/
-    padding: 12px;
-    font-size: 14px;
     width: 100%;
-    margin: 10px 0;
+    text-align: center;
   }
 
-  .health-form-group{
-    flex: 0 0 100%;
-    margin-bottom: 1rem;
+  .print-btn {
+    position: relative;
+    top: auto;
+    right: auto;
+    margin-top: 10px;
   }
 
-  .health-form{
-    margin-top: 70vh;
-  } 
+  .health-form {
+    padding: 1rem;
+  }
 
+  .health-records {
+    padding: 1rem;
+  }
+
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    font-size: 14px;
+    padding: 8px;
+  }
 }
