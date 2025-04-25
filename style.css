@@ -785,7 +785,7 @@ tr {
     padding: 12px;
     font-size: 20px;
     width: 60%;
-    margin: 20px 0;
+    margin: 10px 0;
   }
 
   .health-form-group{
@@ -796,4 +796,5 @@ tr {
   .health-form{
     margin-top: 70vh;
   } 
+
 }
