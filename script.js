@@ -406,6 +406,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <th>Vaccination</th>
                     <th>Symptoms</th>
                     <th>Last Checkup</th>
+                    th>Additional Health Note/s</th>
                 </tr>
             </thead>
             <tbody>
@@ -419,6 +420,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         <td>${record.vaccinationStatus}</td>
                         <td>${record.symptoms.join(', ')}</td>
                         <td>${record.lastCheckup || 'N/A'}</td>
+                        <td>${record.healthNotes || 'N/A'}</td>
                     </tr>
                 `).join('')}
             </tbody>
@@ -427,7 +429,6 @@ document.addEventListener('DOMContentLoaded', function() {
             <p>Barangay Health Monitoring System - Confidential</p>
         </div>
         <script>
-            // Try to print automatically after a short delay
             setTimeout(function() {
                 try {
                     window.print();
