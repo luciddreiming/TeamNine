@@ -642,18 +642,19 @@ tr {
     }
 }
 
-.header{
+/* Updated Health Survey Header Styles */
+.header {
   padding: 250px;
   width: 100%;
   position: fixed;
   z-index: 0;
 }
 
-.header h1{
+.header h1 {
   color: white;
 }
 
-.header .health-container{
+.header .health-container {
   background-image: url('https://external-preview.redd.it/JMWYV3NtnAzO6Ux56z4Pi56bM4WVESZ_cdIwacuEIzo.jpg?width=1080&crop=smart&auto=webp&s=86505f9ae35b09ecbda2bb93b7523c68a538904b');
   background-repeat: no-repeat;
   background-size: cover;
@@ -669,55 +670,76 @@ tr {
   z-index: -1;
 }
 
-.health-container{
+.health-container {
   padding: 70px;
   padding-bottom: 200px;
   justify-content: center;
   align-items: center;
 }
 
-.header-actions{
+/* Fixed header actions with proper print button positioning */
+.header-actions {
+  position: fixed;
+  top: 20px;
+  right: 20px;
   display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  margin-top: 5vh;
   align-items: center;
-  gap: 20px;
+  gap: 15px;
+  z-index: 1000;
 }
 
-.health-logo, .header h1{
-  display: inline-block;
-  vertical-align: middle;
+.health-logo {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+  height: 50px;
 }
 
-.health-logo{
-  margin-left: 6vh;
+.header h1 {
+  position: fixed;
+  top: 30px;
+  left: 80px;
+  color: white;
+  margin: 0;
+  z-index: 1000;
 }
 
-.header-actions h1, .header-actions .print-btn{
-  margin-right: 6vh;
+.health-container #healthLogoutBtn {
+  position: fixed;
+  top: 20px;
+  right: 140px;
+  z-index: 1000;
+  padding: 8px 16px;
 }
 
-.header h1{
-  margin-right: 22vh;
+.header-actions .print-btn {
+  padding: 8px 16px;
+  background-color: white;
+  color: var(--primary-color);
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-.health-container #healthLogoutBtn{
-  margin-top: -15vh;
-  margin-left: 6vh;
+.header-actions .print-btn:hover {
+  background-color: #f0f0f0;
 }
 
-.health-form{
+.health-form {
   margin-top: 35vh;
   position: relative;
   z-index: 1;
 }
 
-#healthSurveyForm h2{
+#healthSurveyForm h2 {
   font-size: 2rem;
 }
 
-#healthSurveyForm h3{
+#healthSurveyForm h3 {
   font-size: 1.5em;
   color: var(--secondary-color);
   margin-bottom: 1rem;
@@ -777,39 +799,36 @@ tr {
 }
 
 @media (max-width: 600px) {
-  .header-actions{
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .health-logo{
-    margin-left: 0vh;
-  }
-
-  .header h1{
-    float: none;
-    width: 100%;
-    text-align: left;
-  }
-
-  .health-container #healthLogoutBtn{
-    margin-top: 0vh;
-    margin-left: 0vh;
+  .header-actions {
+    top: 10px;
+    right: 10px;
+    gap: 10px;
   }
   
-  .print-btn {
-    padding: 12px;
-    font-size: 20px;
-    width: 60%;
-    margin: 10px 0;
+  .health-logo {
+    top: 10px;
+    left: 10px;
+    height: 40px;
   }
-
-  .health-form-group{
-    flex: 0 0 100%;
-    margin-bottom: 1rem;
+  
+  .header h1 {
+    top: 15px;
+    left: 60px;
+    font-size: 1.2rem;
   }
-
-  .health-form{
-    margin-top: 70vh;
-  } 
+  
+  .health-container #healthLogoutBtn {
+    top: 60px;
+    right: auto;
+    left: 10px;
+  }
+  
+  .header-actions .print-btn {
+    padding: 6px 12px;
+    font-size: 14px;
+  }
+  
+  .health-form {
+    margin-top: 40vh;
+  }
 }
