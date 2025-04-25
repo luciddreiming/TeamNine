@@ -187,13 +187,15 @@ document.addEventListener('DOMContentLoaded', function() {
     function handleHealthFormSubmit(e) {
         e.preventDefault();
 
-        const checkedSymptoms = Array.from(document.querySelectorAll('input[name="symptoms"]:checked')).map(el => el.value);
-        const finalSymptoms = checkedSymptoms.includes("None") ? ["None"] : checkedSymptoms;
+        let checkedSymptoms = Array.from(document.querySelectorAll('input[name="symptoms"]:checked')).map(el => el.value);
+        if (checkedSymptoms.length === 0) {
+            checkedSymptoms = ["None"];
+    }
 
         const otherSymptoms = document.getElementById('otherSymptoms').value.trim();
-        if (otherSymptoms && !finalSymptoms.includes("None")) {
-            finalSymptoms.push(otherSymptoms);
-        }
+        if (otherSymptoms && !checkedSymptoms.includes("None")) {
+            checkedSymptoms.push(otherSymptoms);
+    }
 
         const formData = {
             fullName: document.getElementById('fullName').value,
@@ -205,7 +207,7 @@ document.addEventListener('DOMContentLoaded', function() {
             vaccinationStatus: document.getElementById('vaccinationStatus').value,
             symptoms: finalSymptoms,
             lastCheckup: document.getElementById('lastCheckup').value,
-            healthNotes: document.getElementById('healthNotes').value,
+            healthNotes: document.getElementById('healthNotes').value.trim() || "None",
             submissionDate: new Date().toLocaleString()
         };
 
