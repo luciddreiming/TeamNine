@@ -331,12 +331,13 @@ header h1 {
   margin-top: 1rem;
 }
 
+/*changed the background and hover of health-btn*/
 .health-btn {
-  background-color: var(--health-color);
+  background: linear-gradient(135deg, var(--barangay-blue), var(--barangay-green));
 }
 
 .health-btn:hover {
-  background-color: #27ae60;
+  filter: brightness(.9);
 }
 
 .education-btn {
@@ -475,10 +476,11 @@ header h1 {
   margin: 10px 0;
   transition: background-color 0.3s;
 }
-
+/*changed hover*/
 .print-btn:hover {
-  background-color: var(--secondary-color);
+  filter: brightness(1);
 }
+
 @media print {
   body {
       -webkit-print-color-adjust: exact !important;
@@ -574,13 +576,8 @@ tr {
         overflow-x: auto;
     }
     
-    /* Adjust print button for mobile */
-    .print-btn {
-        padding: 12px;
-        font-size: 14px;
-        width: 100%;
-        margin: 10px 0;
-    }
+  /*changed the line location of printbtn for mobile*/
+
 }
 
 @media (max-width: 600px) {
@@ -612,7 +609,7 @@ tr {
         margin-bottom: 8px;
     }
 
-/*deleted the css for #symptoms and copy pasted it on line 662*/
+/*deleted the css for #symptoms and copy pasted it on health  monitoring css*/
     
     @media print {
         table {
@@ -633,8 +630,17 @@ tr {
   z-index: 0;
 }
 
+.header h1{
+  color: white;
+}
+
 .header .health-container{
-  background: linear-gradient(135deg, var(--barangay-blue), var(--barangay-green));
+  background-image: url('https://external-preview.redd.it/JMWYV3NtnAzO6Ux56z4Pi56bM4WVESZ_cdIwacuEIzo.jpg?width=1080&crop=smart&auto=webp&s=86505f9ae35b09ecbda2bb93b7523c68a538904b');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position-x: center;
+  background-position-y: bottom;
   max-width: none;
   margin: 0;
   position: fixed;
@@ -646,28 +652,40 @@ tr {
 
 .health-container{
   padding: 70px;
-  padding-bottom: 600px;
+  padding-bottom: 200px;
   justify-content: center;
   align-items: center;
 }
 
-.health-container .header-actions{
+.header-actions{
   display: flex;
+  justify-content: space-between;
   flex-wrap: wrap;
-  justify-content:space-around;
+  margin-top: 5vh;
+  align-items: center;
+  gap: 20px;
+}
+
+.health-logo, .header h1{
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.health-logo{
+  margin-left: 6vh;
+}
+
+.header-actions h1, .header-actions .print-btn{
+  margin-right: 6vh;
+}
+
+.header h1{
+  margin-right: 22vh;
 }
 
 .health-container #healthLogoutBtn{
   margin-top: -15vh;
   margin-left: 6vh;
-}
-
-.header-actions{
-  margin-top: 5vh;
-}
-
-.header h1{
-  color: white;
 }
 
 .health-form{
@@ -676,7 +694,12 @@ tr {
   z-index: 1;
 }
 
+#healthSurveyForm h2{
+  font-size: 2rem;
+}
+
 #healthSurveyForm h3{
+  font-size: 1.5em;
   color: var(--secondary-color);
   margin-bottom: 1rem;
 }
@@ -736,6 +759,35 @@ tr {
 
 @media (max-width: 600px) {
 
+  .header-actions{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .health-logo{
+    margin-left: 0vh;
+  }
+
+  .header h1{
+    float: none;
+    width: 100%;
+    text-align: left;
+  }
+
+  .health-container #healthLogoutBtn{
+    margin-top: 0vh;
+    margin-left: 0vh;
+  }
+  
+  /* Adjust print button for mobile */
+  .print-btn {
+    /*adjusted font-size, width, and margin*/
+    padding: 12px;
+    font-size: 20px;
+    width: 60%;
+    margin: 20px 0;
+  }
+
   .health-form-group{
     flex: 0 0 100%;
     margin-bottom: 1rem;
@@ -743,5 +795,5 @@ tr {
 
   .health-form{
     margin-top: 70vh;
-  }
+  } 
 }
