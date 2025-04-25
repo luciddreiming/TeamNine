@@ -406,7 +406,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <th>Vaccination</th>
                     <th>Symptoms</th>
                     <th>Last Checkup</th>
-                    <th>Additional Health Note/s</th>
+                    <th>Additional Health Notes</th>
                 </tr>
             </thead>
             <tbody>
