@@ -332,6 +332,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 -webkit-text-size-adjust: 100%;
             }
             .print-header { 
+                display: flex;
+                justify-content: space-between;
                 text-align: center; 
                 margin-bottom: 20px;
                 padding-bottom: 10px;
@@ -390,7 +392,9 @@ document.addEventListener('DOMContentLoaded', function() {
     </head>
     <body>
         <div class="print-header">
+            <img src="images/barangay_seal.png" alt="barangay_seal" width="100px" height="100px">
             <h2>Barangay Health Records</h2>
+            <img src="images/municipal_health.png" alt="municipal_health" width="100px" height="100px">
             <div class="print-info">
                 <p>Printed on: <span id="printDate">${new Date().toLocaleString()}</span></p>
                 <p>Total records: <span id="recordCount">${healthRecords.length}</span></p>
