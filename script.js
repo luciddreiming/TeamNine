@@ -322,43 +322,36 @@ function handleLogin(e) {
     }
 
     function updateSchoolSurveyTable() {
-        const resultsContainer = document.getElementById('surveyResults');
-        resultsContainer.innerHTML = '';
+        surveyResults.innerHTML = '';
 
         const subjectFilter = filterSubject.value;
         const ratingFilter = parseInt(filterRating.value);
 
         const filteredData = schoolSurveyData.filter(entry => {
             const matchesSubject = subjectFilter === 'All Subjects' || entry.className === subjectFilter;
-            const matchesRating = ratingFilter === 0 || entry.teacherRating >= ratingFilter;
+            const matchesRating = ratingFilter === 0 || entry.teacherRating === ratingFilter;
             return matchesSubject && matchesRating;
         });
 
         if (filteredData.length === 0) {
-            resultsContainer.innerHTML = '<div class="no-results">No survey results found matching your criteria</div>';
+            surveyResults.innerHTML = `<tr><td colspan="7">No survey results found</td></tr>`;
             return;
         }
 
         filteredData.forEach(entry => {
-            const card = document.createElement('div');
-            card.className = 'result-card';
-            
+            const row = document.createElement('tr');
             const starsDisplay = '★'.repeat(entry.teacherRating) + '☆'.repeat(5 - entry.teacherRating);
-            
-            card.innerHTML = `
-                <h4>${entry.teacherName} - ${entry.className}</h4>
-                <p><strong>Student:</strong> ${entry.studentName}</p>
-                <p><strong>Grade & Section:</strong> ${entry.gradeSection}</p>
-                <p><strong>Rating:</strong> <span class="result-rating">${starsDisplay}</span></p>
-                <p><strong>Favorite Lesson:</strong> ${entry.favoriteLesson}</p>
-                <p><strong>Suggestions:</strong> ${entry.suggestions}</p>
-                <p class="submission-date">Submitted: ${entry.submissionDate}</p>
-            `;
-            
-            resultsContainer.appendChild(card);
+            row.innerHTML = `
+                <td>${entry.studentName}</td>
+                <td>${entry.teacherName}</td>
+                <td>${entry.gradeSection}</td>
+                <td>${entry.className}</td>
+                <td>${starsDisplay}</td>
+                <td>${entry.favoriteLesson}</td>
+                <td>${entry.suggestions}</td>`;
+            surveyResults.appendChild(row);
         });
     }
-
 
     function printHealthRecords() {
     printDate.textContent = new Date().toLocaleString();
