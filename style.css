@@ -158,13 +158,13 @@ body {
   
 @keyframes service-bg-change {
   0% {
-    background-image: url(img/1stSlide.png);
+    background-image: url(images/1stSlide.jpg);
   }
   50% {
-    background-image: url(img/2ndSlide.png);
+    background-image: url(images/2ndSlide.jpg);
   }
   100% {
-    background-image: url(img/3rdSlide.png);
+    background-image: url(images/3rdSlide.jpg);
   }
 }
 
