@@ -120,25 +120,38 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    function handleLogin(e) {
-        e.preventDefault();
+// After successful login
+function handleLogin(e) {
+    e.preventDefault();
 
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            const user = userAccounts.find(account => 
-            account.username === username && account.password === password
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+
+    const user = userAccounts.find(account => 
+        account.username === username && account.password === password
     );
 
-            if (user) {
-                sessionStorage.setItem('currentUser', JSON.stringify(user));
-                loginPage.style.display = 'none';
-                signupPage.style.display = 'none';
-                serviceSelectionPage.style.display = 'block';
-                loginForm.reset();
+    if (user) {
+        // Store current user in session
+        sessionStorage.setItem('currentUser', JSON.stringify(user));
+        if (!user.isStudent) {
+            document.getElementById('schoolSurveyBtn').disabled = true;
+            document.getElementById('schoolSurveyBtn').style.opacity = '0.6';
+            document.getElementById('schoolSurveyBtn').title = 'This service is only available to students';
+        } else {
+            document.getElementById('schoolSurveyBtn').disabled = false;
+            document.getElementById('schoolSurveyBtn').style.opacity = '1';
+            document.getElementById('schoolSurveyBtn').title = '';
+        }
+        
+        loginPage.style.display = 'none';
+        signupPage.style.display = 'none';
+        serviceSelectionPage.style.display = 'block';
+        loginForm.reset();
     } else {
         alert('Invalid username or password');
     }
-        }
+}
 
         function showSchoolSurvey() {
         const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));    
