@@ -35,6 +35,7 @@ body {
   padding: 0 20px;
 }
 
+/* Login Page Styles */
 .login-container {
   display: flex;
   justify-content: center;
@@ -127,10 +128,11 @@ body {
   width: 100%;
 }
 
-/* Service Selection Page */
+/* Service Selection Section - Updated */
 .service-selection {
   text-align: center;
   padding: 2rem 0;
+  margin-top: 100px;
 }
 
 .service-options {
@@ -139,6 +141,7 @@ body {
   justify-content: center;
   gap: 2rem;
   margin-top: 2rem;
+  padding: 0 20px;
 }
 
 .service-btn {
@@ -148,13 +151,13 @@ body {
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   padding: 2rem;
   width: 300px;
+  max-width: 100%;
   cursor: pointer;
   transition: all 0.3s ease;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  min-height: 200px;
+  text-align: center;
   position: relative;
   overflow: hidden;
 }
@@ -167,45 +170,70 @@ body {
 .service-btn h3 {
   margin-bottom: 1rem;
   color: var(--primary-color);
-  transition: all 0.3s ease;
   position: relative;
   z-index: 2;
 }
 
 .service-btn p {
   color: var(--dark-color);
-  transition: all 0.3s ease;
   position: relative;
   z-index: 2;
 }
 
-.service-btn::before {
+.service-btn::after {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 5px;
-  background-color: var(--primary-color);
-  transition: all 0.3s ease;
-}
-
-#schoolSurveyBtn::before {
-  background-color: var(--education-color);
-}
-
-#healthMonitorBtn::before {
-  background-color: var(--health-color);
-}
-
-.service-btn:hover::before {
   height: 100%;
-  opacity: 0.1;
+  background: linear-gradient(135deg, rgba(22, 96, 136, 0.1), rgba(74, 111, 165, 0.1));
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
-.service-btn:hover h3,
-.service-btn:hover p {
-  transform: none;
+.service-btn:hover::after {
+  opacity: 1;
+}
+
+#schoolSurveyBtn {
+  border-top: 5px solid var(--education-color);
+}
+
+#healthMonitorBtn {
+  border-top: 5px solid var(--health-color);
+}
+
+/* Navigation Bar */
+nav {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 10vh;
+  padding: 0 3rem;
+  position: fixed;
+  width: 100%;
+  justify-content: left;
+  z-index: 2;
+}
+
+nav h1 {
+  color: #fff;
+  font-size: 20px;
+  letter-spacing: 2px;
+  transition: 200ms ease-in-out color;
+  padding-left: 50px;
+  padding-right: 180px;
+}
+
+.active_nav {
+  background-color: #fff;
+  box-shadow: 0 0 .5rem rgba(0, 0, 0, .6);
+  transition: 350ms ease-in-out;
+}
+
+.active_nav h1 {
+  color: #0e0e0e;
 }
 
 /* Main Content Sections */
@@ -214,6 +242,112 @@ body {
   padding: 20px 0;
 }
 
+/* School Survey Styles */
+.school-main-content {
+  display: none;
+  padding: 0 0;
+}
+
+#school-survey-container {
+  justify-content: right;
+  width: 50%;
+  max-width: 1200px;
+  margin: 250px 30px 20px 0;
+  position: relative;
+  z-index: 1;
+  float: right;
+}
+
+.school-survey-background {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+#welcome {
+  text-align: center;
+  padding-top: 5rem;
+  font-size: 45px;
+  font-weight: 700;
+  color: white;
+  animation: TransitionIn 2.5s;
+  letter-spacing: 0.2rem;
+  z-index: 2;
+  position: relative;
+}
+
+@keyframes TransitionIn {
+  from {
+    opacity: 0;
+    transform: translate(0, 70px);
+  }
+  to {
+    opacity: 1;    
+  }
+}
+
+.background-top,
+.background-bottom {
+  position: absolute;
+  width: 100%;
+  left: 0;
+}
+
+.background-top {
+  top: 0;
+  height: 20%;
+  z-index: 0;
+  box-shadow: 0 0 .5rem rgba(0, 0, 0, .6);
+  background-image: url(img/slide1.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  animation-name: change;
+  animation-direction: alternate-reverse;
+  animation-play-state: running;
+  animation-timing-function: ease-in;
+  animation-duration: 15s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+}
+
+@keyframes change {
+  0% {
+    background-image: url(img/slide1.jpg);
+  }
+  25% {
+    background-image: url(img/slide2.jpg);
+  }
+  50% {
+    background-image: url(img/slide3.jpg);
+  }
+  75% {
+    background-image: url(img/slide4.jpg);
+  }
+  100% {
+    background-image: url(img/slide5.jpg);
+  }
+}
+
+.background-bottom {
+  top: 20%;
+  height: 80%;
+  background-image: url(img/bg.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: 0;
+}
+
+.school-table {
+  z-index: 0;
+  margin: 0 20px;
+  position: relative;
+  height: auto;
+}
+
+/* Survey Form Styles */
 header {
   background-color: var(--primary-color);
   color: white;
@@ -519,204 +653,7 @@ header h1 {
   filter: brightness(1);
 }
 
-@media print {
-  body {
-    -webkit-print-color-adjust: exact !important;
-    print-color-adjust: exact !important;
-  }
-  
-  .no-print {
-    display: none !important;
-  }
-}
-
-table {
-  page-break-inside: auto;
-}
-
-tr {
-  page-break-inside: avoid;
-  page-break-after: auto;
-}
-
-@media print {
-  @page {
-    size: auto;
-    margin: 5mm;
-  }
-  
-  body * {
-    visibility: hidden;
-  }
-  
-  #printSection, #printSection * {
-    visibility: visible;
-  }
-  
-  #printSection {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    margin: 0;
-    padding: 10px;
-    font-size: 14px;
-  }
-
-  table {
-    width: 100% !important;
-    font-size: 12px;
-  }
-  
-  tr {
-    page-break-inside: avoid;
-  }
-
-  th, td {
-    padding: 6px 8px !important;
-    white-space: nowrap;
-  }
-}
-
-/* Nav Bar */
-nav {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  min-height: 10vh;
-  padding: 0 3rem;
-  position: fixed;
-  width: 100%;
-  justify-content: left;
-  z-index: 2;
-}
-
-nav h1 {
-  color: #fff;
-  font-size: 20px;
-  letter-spacing: 2px;
-  transition: 200ms ease-in-out color;
-  padding-left: 50px;
-  padding-right: 180px;
-}
-
-.active_nav {
-  background-color: #fff;
-  box-shadow: 0 0 .5rem rgba(0, 0, 0, .6);
-  transition: 350ms ease-in-out;
-}
-
-.active_nav h1 {
-  color: #0e0e0e;
-}
-
-/* Welcome Section */
-#welcome {
-  text-align: center;
-  padding-top: 5rem;
-  font-size: 45px;
-  font-weight: 700;
-  color: white;
-  animation: TransitionIn 2.5s;
-  letter-spacing: 0.2rem;
-  z-index: 2;
-  position: relative;
-}
-
-@keyframes TransitionIn {
-  from {
-    opacity: 0;
-    transform: translate(0, 70px);
-  }
-  to {
-    opacity: 1;    
-  }
-}
-
-.background-top,
-.background-bottom {
-  position: absolute;
-  width: 100%;
-  left: 0;
-}
-
-.background-top {
-  top: 0;
-  height: 20%;
-  z-index: 0;
-  box-shadow: 0 0 .5rem rgba(0, 0, 0, .6);
-  background-image: url(img/slide1.jpg);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  animation-name: change;
-  animation-direction: alternate-reverse;
-  animation-play-state: running;
-  animation-timing-function: ease-in;
-  animation-duration: 15s;
-  animation-fill-mode: forwards;
-  animation-iteration-count: infinite;
-}
-
-@keyframes change {
-  0% {
-    background-image: url(img/slide1.jpg);
-  }
-  25% {
-    background-image: url(img/slide2.jpg);
-  }
-  50% {
-    background-image: url(img/slide3.jpg);
-  }
-  75% {
-    background-image: url(img/slide4.jpg);
-  }
-  100% {
-    background-image: url(img/slide5.jpg);
-  }
-}
-
-.background-bottom {
-  top: 20%;
-  height: 80%;
-  background-image: url(img/bg.png);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  z-index: 0;
-}
-
-/* School Survey Section */
-.school-main-content {
-  display: none;
-  padding: 0 0;
-}
-
-#school-survey-container {
-  justify-content: right;
-  width: 50%;
-  max-width: 1200px;
-  margin: 250px 30px 20px 0;
-  position: relative;
-  z-index: 1;
-  float: right;
-}
-
-.school-survey-background {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-}
-
-.school-table {
-  z-index: 0;
-  margin: 0 20px;
-  position: relative;
-  height: auto;
-}
-
-/* Health Monitoring Section */
+/* Health Monitoring Styles */
 #healthMonitorContent {
   background-image: url('https://img.freepik.com/premium-vector/seamless-pattern-doodle-drawings-medical-equipment-first-aid-items-doodle-seamless-pattern_947681-1551.jpg?semt=ais_hybrid&w=740');
   background-repeat: no-repeat;
@@ -760,7 +697,7 @@ nav h1 {
   align-items: center;
 }
 
-.header-actions {
+.health-header-actions {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -778,7 +715,7 @@ nav h1 {
   margin-left: 6vh;
 }
 
-.header-actions h1, .header-actions .print-btn {
+.health-header-actions h1, .health-header-actions .print-btn {
   margin-right: 6vh;
 }
 
@@ -868,7 +805,70 @@ nav h1 {
   grid-column: 1 / -1;
 }
 
+/* Print Styles */
+@media print {
+  body {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  
+  .no-print {
+    display: none !important;
+  }
+  
+  body * {
+    visibility: hidden;
+  }
+  
+  #printSection, #printSection * {
+    visibility: visible;
+  }
+  
+  #printSection {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    margin: 0;
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  table {
+    width: 100% !important;
+    font-size: 12px;
+    page-break-inside: auto;
+  }
+  
+  tr {
+    page-break-inside: avoid;
+    page-break-after: auto;
+  }
+
+  th, td {
+    padding: 6px 8px !important;
+    white-space: nowrap;
+  }
+}
+
 /* Responsive Styles */
+@media (max-width: 1200px) {
+  #school-survey-container {
+    width: 60%;
+  }
+}
+
+@media (max-width: 992px) {
+  #school-survey-container {
+    width: 70%;
+    margin: 200px 20px 20px 0;
+  }
+  
+  .health-container {
+    padding: 50px;
+  }
+}
+
 @media (max-width: 768px) {
   .login-box {
     padding: 1.5rem;
@@ -908,9 +908,32 @@ nav h1 {
   }
   
   #school-survey-container {
-    width: 100%;
-    margin: 250px 0 20px 0;
+    width: 80%;
     float: none;
+    margin: 180px auto 20px;
+  }
+  
+  .health-form {
+    margin-top: 45vh;
+  }
+  
+  .health-header-actions {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .health-logo {
+    margin-left: 0;
+  }
+  
+  .health-header-actions h1, 
+  .health-header-actions .print-btn {
+    margin-right: 0;
+  }
+  
+  .health-container #healthLogoutBtn {
+    margin-top: 0;
+    margin-left: 0;
   }
 }
 
@@ -942,25 +965,29 @@ nav h1 {
   .form-group label {
     margin-bottom: 8px;
   }
-
-  .header-actions {
-    flex-direction: column;
-    align-items: flex-start;
+  
+  nav {
+    padding: 0 1rem;
   }
-
-  .health-logo {
-    margin-left: 0vh;
+  
+  nav h1 {
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 18px;
   }
-
-  .header h1 {
-    float: none;
-    width: 100%;
-    text-align: left;
+  
+  #welcome {
+    font-size: 32px;
+    padding-top: 3rem;
   }
-
-  .health-container #healthLogoutBtn {
-    margin-top: 0vh;
-    margin-left: 0vh;
+  
+  .service-selection {
+    margin-top: 80px;
+    padding: 1rem 0;
+  }
+  
+  .service-btn {
+    padding: 1.5rem;
   }
   
   .print-btn {
@@ -978,9 +1005,43 @@ nav h1 {
   .health-form {
     margin-top: 70vh;
   }
+  
+  .header {
+    padding: 150px;
+  }
+  
+  @media print {
+    table {
+      font-size: 8px;
+    }
+    th, td {
+      padding: 2px 4px !important;
+    }
+  }
+}
 
-  .service-btn {
-    width: 100%;
-    max-width: 300px;
+@media (max-width: 480px) {
+  .login-box {
+    padding: 1.2rem;
+  }
+  
+  .service-btn h3 {
+    font-size: 1.1rem;
+  }
+  
+  .service-btn p {
+    font-size: 0.9rem;
+  }
+  
+  #welcome {
+    font-size: 28px;
+  }
+  
+  .header {
+    padding: 100px;
+  }
+  
+  .health-form {
+    margin-top: 60vh;
   }
 }
