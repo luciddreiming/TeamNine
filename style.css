@@ -154,7 +154,7 @@ body {
   animation-iteration-count: infinite;
 }
 
-@keyframes change {
+@keyframes service-bg-change {
   0% {
     background-image: url(img/1stSlide.png);
   }
