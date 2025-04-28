@@ -1,3 +1,4 @@
+
 :root {
   --primary-color: #166088;
   --secondary-color: #4a6fa5;
@@ -127,80 +128,28 @@ body {
   width: 100%;
 }
 
-/* Service selection - Updated with larger hover effect and fixed animation */
+/* Service selection - Updated hover effect */
 .service-options {
   align-items: center;
   display: flex;
   justify-content: center;
   margin-top: 50px;
-  position: relative;
-  min-height: 80vh;
-  padding: 40px 0;
-  background-color: #87CEEB;
-  transition: opacity 0.8s ease, transform 0.8s ease;
-  opacity: 0;
-  transform: translateY(20px);
-}
-.service-options.loaded {
-  opacity: 1;
-  transform: translateY(0);
-}
-.service-options::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  background-size: cover;
-  background-position: center;
-  animation-name: service-bg-change;
-  animation-direction: alternate-reverse;
-  animation-play-state: running;
-  animation-timing-function: ease-in-out;
-  animation-duration: 15s;
-  animation-fill-mode: forwards;
-  animation-iteration-count: infinite;
-  opacity: 0.3; 
-}
-
-@keyframes service-bg-change {
-  0% {
-    background-image: url(images/1stSlide.jpg);
-  }
-  25% {
-    background-image: url(images/2ndSlide.jpg);
-  }
-  50% {
-    background-image: url(images/3rdSlide.jpg);
-  }
-  75% {
-    background-image: url(images/4thSlide.jpg);
-  }
-  100% {
-    background-image: url(images/5thSlide.jpg);
-  }
 }
 
 .service-options .box {
   position: relative;
-  width: 450px;
-  height: 450px; 
+  width: 400px;
+  height: 400px;
   overflow: hidden;
-  transition: all 0.5s ease;
-  margin: 0 30px; 
-  background-color: rgba(255, 255, 255, 0.8);
-  border-radius: 15px; 
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  margin: 0 20px;
 }
 
 .service-options .box:hover {
   z-index: 1;
-  transform: scale(1.1); 
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4); 
+  transform: scale(1.05);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
   cursor: pointer;
-  background-color: rgba(0, 0, 0, 0.3);
 }
 
 .service-options .box .imgBx {
@@ -246,7 +195,7 @@ body {
   height: 100%;
   z-index: 1;
   display: flex;
-  padding: 30px; 
+  padding: 20px;
   align-items: flex-end;
   box-sizing: border-box;
 }
@@ -255,8 +204,8 @@ body {
   color: #fff;
   transition: transform 0.5s ease, opacity 0.5s ease;
   text-transform: uppercase;
-  margin-bottom: 25px; 
-  font-size: 24px; 
+  margin-bottom: 20px;
+  font-size: 20px;
   opacity: 0;
   transform: translateY(20px);
   position: relative;
@@ -270,10 +219,10 @@ body {
 .service-options .box .content p {
   color: #fff;
   transition: transform 0.5s ease, opacity 0.5s ease;
-  font-size: 16px; 
+  font-size: 14px;
   opacity: 0;
   transform: translateY(20px);
-  margin-bottom: 25px; 
+  margin-bottom: 20px;
 }
 
 .service-options .box:hover .content p {
@@ -809,9 +758,9 @@ tr {
   }
 
   .service-options .box {
-    width: 320px;
-    height: 320px;
-    margin: 15px 0;
+    width: 300px;
+    height: 300px;
+    margin: 10px 0;
   }
 
   .school-form,
@@ -843,6 +792,8 @@ tr {
     display: block;
     overflow-x: auto;
   }
+
+  /* Changed the line location of printbtn for mobile */
 }
 
 @media (max-width: 600px) {
@@ -1062,6 +1013,7 @@ tr {
 
   /* Adjust print button for mobile */
   .print-btn {
+    /* Adjusted font-size, width, and margin */
     padding: 12px;
     font-size: 20px;
     width: 70%;
