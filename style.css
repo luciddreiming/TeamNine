@@ -205,9 +205,14 @@ body {
   text-transform: uppercase;
   margin-bottom: 20px;
   font-size: 20px;
+  opacity: 0;
+  transform: translateY(20px);
+  position: relative;
+}
+
+.service-options .box:hover .content .title {
   opacity: 1;
   transform: translateY(0);
-  position: relative;
 }
 
 .service-options .box .content p {
