@@ -156,13 +156,13 @@ body {
 
 @keyframes change {
   0% {
-    background-image: url(img/1stSlide.jpg);
+    background-image: url(img/1stSlide.png);
   }
   50% {
-    background-image: url(img/2ndSlide.jpg);
+    background-image: url(img/2ndSlide.png);
   }
   100% {
-    background-image: url(img/3rdSlide.jpg);
+    background-image: url(img/3rdSlide.png);
   }
 }
 
