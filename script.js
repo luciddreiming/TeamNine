@@ -33,7 +33,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const confirmPassword = document.getElementById('signupConfirmPassword');
 
     let userAccounts = [
-        { username: 'admin', password: 'admin', name: 'Administrator', email: 'admin@community.gov' }
+        { 
+            username: 'admin', 
+            password: 'admin', 
+            name: 'Administrator', 
+            email: 'admin@community.gov',
+            isStudent: true 
+        }
     ];
     let healthRecords = [];
     let schoolSurveyData = [];
@@ -117,42 +123,63 @@ document.addEventListener('DOMContentLoaded', function() {
     function handleLogin(e) {
         e.preventDefault();
 
-        const username = document.getElementById('username').value;
-        const password = document.getElementById('password').value;
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const user = userAccounts.find(account => 
+            account.username === username && account.password === password
+    );
 
-        const user = userAccounts.find(account => account.username === username && account.password === password);
-
-        if (user) {
-            loginPage.style.display = 'none';
-            signupPage.style.display = 'none';
-            serviceSelectionPage.style.display = 'block';
-            loginForm.reset();
-        } else {
-            alert('Invalid username or password');
-        }
+            if (user) {
+                sessionStorage.setItem('currentUser', JSON.stringify(user));
+                loginPage.style.display = 'none';
+                signupPage.style.display = 'none';
+                serviceSelectionPage.style.display = 'block';
+                loginForm.reset();
+    } else {
+        alert('Invalid username or password');
     }
+        }
+
+        function showSchoolSurvey() {
+        const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));    
+        if (!currentUser || !currentUser.isStudent) {
+        alert('This service is only available to students.');
+        return;
+    }
+    
+    serviceSelectionPage.style.display = 'none';
+    schoolSurveyContent.style.display = 'block';
+    updateSchoolSurveyTable();
+}
 
     function handleSignup(e) {
         e.preventDefault();
-
+    
         const name = document.getElementById('signupName').value;
         const email = document.getElementById('signupEmail').value;
         const username = document.getElementById('signupUsername').value;
         const password = document.getElementById('signupPassword').value;
         const confirmPassword = document.getElementById('signupConfirmPassword').value;
-
+        const isStudent = document.getElementById('studentVerification').value === 'student';
+    
         if (password !== confirmPassword) {
             alert('Passwords do not match');
             return;
         }
-
+    
         if (userAccounts.some(account => account.username === username)) {
             alert('Username already exists');
             return;
         }
-
-        userAccounts.push({ username, password, name, email });
-
+    
+        userAccounts.push({ 
+            username, 
+            password, 
+            name, 
+            email,
+            isStudent 
+        });
+    
         signupPage.style.display = 'none';
         loginPage.style.display = 'flex';
         signupForm.reset();
