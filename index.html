@@ -59,47 +59,37 @@
      <!-- Service Selection Page -->
     <div class="main-content" id="serviceSelectionPage" style="display: none;">
         <header>
-         
-                <button class="logout-btn" id="logoutBtn">Logout</button>
-                <h1>Community Services Portal</h1>
-            
+            <button class="logout-btn" id="logoutBtn">Logout</button>
+            <h1>Community Services Portal</h1>
         </header>
 
         <div class="service-selection">
           <h1 class="service-title">Select a Service</h1>
 
             <div class="service-options">
-                
-                    <div class="box">
-                        <button id="schoolSurveyBtn" class="service-btn">
+                <div class="box">
+                    <button id="schoolSurveyBtn" class="service-btn">
                         <div class="imgBx">
-                            <img src="img/school.png">
+                            <img src="img/school.png" alt="School Survey">
                         </div>
-                
                         <div class="content">
                             <h2 class="title">School Classroom Survey</h2>
-                            <p>Provide feedback on classroom experiences.
-                            </p>
+                            <p>Provide feedback on classroom experiences.</p>
                         </div>
-                        </a>
-                        </button>
-                    </div>
-             
+                    </button>
+                </div>
                 
-                    <div class="box">
-                        <button id="healthMonitorBtn" class="service-btn">
+                <div class="box">
+                    <button id="healthMonitorBtn" class="service-btn">
                         <div class="imgBx"> 
-                            <img src="img/health.png">
+                            <img src="img/health.png" alt="Health Monitoring">
                         </div>
                         <div class="content">
                             <h2 class="title">Barangay Health Monitoring System</h2>
-                            <p>Report health status and COVID-19 information.
-                            </p>
+                            <p>Report health status and COVID-19 information.</p>
                         </div>
-                        </a>
-                        </button>
-                    </div>
-              
+                    </button>
+                </div>
             </div>
         </div>
     </div>
@@ -107,10 +97,8 @@
     <!-- School Survey Page -->
     <div class="school-main-content" id="schoolSurveyContent" style="display: none;">
         <nav>
-           
-                <button class="logout-btn" id="schoolLogoutBtn">Logout</button>
-                <h1>School Classroom Feedback Survey</h1>
-         
+            <button class="logout-btn" id="schoolLogoutBtn">Logout</button>
+            <h1>School Classroom Feedback Survey</h1>
         </nav>
         <div class="school-survey-background">
             <div class="background-top">
@@ -119,112 +107,108 @@
                  
             <div class="background-bottom"></div>
             <div id="school-survey-container">
-            <form class="survey-form" id="schoolSurveyForm">
-                
-                
-                <div class="form-group">
-                    <label for="studentName">Your Name</label>
-                    <input type="text" id="studentName" placeholder="Enter your name">
-                </div>
-
-                <div class="form-group">
-                    <label for="teacherName">Teacher's Name</label>
-                    <input type="text" id="teacherName" placeholder="Enter teacher's name" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="gradeSection">Grade & Section</label>
-                    <select id="gradeSection" required>
-                        <option value="" disabled selected>Select your grade & section</option>
-                        <option value="Grade 7-A">Grade 7-A</option>
-                        <option value="Grade 7-B">Grade 7-B</option>
-                        <option value="Grade 8-A">Grade 8-A</option>
-                        <option value="Grade 8-B">Grade 8-B</option>
-                        <option value="Grade 9-A">Grade 9-A</option>
-                        <option value="Grade 9-B">Grade 9-B</option>
-                        <option value="Grade 10-A">Grade 10-A</option>
-                        <option value="Grade 10-B">Grade 10-B</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="className">Subject</label>
-                    <select id="className" required>
-                        <option value="" disabled selected>Select your subject</option>
-                        <option value="Math">Math</option>
-                        <option value="Science">Science</option>
-                        <option value="English">English</option>
-                        <option value="Filipino">Filipino</option>
-                        <option value="Araling Panlipunan">Araling Panlipunan</option>
-                        <option value="MAPEH">MAPEH</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label>Teacher Rating</label>
-                    <div class="rating-container">
-                        <input type="radio" id="teacher5" name="teacherRating" value="5">
-                        <label for="teacher5" class="star"></label>
-                        <input type="radio" id="teacher4" name="teacherRating" value="4">
-                        <label for="teacher4" class="star"></label>
-                        <input type="radio" id="teacher3" name="teacherRating" value="3">
-                        <label for="teacher3" class="star"></label>
-                        <input type="radio" id="teacher2" name="teacherRating" value="2">
-                        <label for="teacher2" class="star"></label>
-                        <input type="radio" id="teacher1" name="teacherRating" value="1">
-                        <label for="teacher1" class="star"></label>
+                <form class="survey-form" id="schoolSurveyForm">
+                    <div class="form-group">
+                        <label for="studentName">Your Name</label>
+                        <input type="text" id="studentName" placeholder="Enter your name">
                     </div>
-                </div>
 
-                <div class="form-group">
-                    <label for="favoriteLesson">Favorite Lesson:</label>
-                    <input type="text" id="favoriteLesson" placeholder="What was your favorite lesson?">
-                </div>
+                    <div class="form-group">
+                        <label for="teacherName">Teacher's Name</label>
+                        <input type="text" id="teacherName" placeholder="Enter teacher's name" required>
+                    </div>
 
-                <div class="form-group">
-                    <label for="suggestions">Suggestions for Improvement:</label>
-                    <textarea id="suggestions" placeholder="Drop your suggestions"></textarea>
-                </div>
+                    <div class="form-group">
+                        <label for="gradeSection">Grade & Section</label>
+                        <select id="gradeSection" required>
+                            <option value="" disabled selected>Select your grade & section</option>
+                            <option value="Grade 7-A">Grade 7-A</option>
+                            <option value="Grade 7-B">Grade 7-B</option>
+                            <option value="Grade 8-A">Grade 8-A</option>
+                            <option value="Grade 8-B">Grade 8-B</option>
+                            <option value="Grade 9-A">Grade 9-A</option>
+                            <option value="Grade 9-B">Grade 9-B</option>
+                            <option value="Grade 10-A">Grade 10-A</option>
+                            <option value="Grade 10-B">Grade 10-B</option>
+                        </select>
+                    </div>
 
-                <div class="form-group checkbox-group">
-                    <input type="checkbox" id="anonymousSubmission" name="anonymousSubmission">
-                    <label for="anonymousSubmission">Submit anonymously</label>
-                </div>
+                    <div class="form-group">
+                        <label for="className">Subject</label>
+                        <select id="className" required>
+                            <option value="" disabled selected>Select your subject</option>
+                            <option value="Math">Math</option>
+                            <option value="Science">Science</option>
+                            <option value="English">English</option>
+                            <option value="Filipino">Filipino</option>
+                            <option value="Araling Panlipunan">Araling Panlipunan</option>
+                            <option value="MAPEH">MAPEH</option>
+                        </select>
+                    </div>
 
-                <button type="submit" class="submit-btn">Submit Feedback</button>
-            </form>
+                    <div class="form-group">
+                        <label>Teacher Rating</label>
+                        <div class="rating-container">
+                            <input type="radio" id="teacher5" name="teacherRating" value="5">
+                            <label for="teacher5" class="star"></label>
+                            <input type="radio" id="teacher4" name="teacherRating" value="4">
+                            <label for="teacher4" class="star"></label>
+                            <input type="radio" id="teacher3" name="teacherRating" value="3">
+                            <label for="teacher3" class="star"></label>
+                            <input type="radio" id="teacher2" name="teacherRating" value="2">
+                            <label for="teacher2" class="star"></label>
+                            <input type="radio" id="teacher1" name="teacherRating" value="1">
+                            <label for="teacher1" class="star"></label>
+                        </div>
+                    </div>
 
-            <div class="filter-controls">
-                <h2>Survey Results</h2>
-                <div class="filter-group">
-                    <label for="filterSubject">Filter by Subject:</label>
-                    <select id="filterSubject">
-                        <option value="All Subjects">All Subjects</option>
-                        <option value="Math">Math</option>
-                        <option value="Science">Science</option>
-                        <option value="English">English</option>
-                        <option value="Filipino">Filipino</option>
-                        <option value="Araling Panlipunan">Araling Panlipunan</option>
-                        <option value="MAPEH">MAPEH</option>
-                    </select>
+                    <div class="form-group">
+                        <label for="favoriteLesson">Favorite Lesson:</label>
+                        <input type="text" id="favoriteLesson" placeholder="What was your favorite lesson?">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="suggestions">Suggestions for Improvement:</label>
+                        <textarea id="suggestions" placeholder="Drop your suggestions"></textarea>
+                    </div>
+
+                    <div class="form-group checkbox-group">
+                        <input type="checkbox" id="anonymousSubmission" name="anonymousSubmission">
+                        <label for="anonymousSubmission">Submit anonymously</label>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Submit Feedback</button>
+                </form>
+
+                <div class="filter-controls">
+                    <h2>Survey Results</h2>
+                    <div class="filter-group">
+                        <label for="filterSubject">Filter by Subject:</label>
+                        <select id="filterSubject">
+                            <option value="All Subjects">All Subjects</option>
+                            <option value="Math">Math</option>
+                            <option value="Science">Science</option>
+                            <option value="English">English</option>
+                            <option value="Filipino">Filipino</option>
+                            <option value="Araling Panlipunan">Araling Panlipunan</option>
+                            <option value="MAPEH">MAPEH</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="filterRating">Filter by Rating (≥):</label>
+                        <select id="filterRating">
+                            <option value="0">All Ratings</option>
+                            <option value="1">1 Stars</option>
+                            <option value="2">2 Stars</option>
+                            <option value="3">3 Stars</option>
+                            <option value="4">4 Stars</option>
+                            <option value="5">5 Stars</option>
+                        </select>
+                    </div>
+                    <button id="resetFilters" class="filter-btn">Reset Filters</button>
                 </div>
-                <div class="filter-group">
-                    <label for="filterRating">Filter by Rating (≥):</label>
-                    <select id="filterRating">
-                        <option value="0">All Ratings</option>
-                        <option value="1">1 Stars</option>
-                        <option value="2">2 Stars</option>
-                        <option value="3">3 Stars</option>
-                        <option value="4">4 Stars</option>
-                        <option value="5">5 Stars</option>
-                    </select>
-                </div>
-                <button id="resetFilters" class="filter-btn">Reset Filters</button>
             </div>
-
             
-            
-            </div>
             <div class="school-table">
                 <table class="results-table">
                     <thead>
@@ -243,33 +227,21 @@
                 </table>
             </div>
         </div>
-        
-
-        
-
-       
     </div>
-
     
     <!-- Health Monitor Page -->
-    <!--I added id on each form field-->
-    <div class="main-content" id="healthMonitorContent">
-        <!--Changed <header> to <div class="header">-->
+    <div class="main-content" id="healthMonitorContent" style="display: none;">
         <div class="header">
-            <!--changed the class from container to health-container-->
             <div class="health-container">
                 <button class="logout-btn" id="healthLogoutBtn">Logout</button>
                 <div class="header-actions">
-                    <!--added the logos-->
                     <div class="health-logo">
-                        <img src="images/barangay_seal.png" alt="barangay_seal" width="100px" height="100px">
-                        <img src="images/municipal_health.png" alt="municipal_health" width="100px" height="100px">
+                        <img src="images/barangay_seal.png" alt="Barangay Seal" width="100" height="100">
+                        <img src="images/municipal_health.png" alt="Municipal Health Logo" width="100" height="100">
                     </div>
                     <h1>Barangay Health Monitoring System</h1>
-                    <!--I added a print icon, feel free to fix it!-->
                     <button id="printHealthBtn" class="print-btn">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 -3 24 24"><path fill="currentColor" d="M8 21q-.825 0-1.412-.587T6 19v-2H4q-.825 0-1.412-.587T2 15v-4q0-1.275.875-2.137T5 8h14q1.275 0 2.138.863T22 11v4q0 .825-.587 1.413T20 17h-2v2q0 .825-.587 1.413T16 21zm-4-6h2q0-.825.588-1.412T8 13h8q.825 0 1.413.588T18 15h2v-4q0-.425-.288-.712T19 10H5q-.425 0-.712.288T4 11zm12-7V5H8v3H6V5q0-.825.588-1.412T8 3h8q.825 0 1.413.588T18 5v3zm2 4.5q.425 0 .713-.288T19 11.5t-.288-.712T18 10.5t-.712.288T17 11.5t.288.713t.712.287M16 19v-4H8v4zM4 10h16z"/>
-                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 -3 24 24"><path fill="currentColor" d="M8 21q-.825 0-1.412-.587T6 19v-2H4q-.825 0-1.412-.587T2 15v-4q0-1.275.875-2.137T5 8h14q1.275 0 2.138.863T22 11v4q0 .825-.587 1.413T20 17h-2v2q0 .825-.587 1.413T16 21zm-4-6h2q0-.825.588-1.412T8 13h8q.825 0 1.413.588T18 15h2v-4q0-.425-.288-.712T19 10H5q-.425 0-.712.288T4 11zm12-7V5H8v3H6V5q0-.825.588-1.412T8 3h8q.825 0 1.413.588T18 5v3zm2 4.5q.425 0 .713-.288T19 11.5t-.288-.712T18 10.5t-.712.288T17 11.5t.288.713t.712.287M16 19v-4H8v4zM4 10h16z"/></svg>
                         Print Records
                     </button>
                 </div>
@@ -281,17 +253,16 @@
                 <h2>Health Information Survey</h2>
                 <h3>Personal Information</h3>
                 <div class="form-section">
-                    <!--changed the class name to health-form-group-->
                     <div class="health-form-group">
                         <label for="fullName">Name</label>
-                        <input type="text" id="fullName" name="fullName" required placeholder="Please enter your name." required>
+                        <input type="text" id="fullName" name="fullName" required placeholder="Please enter your name.">
                     </div>
-                        <!--I changed the placement of age-->
+                    
                     <div class="health-form-group">
                         <label for="age">Age</label>
-                        <input type="number" id="age" name="age" min="1" max="100" required placeholder="Please enter your age." required>
+                        <input type="number" id="age" name="age" min="1" max="100" required placeholder="Please enter your age.">
                     </div>
-                        <!--I changed the placemen of contact number-->
+                    
                     <div class="health-form-group">
                         <label for="contactNumbers">Contact</label>
                         <input type="text" id="contactNumbers" name="contactNumbers" placeholder="Please enter your contact numbers." required>
@@ -317,8 +288,8 @@
                     <div class="health-form-group">
                         <label>Gender</label>
                         <div class="radio-group">
-                            <label><input type="radio" name="gender" value="Male" required> Male</label><br>
-                            <label><input type="radio" name="gender" value="Female"> Female</label><br>
+                            <label><input type="radio" name="gender" value="Male" required> Male</label>
+                            <label><input type="radio" name="gender" value="Female"> Female</label>
                             <label><input type="radio" name="gender" value="Other"> Other</label>
                         </div>
                     </div>
@@ -342,7 +313,7 @@
                             <label><input type="checkbox" name="symptoms" value="Cough"> Cough</label>
                             <label><input type="checkbox" name="symptoms" value="Fatigue"> Fatigue</label>
                             <label><input type="checkbox" name="symptoms" value="Shortness of breath"> Shortness of breath</label>
-                            <label><input type="checkbox" name="symptoms" value="Loss of taste/smell"> Loss of taste/smell</label><br>
+                            <label><input type="checkbox" name="symptoms" value="Loss of taste/smell"> Loss of taste/smell</label>
                             <label>Other symptoms: <input type="text" id="otherSymptoms" name="otherSymptoms" placeholder="Specify other symptoms"></label>
                         </div>
                     </div>
@@ -361,7 +332,6 @@
                 <button type="submit" class="submit-btn health-btn">Submit Health Information</button>
             </form>
         </div>
-
 
         <div class="container health-records print-only" id="printSection">
             <div class="print-header">
