@@ -56,7 +56,7 @@
         </div>
     </div>
 
-    <!-- Service Selection Page -->
+     <!-- Service Selection Page -->
     <div class="main-content" id="serviceSelectionPage" style="display: none;">
         <header>
             <div class="container">
@@ -67,31 +67,60 @@
 
         <div class="container service-selection">
             <h2>Select a Service</h2>
+
             <div class="service-options">
-                <button id="schoolSurveyBtn" class="service-btn">
-                    <h3>School Classroom Survey</h3>
-                    <p>Provide feedback on classroom experiences</p>
-                </button>
-                <button id="healthMonitorBtn" class="service-btn">
-                    <h3>Barangay Health Monitoring</h3>
-                    <p>Report health status and COVID-19 information</p>
-                </button>
+                
+                    <div class="box">
+                        <button id="schoolSurveyBtn" class="service-btn">
+                        <div class="imgBx">
+                            <img src="img/school.png">
+                        </div>
+                
+                        <div class="content">
+                            <h2 class="title">School Classroom Survey</h2>
+                            <p>Provide feedback on classroom experiences.
+                            </p>
+                        </div>
+                        </a>
+                        </button>
+                    </div>
+             
+                
+                    <div class="box">
+                        <button id="healthMonitorBtn" class="service-btn">
+                        <div class="imgBx"> 
+                            <img src="img/health.png">
+                        </div>
+                        <div class="content">
+                            <h2 class="title">Barangay Health Monitoring</h2>
+                            <p>Report health status and COVID-19 information.
+                            </p>
+                        </div>
+                        </a>
+                        </button>
+                    </div>
+              
             </div>
         </div>
     </div>
 
     <!-- School Survey Page -->
-    <div class="main-content" id="schoolSurveyContent" style="display: none;">
-        <header>
-            <div class="container">
+    <div class="school-main-content" id="schoolSurveyContent" style="display: none;">
+        <nav>
+           
                 <button class="logout-btn" id="schoolLogoutBtn">Logout</button>
                 <h1>School Classroom Feedback Survey</h1>
+         
+        </nav>
+        <div class="school-survey-background">
+            <div class="background-top">
+                <h2 id="welcome">Share your classroom experience.</h2> 
             </div>
-        </header>
-
-        <div class="container">
+                 
+            <div class="background-bottom"></div>
+            <div id="school-survey-container">
             <form class="survey-form" id="schoolSurveyForm">
-                <h2>Share Your Classroom Experience</h2>
+                
                 
                 <div class="form-group">
                     <label for="studentName">Your Name</label>
@@ -193,22 +222,32 @@
                 <button id="resetFilters" class="filter-btn">Reset Filters</button>
             </div>
 
-            <table class="results-table">
-                <thead>
-                    <tr>
-                        <th>Student</th>
-                        <th>Teacher</th>
-                        <th>Grade & Section</th>
-                        <th>Subject</th>
-                        <th>Rating</th>
-                        <th>Favorite Lesson</th>
-                        <th>Suggestions</th>
-                    </tr>
-                </thead>
-                <tbody id="surveyResults">
-                </tbody>
-            </table>
+            
+            
+            </div>
+            <div class="school-table">
+                <table class="results-table">
+                    <thead>
+                        <tr>
+                            <th>Student</th>
+                            <th>Teacher</th>
+                            <th>Grade & Section</th>
+                            <th>Subject</th>
+                            <th>Rating</th>
+                            <th>Favorite Lesson</th>
+                            <th>Suggestions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="surveyResults">
+                    </tbody>
+                </table>
+            </div>
         </div>
+        
+
+        
+
+       
     </div>
 
     
