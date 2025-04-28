@@ -153,7 +153,9 @@ body {
   animation-fill-mode: forwards;
   animation-iteration-count: infinite;
 }
-
+.service-options::before {
+  animation-name: service-bg-change;
+  
 @keyframes service-bg-change {
   0% {
     background-image: url(img/1stSlide.png);
@@ -363,6 +365,8 @@ nav h1 {
   animation-fill-mode: forwards;
   animation-iteration-count: infinite;
 }
+.background-top {
+  animation-name: change; 
 
 @keyframes change {
   0% {
