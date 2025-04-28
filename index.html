@@ -42,14 +42,6 @@
                       </svg>
                       </span>
                 </div>
-                <div class="form-group">
-                    <label for="studentVerification">Are you a student?</label>
-                        <select id="studentVerification" required>
-                            <option value="" disabled selected>Select your status</option>
-                            <option value="student">Yes, I'm a student</option>
-                            <option value="non-student">No, I'm not a student</option>
-                        </select>
-                </div>
                 <p class="caps-warning" id="capsWarningSignup" style="display: none;">⚠️Caps Lock is on</p>
                 <div class="password-container">
                     <input type="password" id="signupConfirmPassword" placeholder="Confirm Password" required>
@@ -58,6 +50,14 @@
                       </svg>
                     </span>
                 </div>
+                <div class="form-group">
+                    <label for="studentVerification">Are you a student?</label>
+                        <select id="studentVerification" required>
+                            <option value="" disabled selected>Select your status</option>
+                            <option value="student">Yes, I'm a student</option>
+                            <option value="non-student">No, I'm not a student</option>
+                        </select>
+                </div>                
                 <button type="submit">Sign Up</button>
                 <p class="form-footer">Already have an account? <a href="#" id="showLogin">Log in</a></p>
             </form>
