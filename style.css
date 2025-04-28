@@ -126,8 +126,13 @@ body {
   padding-right: 40px;
   width: 100%;
 }
-
-/* Service selection - Updated with larger hover effect and fixed animation */
+.service-selection-container {
+  text-align: center;
+  padding: 40px 0;
+  background-color: #87CEEB; 
+  min-height: 80vh;
+  position: relative;
+}
 .service-options {
   align-items: center;
   display: flex;
@@ -171,19 +176,19 @@ body {
 
 .service-options .box {
   position: relative;
-  width: 450px; /* Increased from 400px */
-  height: 450px; /* Increased from 400px */
+  width: 450px; 
+  height: 450px; 
   overflow: hidden;
   transition: all 0.5s ease;
-  margin: 0 30px; /* Increased from 20px */
+  margin: 0 30px; 
   background-color: rgba(0, 0, 0, 0.5);
-  border-radius: 15px; /* Increased from 10px */
+  border-radius: 15px; 
 }
 
 .service-options .box:hover {
   z-index: 1;
-  transform: scale(1.1); /* Increased from 1.05 */
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4); /* Enhanced shadow */
+  transform: scale(1.1); 
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4); 
   cursor: pointer;
   background-color: rgba(0, 0, 0, 0.3);
 }
@@ -231,7 +236,7 @@ body {
   height: 100%;
   z-index: 1;
   display: flex;
-  padding: 30px; /* Increased from 20px */
+  padding: 30px; 
   align-items: flex-end;
   box-sizing: border-box;
 }
@@ -240,8 +245,8 @@ body {
   color: #fff;
   transition: transform 0.5s ease, opacity 0.5s ease;
   text-transform: uppercase;
-  margin-bottom: 25px; /* Increased from 20px */
-  font-size: 24px; /* Increased from 20px */
+  margin-bottom: 25px; 
+  font-size: 24px; 
   opacity: 0;
   transform: translateY(20px);
   position: relative;
@@ -255,10 +260,10 @@ body {
 .service-options .box .content p {
   color: #fff;
   transition: transform 0.5s ease, opacity 0.5s ease;
-  font-size: 16px; /* Increased from 14px */
+  font-size: 16px; 
   opacity: 0;
   transform: translateY(20px);
-  margin-bottom: 25px; /* Increased from 20px */
+  margin-bottom: 25px; 
 }
 
 .service-options .box:hover .content p {
@@ -266,7 +271,7 @@ body {
   transform: translateY(0);
 }
 
-/* Nav bar */
+
 nav {
   display: flex;
   align-items: center;
@@ -297,8 +302,6 @@ nav h1 {
 .active_nav h1 {
   color: #0e0e0e;
 }
-/* End of nav bar */
-
 .school-main-content {
   display: none;
   padding: 0 0;
