@@ -29,11 +29,7 @@ body {
   line-height: 1.6;
 }
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
+
 
 .login-container {
   display: flex;
@@ -131,9 +127,7 @@ body {
 .service-btn:hover{
   cursor: pointer;
 }
-.container h2{
-  text-align: center;
-}
+
 .service-options{
   align-items: center;
   display: flex;
