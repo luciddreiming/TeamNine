@@ -101,12 +101,11 @@
 
    <!-- School Survey Page -->
      <div class="school-main-content" id="schoolSurveyContent" style="display: none;">
-         <nav>
- 
-                 <button class="logout-btn" id="schoolLogoutBtn">Logout</button>
-                 <h1>School Classroom Feedback Survey</h1>
- 
-         </nav>
+        <nav>
+            <button class="logout-btn" id="schoolLogoutBtn">Logout</button>
+            <button class="back-btn" id="schoolBackBtn">Back to Select Service page</button>
+            <h1>School Classroom Feedback Survey</h1>
+        </nav>
          <div class="school-survey-background">
              <div class="background-top">
                  <h2 id="welcome">Share your classroom experience.</h2> 
@@ -236,32 +235,21 @@
                  </table>
              </div>
          </div>
- 
- 
- 
- 
- 
      </div>
- 
- 
-     <!-- Health Monitor Page -->
-     <!--I added id on each form field-->
      <div class="main-content" id="healthMonitorContent">
          <div class="second-header">
-             <button class="logout-btn" id="healthLogoutBtn">Logout</button>
-                 <!--added the relocated the logos-->
+             <button class="back-btn" id="healthBackBtn">Back to Select Service page</button>
              <div class="health-logo">
              <img src="images/barangay_seal.png" alt="barangay_seal" width="50px" height="50px">
              <img src="images/municipal_health.png" alt="municipal_health" width="50px" height="50px">
              </div>
              <h3>Baranggay 123 Health Center</h3>
+             <button class="logout-btn" id="healthLogoutBtn">Logout</button>
          </div>
          <div class="header">
-             <!--changed the class from container to health-container-->
              <div class="health-container">
                  <div class="header-actions">
                      <h1>Barangay Health Monitoring System</h1>
-                     <!--I added a print icon, feel free to fix it!-->
                      <button id="printHealthBtn" class="print-btn">
                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 -3 24 24"><path fill="currentColor" d="M8 21q-.825 0-1.412-.587T6 19v-2H4q-.825 0-1.412-.587T2 15v-4q0-1.275.875-2.137T5 8h14q1.275 0 2.138.863T22 11v4q0 .825-.587 1.413T20 17h-2v2q0 .825-.587 1.413T16 21zm-4-6h2q0-.825.588-1.412T8 13h8q.825 0 1.413.588T18 15h2v-4q0-.425-.288-.712T19 10H5q-.425 0-.712.288T4 11zm12-7V5H8v3H6V5q0-.825.588-1.412T8 3h8q.825 0 1.413.588T18 5v3zm2 4.5q.425 0 .713-.288T19 11.5t-.288-.712T18 10.5t-.712.288T17 11.5t.288.713t.712.287M16 19v-4H8v4zM4 10h16z"/>
                          </svg>
@@ -359,13 +347,13 @@
  
  
          <div class="container health-records print-only" id="printSection">
-             <div class="print-header">
-                 <h2>Barangay Health Records</h2>
-                 <div class="print-info">
-                     <p>Printed on: <span id="printDate"></span></p>
-                     <p>Total records: <span id="recordCount"></span></p>
-                 </div>
-             </div>
+            <div class="print-header">
+                <h2>Barangay Health Records</h2>
+                <div class="print-info">
+                    <p>Printed on: <span id="printDate"></span><br>Total records: <span id="recordCount"></span></p>
+                </div>
+            </div>
+        </div>
              <table id="healthRecordsTable">
                  <thead>
                      <tr>
