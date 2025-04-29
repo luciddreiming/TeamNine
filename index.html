@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Community Services Portal</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="TeamNine.css">
 </head>
 <body>
+    <!-- Login Page -->
     <div class="login-container" id="loginPage">
         <div class="login-box">
             <h1>Community Portal Login</h1>
@@ -25,6 +26,8 @@
             </form>
         </div>
     </div>
+
+    <!-- Signup Page -->
     <div class="login-container" id="signupPage" style="display: none;">
         <div class="login-box">
             <h1>Create Account</h1>
@@ -61,6 +64,7 @@
         </div>
     </div>
 
+     <!-- Service Selection Page -->
     <div class="main-content" id="serviceSelectionPage">
         <header>
             <button class="logout-btn" id="logoutBtn">Logout</button>
@@ -95,23 +99,14 @@
         </div>
     </div>
 
+   <!-- School Survey Page -->
      <div class="school-main-content" id="schoolSurveyContent" style="display: none;">
         <nav>
             <button class="logout-btn" id="schoolLogoutBtn">Logout</button>
             <button class="back-btn" id="schoolBackBtn">Back to Select Service page</button>
             <h1>School Classroom Feedback Survey</h1>
         </nav>
-         <div class="school-survey-background">
-             <header class="school-survey-header">
-                <div class="school-survey-header-actions">
-                  <button class="back-btn">Back to Select Service page</button>
-                </div>
-                <h1>School Classroom Feedback Survey</h1>
-                <div class="school-survey-header-actions">
-                  <button class="logout-btn">Logout</button>
-                </div>
-              </header>
- 
+         <div class="school-survey-background"> 
              <div class="background-bottom"></div>
              <div id="school-survey-container">
              <form class="survey-form" id="schoolSurveyForm">
@@ -374,5 +369,5 @@
          </div>
      </div>
  
-     <script src="script.js"></script>
+     <script src="TeamNine.js"></script>
  </body>
