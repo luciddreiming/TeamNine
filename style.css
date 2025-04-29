@@ -397,7 +397,7 @@ position: relative;
 nav {
    display: flex;
    align-items: center;
-   width: 100%;
+   width: 100%; 
    min-height: 10vh;
    padding: 0 3rem;
    position: fixed;
@@ -528,7 +528,6 @@ nav {
    height: auto;
  }
  
- /* School */
  .main-content {
    display: none;
    padding: 0;
@@ -567,7 +566,6 @@ nav {
     background-color: #e0e0e0;
 }
 
-/* For the health page specifically */
 .health-container .back-btn {
     margin-top: -15vh;
     margin-left: 16vh;
@@ -624,7 +622,7 @@ nav {
    margin-bottom: 1.5rem;
    text-align: center;
  }
- /* For the health page specifically */
+
 .health-container .back-btn {
   margin-top: -15vh;
   margin-left: 16vh;
@@ -636,7 +634,7 @@ nav {
       margin-left: 0;
   }
 }
- /* Changed the color of h2 */
+
  .health-form h2 {
    color: var(--primary-color);
    margin-bottom: 1.5rem;
@@ -747,7 +745,6 @@ nav {
    margin-top: 1rem;
  }
  
- /* Changed the background and hover of health-btn */
  .health-btn {
    background: linear-gradient(135deg, var(--barangay-blue), var(--barangay-green));
  }
@@ -805,32 +802,58 @@ nav {
  }
  
  .results-table,
- .health-records table {
-   width: 100%;
-   border-collapse: collapse;
-   background: white;
-   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-   border-radius: 8px;
-   overflow: hidden;
-   margin-bottom: 2rem;
- }
- 
- .results-table th,
- .results-table td,
- .health-records th,
- .health-records td {
-   padding: 12px 15px;
-   text-align: left;
-   border-bottom: 1px solid #ddd;
- }
- 
- .results-table th,
- .health-records th {
-   background-color: var(--primary-color);
-   color: white;
-   position: sticky;
-   top: 0;
- }
+.health-records table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  margin-bottom: 1rem; 
+  table-layout: auto;
+  font-size: 0.9em; 
+}
+
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-bottom: 1rem; 
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.results-table th,
+.results-table td,
+.health-records th,
+.health-records td {
+  padding: 8px 12px; 
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  white-space: nowrap;
+  line-height: 1.3; 
+}
+
+.table-compact th,
+.table-compact td {
+  padding: 6px 10px; 
+  font-size: 0.85em;
+}
+
+.results-table th,
+.health-records th {
+  background-color: var(--primary-color);
+  color: white;
+  position: sticky;
+  top: 0;
+  text-align: left;
+  font-weight: 500;
+}
+
+.form-section {
+  margin-bottom: 1rem; 
+}
  
  .results-table tr:nth-child(even),
  .health-records tr:nth-child(even) {
@@ -840,6 +863,14 @@ nav {
  .results-table tr:hover,
  .health-records tr:hover {
    background-color: #e9e9e9;
+ }
+ 
+ .table-container {
+   overflow-x: auto;
+   -webkit-overflow-scrolling: touch;
+   margin-bottom: 2rem;
+   border-radius: 8px;
+   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
  }
  
  .health-records {
@@ -880,8 +911,7 @@ nav {
    font-size: 0.8em;
    color: #666;
  }
- 
- /* Changed the button color for print button */
+
  .print-btn {
    background-color: var(--light-color);
    color: var(--primary-color);
@@ -946,8 +976,7 @@ nav {
      width: 100% !important;
      font-size: 12px;
    }
- 
-   /* Prevent row breaks */
+
    tr {
      page-break-inside: avoid;
    }
@@ -1235,10 +1264,8 @@ nav {
      width: 100%;
      text-align: left;
    }
- 
-   /* Adjust print button for mobile */
+
    .print-btn {
-     /*adjusted font-size, width, and margin*/
      padding: 12px;
      font-size: 20px;
      width: 100%;
@@ -1259,7 +1286,6 @@ nav {
  }
 }
 
-/* Mobile-specific styles for school survey */
 @media (max-width: 768px) {
   .school-main-content {
     padding: 0;
@@ -1404,7 +1430,6 @@ nav {
   }
 }
 
-/* Special adjustments for very small screens */
 @media (max-width: 360px) {
   #welcome {
     font-size: 18px;
@@ -1416,7 +1441,6 @@ nav {
   }
 }
 
-/* Print styles adjustment for mobile */
 @media print {
   .school-main-content {
     padding: 0;
