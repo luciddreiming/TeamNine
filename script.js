@@ -267,7 +267,7 @@ function handleLogin(e) {
 
     function handleSchoolFormSubmit(e) {
         e.preventDefault();
-
+    
         const isAnonymous = document.getElementById('anonymousSubmission').checked;
         const studentName = isAnonymous ? 'Anonymous' : document.getElementById('studentName').value || 'Anonymous';
         const teacherName = document.getElementById('teacherName').value;
@@ -276,12 +276,12 @@ function handleLogin(e) {
         const teacherRating = parseInt(document.querySelector('input[name="teacherRating"]:checked')?.value);
         const favoriteLesson = document.getElementById('favoriteLesson').value || 'Not specified';
         const suggestions = document.getElementById('suggestions').value || 'No suggestions';
-
+    
         if (!teacherName || !gradeSection || !className || !teacherRating) {
             alert('Please fill in all required fields');
             return;
         }
-
+    
         const newEntry = {
             studentName,
             teacherName,
@@ -292,7 +292,7 @@ function handleLogin(e) {
             suggestions,
             submissionDate: new Date().toLocaleDateString()
         };
-
+    
         schoolSurveyData.push(newEntry);
         updateSchoolSurveyTable();
         schoolSurveyForm.reset();
@@ -332,40 +332,70 @@ function handleLogin(e) {
     }
 
     function updateSchoolSurveyTable() {
-        const resultsContainer = document.getElementById('surveyResults');
-        resultsContainer.innerHTML = '';
-
+        const tbody = document.getElementById('surveyResults');
+        tbody.innerHTML = '';
+    
         const subjectFilter = filterSubject.value;
         const ratingFilter = parseInt(filterRating.value);
-
+    
         const filteredData = schoolSurveyData.filter(entry => {
             const matchesSubject = subjectFilter === 'All Subjects' || entry.className === subjectFilter;
             const matchesRating = ratingFilter === 0 || entry.teacherRating >= ratingFilter;
             return matchesSubject && matchesRating;
         });
-
+    
         if (filteredData.length === 0) {
-            resultsContainer.innerHTML = '<div class="no-results">No survey results found matching your criteria</div>';
+            tbody.innerHTML = '<tr><td colspan="7" style="text-align: center;">No survey results found</td></tr>';
             return;
         }
-
+    
         filteredData.forEach(entry => {
-            const card = document.createElement('div');
-            card.className = 'result-card';
+            const row = document.createElement('tr');
+            const stars = '★'.repeat(entry.teacherRating) + '☆'.repeat(5 - entry.teacherRating);
             
-            const starsDisplay = '★'.repeat(entry.teacherRating) + '☆'.repeat(5 - entry.teacherRating);
-            
-            card.innerHTML = `
-                <h4>${entry.teacherName} - ${entry.className}</h4>
-                <p><strong>Student:</strong> ${entry.studentName}</p>
-                <p><strong>Grade & Section:</strong> ${entry.gradeSection}</p>
-                <p><strong>Rating:</strong> <span class="result-rating">${starsDisplay}</span></p>
-                <p><strong>Favorite Lesson:</strong> ${entry.favoriteLesson}</p>
-                <p><strong>Suggestions:</strong> ${entry.suggestions}</p>
-                <p class="submission-date">Submitted: ${entry.submissionDate}</p>
+            row.innerHTML = `
+                <td>${entry.studentName}</td>
+                <td>${entry.teacherName}</td>
+                <td>${entry.gradeSection}</td>
+                <td>${entry.className}</td>
+                <td>${stars}</td>
+                <td>${entry.favoriteLesson}</td>
+                <td>${entry.suggestions}</td>
             `;
+            tbody.appendChild(row);
+        });
+    }function updateSchoolSurveyTable() {
+        const tbody = document.getElementById('surveyResults');
+        tbody.innerHTML = '';
+    
+        const subjectFilter = filterSubject.value;
+        const ratingFilter = parseInt(filterRating.value);
+    
+        const filteredData = schoolSurveyData.filter(entry => {
+            const matchesSubject = subjectFilter === 'All Subjects' || entry.className === subjectFilter;
+            const matchesRating = ratingFilter === 0 || entry.teacherRating >= ratingFilter;
+            return matchesSubject && matchesRating;
+        });
+    
+        if (filteredData.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="7" style="text-align: center;">No survey results found</td></tr>';
+            return;
+        }
+    
+        filteredData.forEach(entry => {
+            const row = document.createElement('tr');
+            const stars = '★'.repeat(entry.teacherRating) + '☆'.repeat(5 - entry.teacherRating);
             
-            resultsContainer.appendChild(card);
+            row.innerHTML = `
+                <td>${entry.studentName}</td>
+                <td>${entry.teacherName}</td>
+                <td>${entry.gradeSection}</td>
+                <td>${entry.className}</td>
+                <td>${stars}</td>
+                <td>${entry.favoriteLesson}</td>
+                <td>${entry.suggestions}</td>
+            `;
+            tbody.appendChild(row);
         });
     }
 
