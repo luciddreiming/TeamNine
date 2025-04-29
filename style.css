@@ -40,7 +40,38 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: linear-gradient(135deg, var(--barangay-blue), var(--barangay-green));
+  position: relative;
+}
+
+.login-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-size: cover;
+  background-position: center;
+  animation-name: service-bg-change;
+  animation-direction: alternate-reverse;
+  animation-play-state: running;
+  animation-timing-function: ease-in-out;
+  animation-duration: 15s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+}
+
+@keyframes service-bg-change {
+  0% {
+    background-image: url(images/1stSlide.jpg);
+  }
+  50% {
+    background-image: url(images/2ndSlide.jpg);
+  }
+  100% {
+    background-image: url(images/3rdSlide.jpg);
+  }
 }
 
 .login-box {
@@ -129,7 +160,7 @@ body {
 .service-selection-container {
   text-align: center;
   padding: 40px 0;
-  background-color: #87CEEB; 
+  background: linear-gradient(135deg, var(--barangay-blue), var(--barangay-green));
   min-height: 80vh;
   position: relative;
 }
@@ -151,27 +182,6 @@ body {
   width: 100%;
   height: 100%;
   z-index: -1;
-  background-size: cover;
-  background-position: center;
-  animation-name: service-bg-change;
-  animation-direction: alternate-reverse;
-  animation-play-state: running;
-  animation-timing-function: ease-in-out;
-  animation-duration: 15s;
-  animation-fill-mode: forwards;
-  animation-iteration-count: infinite;
-}
-
-@keyframes service-bg-change {
-  0% {
-    background-image: url(images/1stSlide.jpg);
-  }
-  50% {
-    background-image: url(images/2ndSlide.jpg);
-  }
-  100% {
-    background-image: url(images/3rdSlide.jpg);
-  }
 }
 
 .service-options .box {
