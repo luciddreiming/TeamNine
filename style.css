@@ -157,15 +157,128 @@ body {
   padding-right: 40px;
   width: 100%;
 }
-.service-selection-container {
+.main-content{
+padding: 40px 0;
+background: linear-gradient(135deg, var(--barangay-blue), var(--barangay-green));
+min-height: 80vh;
+position: relative;
+}
+.service-selection {
   text-align: center;
   padding: 40px 0;
-  background: linear-gradient(135deg, var(--barangay-blue), var(--barangay-green));
-  min-height: 80vh;
   position: relative;
+}
+.service-selection .service-title-btn {
+  position: relative;
+  display: block;
+  width: 90%;
+  max-width: 800px;
+  min-height: 120px;
+  padding: 40px;
+  margin: 0 auto 60px;
+  background: linear-gradient(135deg, var(--barangay-blue), var(--barangay-green));
+  color: white;
+  font-size: 2.5rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 15px;
+  cursor: default;
+  overflow: hidden;
+  transition: all 0.5s ease;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  line-height: 1.3;
+  text-align: center;
+}
+
+.service-selection .service-title-btn::before,
+.service-selection .service-title-btn::after {
+  content: 'Select a Service';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.5s ease;
+  padding: 40px;
+  box-sizing: border-box;
+}
+
+.service-selection .service-title-btn::after {
+  content: 'Welcome to our COMMUNITY SERVICE PORTAL! Please select one to continue.';
+  font-size: 1.9rem;
+  transform: translateY(100%);
+  opacity: 0;
+}
+
+/* Hover Effects */
+.service-selection .service-title-btn:hover::before {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+.service-selection .service-title-btn:hover::after {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Responsive Scaling */
+@media (max-width: 992px) {
+  .service-selection .service-title-btn {
+    font-size: 2.2rem;
+    padding: 35px;
+    min-height: 110px;
+  }
+  .service-selection .service-title-btn::after {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .service-selection .service-title-btn {
+    width: 95%;
+    font-size: 2rem;
+    padding: 30px;
+    min-height: 100px;
+  }
+  .service-selection .service-title-btn::after {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .service-selection .service-title-btn {
+    font-size: 1.8rem;
+    padding: 25px 20px;
+    min-height: 90px;
+  }
+  .service-selection .service-title-btn::after {
+    font-size: 1.4rem;
+    padding: 25px 20px;
+  }
+}
+
+.service-selection .service-title-btn:hover::before {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+.service-selection .service-title-btn:hover::after {
+  transform: translateY(0);
+  opacity: 1;
+}
+.service-selection h2 {
+  color: white;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
 }
 .service-options {
   align-items: center;
+  background: linear-gradient(135deg, var(--barangay-blue), var(--barangay-green));
   display: flex;
   justify-content: center;
   margin-top: 50px;
