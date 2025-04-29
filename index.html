@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Community Services Portal</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="TeamNine.css">
 </head>
 <body>
     <!-- Login Page -->
@@ -107,11 +107,10 @@
             <h1>School Classroom Feedback Survey</h1>
         </nav>
          <div class="school-survey-background"> 
-             <div class="background-bottom"></div>
-             <div id="school-survey-container">
+            <div class="background-top"></div>
+            <div class="background-bottom"></div>
+            <div id="school-survey-container">
              <form class="survey-form" id="schoolSurveyForm">
- 
- 
                  <div class="form-group">
                      <label for="studentName">Your Name</label>
                      <input type="text" id="studentName" placeholder="Enter your name">
@@ -232,6 +231,8 @@
              </div>
          </div>
      </div>
+
+     <!-- Health Monitoring Page -->
      <div class="main-content" id="healthMonitorContent">
          <div class="second-header">
              <button class="back-btn" id="healthBackBtn">Back to Select Service page</button>
@@ -338,7 +339,6 @@
              </form>
          </div>
  
- 
          <div class="container health-records print-only" id="printSection">
             <div class="print-header">
                 <h2>Barangay Health Records</h2>
@@ -346,28 +346,28 @@
                     <p>Printed on: <span id="printDate"></span><br>Total records: <span id="recordCount"></span></p>
                 </div>
             </div>
+            <table id="healthRecordsTable">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Purok</th>
+                        <th>Address</th>
+                        <th>Age</th>
+                        <th>Contact</th>
+                        <th>Vaccination</th>
+                        <th>Symptoms</th>
+                        <th>Last Checkup</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+            <div class="print-footer">
+                <p>Barangay Health Monitoring System - Confidential</p>
+            </div>
         </div>
-             <table id="healthRecordsTable">
-                 <thead>
-                     <tr>
-                         <th>Name</th>
-                         <th>Purok</th>
-                         <th>Address</th>
-                         <th>Age</th>
-                         <th>Contact</th>
-                         <th>Vaccination</th>
-                         <th>Symptoms</th>
-                         <th>Last Checkup</th>
-                     </tr>
-                 </thead>
-                 <tbody>
-                 </tbody>
-             </table>
-             <div class="print-footer">
-                 <p>Barangay Health Monitoring System - Confidential</p>
-             </div>
-         </div>
      </div>
  
-     <script src="script.js"></script>
+     <script src="TeamNine.js"></script>
  </body>
+</html>
