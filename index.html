@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Login Page -->
     <div class="login-container" id="loginPage">
         <div class="login-box">
             <h1>Community Portal Login</h1>
@@ -26,8 +25,6 @@
             </form>
         </div>
     </div>
-
-    <!-- Signup Page -->
     <div class="login-container" id="signupPage" style="display: none;">
         <div class="login-box">
             <h1>Create Account</h1>
@@ -64,7 +61,6 @@
         </div>
     </div>
 
-     <!-- Service Selection Page -->
     <div class="main-content" id="serviceSelectionPage">
         <header>
             <button class="logout-btn" id="logoutBtn">Logout</button>
@@ -99,7 +95,6 @@
         </div>
     </div>
 
-   <!-- School Survey Page -->
      <div class="school-main-content" id="schoolSurveyContent" style="display: none;">
         <nav>
             <button class="logout-btn" id="schoolLogoutBtn">Logout</button>
@@ -107,9 +102,6 @@
             <h1>School Classroom Feedback Survey</h1>
         </nav>
          <div class="school-survey-background">
-             <div class="background-top">
-                 <h2 id="welcome">Share your classroom experience.</h2> 
-             </div>
              <header class="school-survey-header">
                 <div class="school-survey-header-actions">
                   <button class="back-btn">Back to Select Service page</button>
@@ -273,17 +265,14 @@
                  <h2>Health Information Survey</h2>
                  <h3>Personal Information</h3>
                  <div class="form-section">
-                     <!--changed the class name to health-form-group-->
                      <div class="health-form-group">
                          <label for="fullName">Name</label>
                          <input type="text" id="fullName" name="fullName" required placeholder="Please enter your name." required>
                      </div>
-                         <!--I changed the placement of age-->
                      <div class="health-form-group">
                          <label for="age">Age</label>
                          <input type="number" id="age" name="age" min="1" max="100" required placeholder="Please enter your age." required>
                      </div>
-                         <!--I changed the placemen of contact number-->
                      <div class="health-form-group">
                          <label for="contactNumbers">Contact</label>
                          <input type="text" id="contactNumbers" name="contactNumbers" placeholder="Please enter your contact numbers." required>
