@@ -69,17 +69,11 @@ body {
   0% {
     background-image: url(images/1stSlide.jpg);
   }
-  25% {
+  50% {
     background-image: url(images/2ndSlide.jpg);
   }
-  50% {
-    background-image: url(images/3rdSlide.jpg);
-  }
-  75% {
-    background-image: url(images/4thSlide.jpg);
-  }
   100% {
-    background-image: url(images/5thSlide.jpg);
+    background-image: url(images/3rdSlide.jpg);
   }
 }
 
@@ -494,23 +488,12 @@ nav {
  }
  
  @keyframes change {
-   0% {
-     background-image: url(img/slide1.jpg);
-   }
-   25% {
-     background-image: url(img/slide2.jpg);
-   }
-   50% {
-     background-image: url(img/slide3.jpg);
-   }
-   75% {
-     background-image: url(img/slide4.jpg);
-   }
-   100% {
-     background-image: url(img/slide5.jpg);
-   }
- }
- 
+  0% { background-image: url(img/slide1.jpg); }
+  25% { background-image: url(img/slide2.jpg); }
+  50% { background-image: url(img/slide3.jpg); }
+  75% { background-image: url(img/slide4.jpg); }
+  100% { background-image: url(img/slide5.jpg); }
+}
  .background-bottom {
    top: 20%;
    height: 80%;
@@ -924,6 +907,7 @@ nav {
    margin: 10px 0;
    transition: background-color 0.3s;
  }
+ /* Changed hover */
  .print-btn:hover {
    filter: brightness(1);
  }
@@ -1075,6 +1059,8 @@ nav {
      }
    }
  }
+ 
+ /*health monitoring*/
  
  #healthMonitorContent{
    background-image: url('https://img.freepik.com/premium-vector/seamless-pattern-doodle-drawings-medical-equipment-first-aid-items-doodle-seamless-pattern_947681-1551.jpg?semt=ais_hybrid&w=740');
@@ -1236,6 +1222,7 @@ nav {
    grid-column: 1 / -1;
  }
  
+ /* Mobile-specific styles for health monitoring */
 @media (max-width: 768px) {
   #healthMonitorContent {
     background-size: contain;
@@ -1340,10 +1327,12 @@ nav {
   }
 }
 
+/* Remove survey result section */
 .survey-results {
   display: none !important;
 }
 
+/* Responsive table styles */
 @media (max-width: 768px) {
   .school-main-content {
     padding: 0;
