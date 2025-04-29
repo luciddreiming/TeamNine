@@ -584,8 +584,6 @@ header h1 {
   margin-bottom: 1.5rem;
   text-align: center;
 }
-
-/* Changed the color of h2 */
 .health-form h2 {
   color: var(--primary-color);
   margin-bottom: 1.5rem;
@@ -696,7 +694,6 @@ header h1 {
   margin-top: 1rem;
 }
 
-/* Changed the background and hover of health-btn */
 .health-btn {
   background: linear-gradient(135deg, var(--barangay-blue), var(--barangay-green));
 }
@@ -829,8 +826,6 @@ header h1 {
   font-size: 0.8em;
   color: #666;
 }
-
-/* Changed the button color for print button */
 .print-btn {
   background-color: var(--light-color);
   color: var(--primary-color);
@@ -842,7 +837,6 @@ header h1 {
   margin: 10px 0;
   transition: background-color 0.3s;
 }
-/* Changed hover */
 .print-btn:hover {
   filter: brightness(1);
 }
@@ -895,8 +889,6 @@ tr {
     width: 100% !important;
     font-size: 12px;
   }
-
-  /* Prevent row breaks */
   tr {
     page-break-inside: avoid;
   }
@@ -996,98 +988,95 @@ tr {
   }
 }
 
-/*health monitoring*/
-
-#healthMonitorContent{
+/* Health monitoring */
+#healthMonitorContent {
   background-image: url('https://img.freepik.com/premium-vector/seamless-pattern-doodle-drawings-medical-equipment-first-aid-items-doodle-seamless-pattern_947681-1551.jpg?semt=ais_hybrid&w=740');
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-size:cover;
+  background-size: cover;
   background-position-x: center;
   background-position-y: bottom;
 }
 
-.second-header h3{
+.header {
+  padding: 250px;
+  width: 100%;
+  position: fixed;
+  z-index: 0;
+}
+
+.header h1 {
   color: white;
 }
 
-.second-header{
-  background-color: var(--barangay-blue);
-  padding: 1px 1px;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  gap: 50px;
-  max-width: none;
-  align-items: center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 5;
-}
-
-.second-header button{
-  margin-left: 15vh;
-}
-
-.second-header .health-logo{
-  display: flex;
-  align-items: center;
-}
-
-.header{
+.header .health-container {
   background-image: url('https://external-preview.redd.it/JMWYV3NtnAzO6Ux56z4Pi56bM4WVESZ_cdIwacuEIzo.jpg?width=1080&crop=smart&auto=webp&s=86505f9ae35b09ecbda2bb93b7523c68a538904b');
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
   background-position-x: center;
   background-position-y: bottom;
-  padding: 30px;
-  padding-bottom: 20vh;
-  position:relative;
-  z-index: 0;
-}
-
-.header h1{
-  color: white;
-}
-
-.header .health-container{
-  position: relative;
   max-width: none;
-  z-index: 0;
+  margin: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: -1;
 }
 
-.health-container{
-  padding: 30px;
+.health-container {
+  padding: 70px;
+  padding-bottom: 100px;
   justify-content: center;
   align-items: center;
 }
 
-.header-actions{
+.header-actions {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   flex-wrap: wrap;
-  align-items: center;
   margin-top: 5vh;
-  margin-right: 30%;
   align-items: center;
-  gap: 50px;
+  gap: 20px;
 }
 
-.health-form{
+.health-logo,
+.header h1 {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.health-logo {
+  margin-left: 6vh;
+}
+
+.header-actions h1,
+.header-actions .print-btn {
+  margin-right: 6vh;
+}
+
+.header h1 {
+  margin-right: 22vh;
+}
+
+.health-container #healthLogoutBtn {
+  margin-top: -15vh;
+  margin-left: 6vh;
+}
+
+.health-form {
   border: 3px solid #166088;
-  margin-top: -20vh;
+  margin-top: 35vh;
   position: relative;
-  z-index: 2;
+  z-index: 1;
 }
 
-#healthSurveyForm h2{
+#healthSurveyForm h2 {
   font-size: 2rem;
 }
 
-#healthSurveyForm h3{
+#healthSurveyForm h3 {
   font-size: 1.5em;
   color: var(--secondary-color);
   margin-bottom: 1rem;
@@ -1107,7 +1096,7 @@ tr {
 
 .health-form-group input:focus,
 .health-form-group textarea:focus,
-.health-form-group select:focus{
+.health-form-group select:focus {
   border-color: #166088;
   outline: none;
 }
@@ -1123,19 +1112,19 @@ tr {
   margin-bottom: 10px;
 }
 
-.health-form .form-section{
+.health-form .form-section {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 1rem;
 }
 
-.health-form-group{
+.health-form-group {
   flex: 0 0 48%;
   margin-bottom: 1rem;
 }
 
-#symptoms{
+#symptoms {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 2fr));
   margin-bottom: 1rem;
@@ -1149,55 +1138,46 @@ tr {
   gap: 5px;
 }
 
-#symptoms label:last-child{
+#symptoms label:last-child {
   grid-column: 1 / -1;
 }
 
 @media (max-width: 600px) {
-
-  .second-header{
-    align-items: flex-start;
-    gap: 5px;
-  }
-
-  .second-header h3{
-    font-size: 1.2rem;
-  }
-  
-  .secon-header img{
-    width: 50px;
-    height: auto;
-  }
-
-  .second-header button{
-    margin-left: 0;
-  }
-
-  .header-actions{
+  .header-actions {
     flex-direction: column;
     align-items: flex-start;
   }
 
-  .header h1{
+  .health-logo {
+    margin-left: 0vh;
+  }
+
+  .header h1 {
     float: none;
-    margin-top: 5vh;
     width: 100%;
     text-align: left;
   }
 
-  /* Adjust print button for mobile */
+  .health-container #healthLogoutBtn {
+    margin-top: 0vh;
+    margin-left: 0vh;
+  }
   .print-btn {
-    /*adjusted font-size, width, and margin*/
     padding: 12px;
     font-size: 20px;
-    width: 100%;
-    margin: 0;
+    width: 70%;
+    margin: 10px 0;
   }
 
-  .health-form-group{
+  .health-form-group {
     flex: 0 0 100%;
     margin-bottom: 1rem;
   }
+
+  .health-form {
+    margin-top: 70vh;
+  }
+}
 #studentVerification {
     width: 100%;
     padding: 10px;
