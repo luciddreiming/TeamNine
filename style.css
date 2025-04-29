@@ -551,7 +551,34 @@ nav {
    justify-content: space-between;
    align-items: center;
  }
- 
+ .back-btn {
+    padding: 8px 16px;
+    background-color: var(--light-color);
+    color: var(--primary-color);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    margin-left: 10px;
+}
+
+.back-btn:hover {
+    background-color: #e0e0e0;
+}
+
+/* For the health page specifically */
+.health-container .back-btn {
+    margin-top: -15vh;
+    margin-left: 16vh;
+}
+
+@media (max-width: 600px) {
+    .health-container .back-btn {
+        margin-top: 0;
+        margin-left: 0;
+    }
+}
  .logout-btn,
  .print-btn {
    padding: 8px 16px;
@@ -568,7 +595,21 @@ nav {
  .print-btn:hover {
    background-color: #e0e0e0;
  }
- 
+ .back-btn {
+  padding: 8px 16px;
+  background-color: var(--light-color);
+  color: var(--primary-color);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+  margin-left: 10px;
+}
+
+.back-btn:hover {
+  background-color: #e0e0e0;
+}
  .survey-form,
  .health-form {
    background: white;
@@ -583,7 +624,18 @@ nav {
    margin-bottom: 1.5rem;
    text-align: center;
  }
- 
+ /* For the health page specifically */
+.health-container .back-btn {
+  margin-top: -15vh;
+  margin-left: 16vh;
+}
+
+@media (max-width: 600px) {
+  .health-container .back-btn {
+      margin-top: 0;
+      margin-left: 0;
+  }
+}
  /* Changed the color of h2 */
  .health-form h2 {
    color: var(--primary-color);
@@ -1205,3 +1257,178 @@ nav {
      font-size: 16px;
      margin-bottom: 1.5rem;
  }
+}
+
+/* Mobile-specific styles for school survey */
+@media (max-width: 768px) {
+  .school-main-content {
+    padding: 0;
+  }
+
+  #school-survey-container {
+    width: 100%;
+    margin: 180px 0 20px 0;
+    padding: 15px;
+    float: none;
+  }
+
+  .school-survey-background {
+    min-height: 100vh;
+  }
+
+  #welcome {
+    font-size: 24px;
+    padding-top: 3rem;
+    letter-spacing: 0.1rem;
+  }
+
+  .background-top {
+    height: 15%;
+  }
+
+  .background-bottom {
+    top: 15%;
+    height: 85%;
+  }
+
+  .survey-form {
+    padding: 15px;
+    width: 100%;
+  }
+
+  .form-group {
+    margin-bottom: 1.2rem;
+  }
+
+  .rating-container {
+    justify-content: center;
+  }
+
+  .rating-container label {
+    font-size: 30px;
+    padding: 0 8px;
+  }
+
+  .filter-controls {
+    padding: 15px;
+  }
+
+  .filter-group {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+  }
+
+  .filter-group label {
+    margin-bottom: 5px;
+    min-width: auto;
+  }
+
+  .filter-btn {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .school-table {
+    overflow-x: auto;
+    margin: 0 10px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .results-table {
+    font-size: 14px;
+  }
+
+  .results-table th,
+  .results-table td {
+    padding: 8px 10px;
+    white-space: nowrap;
+  }
+
+  nav {
+    padding: 0 15px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  nav h1 {
+    font-size: 16px;
+    padding: 10px 0;
+    order: 2;
+    width: 100%;
+    text-align: center;
+  }
+
+  .logout-btn,
+  .back-btn {
+    padding: 8px 12px;
+    font-size: 14px;
+    margin: 5px 0;
+  }
+
+  .back-btn {
+    order: 1;
+  }
+
+  .logout-btn {
+    order: 3;
+  }
+}
+
+@media (max-width: 480px) {
+  #welcome {
+    font-size: 20px;
+    padding-top: 2.5rem;
+  }
+
+  .survey-form h2 {
+    font-size: 1.3rem;
+  }
+
+  .form-group input[type="text"],
+  .form-group input[type="number"],
+  .form-group input[type="date"],
+  .form-group select,
+  .form-group textarea {
+    padding: 12px;
+    font-size: 16px;
+  }
+
+  .submit-btn {
+    padding: 14px;
+    font-size: 16px;
+  }
+
+  .filter-controls h2 {
+    font-size: 1.2rem;
+  }
+}
+
+/* Special adjustments for very small screens */
+@media (max-width: 360px) {
+  #welcome {
+    font-size: 18px;
+  }
+
+  .rating-container label {
+    font-size: 24px;
+    padding: 0 5px;
+  }
+}
+
+/* Print styles adjustment for mobile */
+@media print {
+  .school-main-content {
+    padding: 0;
+  }
+  
+  #school-survey-container {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .background-top,
+  .background-bottom {
+    display: none;
+  }
+}
