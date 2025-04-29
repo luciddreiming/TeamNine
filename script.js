@@ -124,7 +124,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-// After successful login
 function handleLogin(e) {
     e.preventDefault();
 
@@ -136,7 +135,6 @@ function handleLogin(e) {
     );
 
     if (user) {
-        // Store current user in session
         sessionStorage.setItem('currentUser', JSON.stringify(user));
         if (!user.isStudent) {
             document.getElementById('schoolSurveyBtn').disabled = true;
@@ -281,6 +279,7 @@ function handleLogin(e) {
             alert('Please fill in all required fields');
             return;
         }
+
     
         const newEntry = {
             studentName,
@@ -294,16 +293,18 @@ function handleLogin(e) {
         };
     
         schoolSurveyData.push(newEntry);
-        updateSchoolSurveyTable();
         schoolSurveyForm.reset();
         document.querySelectorAll('input[name="teacherRating"]').forEach(input => input.checked = false);
+        resetSchoolFilters();
         alert('Thank you for your feedback!');
     }
 
     function resetSchoolFilters() {
         filterSubject.value = 'All Subjects';
         filterRating.value = '0';
-        updateSchoolSurveyTable();
+        updateSchoolSurveyTable();       
+        const ratingStars = document.querySelectorAll('.rating-container input');
+        ratingStars.forEach(star => star.checked = false);
     }
 
     function updateHealthRecordsTable() {
@@ -330,61 +331,34 @@ function handleLogin(e) {
             tbody.appendChild(row);
         });
     }
-
     function updateSchoolSurveyTable() {
         const tbody = document.getElementById('surveyResults');
-        tbody.innerHTML = '';
-    
+        tbody.innerHTML = '';      
         const subjectFilter = filterSubject.value;
         const ratingFilter = parseInt(filterRating.value);
-    
+        console.log("Current filters - Subject:", subjectFilter, "Rating:", ratingFilter);
+        console.log("All survey data:", schoolSurveyData);
+        
         const filteredData = schoolSurveyData.filter(entry => {
+            const entryRating = parseInt(entry.teacherRating);
+            const filterValue = parseInt(ratingFilter);        
             const matchesSubject = subjectFilter === 'All Subjects' || entry.className === subjectFilter;
-            const matchesRating = ratingFilter === 0 || entry.teacherRating >= ratingFilter;
-            return matchesSubject && matchesRating;
-        });
-    
-        if (filteredData.length === 0) {
-            tbody.innerHTML = '<tr><td colspan="7" style="text-align: center;">No survey results found</td></tr>';
-            return;
-        }
-    
-        filteredData.forEach(entry => {
-            const row = document.createElement('tr');
-            const stars = '★'.repeat(entry.teacherRating) + '☆'.repeat(5 - entry.teacherRating);
+            const matchesRating = isNaN(filterValue) || filterValue === 0 || entryRating === filterValue;
+            console.log(`Entry: ${entry.studentName}, Rating: ${entryRating}, Subject: ${entry.className}`);
+            console.log(`Matches subject? ${matchesSubject}, Matches rating? ${matchesRating}`);
             
-            row.innerHTML = `
-                <td>${entry.studentName}</td>
-                <td>${entry.teacherName}</td>
-                <td>${entry.gradeSection}</td>
-                <td>${entry.className}</td>
-                <td>${stars}</td>
-                <td>${entry.favoriteLesson}</td>
-                <td>${entry.suggestions}</td>
-            `;
-            tbody.appendChild(row);
-        });
-    }function updateSchoolSurveyTable() {
-        const tbody = document.getElementById('surveyResults');
-        tbody.innerHTML = '';
-    
-        const subjectFilter = filterSubject.value;
-        const ratingFilter = parseInt(filterRating.value);
-    
-        const filteredData = schoolSurveyData.filter(entry => {
-            const matchesSubject = subjectFilter === 'All Subjects' || entry.className === subjectFilter;
-            const matchesRating = ratingFilter === 0 || entry.teacherRating >= ratingFilter;
             return matchesSubject && matchesRating;
         });
-    
+        console.log("Filtered results:", filteredData);
+        
         if (filteredData.length === 0) {
             tbody.innerHTML = '<tr><td colspan="7" style="text-align: center;">No survey results found</td></tr>';
             return;
-        }
-    
+        }     
         filteredData.forEach(entry => {
             const row = document.createElement('tr');
-            const stars = '★'.repeat(entry.teacherRating) + '☆'.repeat(5 - entry.teacherRating);
+            const rating = parseInt(entry.teacherRating); 
+            const stars = '★'.repeat(rating) + '☆'.repeat(5 - rating);
             
             row.innerHTML = `
                 <td>${entry.studentName}</td>
@@ -398,7 +372,6 @@ function handleLogin(e) {
             tbody.appendChild(row);
         });
     }
-
 
     function printHealthRecords() {
         const now = new Date();
@@ -562,7 +535,6 @@ function handleLogin(e) {
     initEventListeners();
 });
 
-/*nav bar */
 const nav = document.querySelector('nav');
 
         window.addEventListener('scroll', () => {
