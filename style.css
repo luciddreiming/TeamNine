@@ -883,95 +883,98 @@ tr {
   }
 }
 
-/* Health monitoring */
-#healthMonitorContent {
+/*health monitoring*/
+
+#healthMonitorContent{
   background-image: url('https://img.freepik.com/premium-vector/seamless-pattern-doodle-drawings-medical-equipment-first-aid-items-doodle-seamless-pattern_947681-1551.jpg?semt=ais_hybrid&w=740');
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-size: cover;
+  background-size:cover;
   background-position-x: center;
   background-position-y: bottom;
 }
 
-.header {
-  padding: 250px;
-  width: 100%;
-  position: fixed;
-  z-index: 0;
-}
-
-.header h1 {
+.second-header h3{
   color: white;
 }
 
-.header .health-container {
+.second-header{
+  background-color: var(--barangay-blue);
+  padding: 1px 1px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 50px;
+  max-width: none;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 5;
+}
+
+.second-header button{
+  margin-left: 15vh;
+}
+
+.second-header .health-logo{
+  display: flex;
+  align-items: center;
+}
+
+.header{
   background-image: url('https://external-preview.redd.it/JMWYV3NtnAzO6Ux56z4Pi56bM4WVESZ_cdIwacuEIzo.jpg?width=1080&crop=smart&auto=webp&s=86505f9ae35b09ecbda2bb93b7523c68a538904b');
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
   background-position-x: center;
   background-position-y: bottom;
-  max-width: none;
-  margin: 0;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: -1;
+  padding: 30px;
+  padding-bottom: 20vh;
+  position:relative;
+  z-index: 0;
 }
 
-.health-container {
-  padding: 70px;
-  padding-bottom: 100px;
+.header h1{
+  color: white;
+}
+
+.header .health-container{
+  position: relative;
+  max-width: none;
+  z-index: 0;
+}
+
+.health-container{
+  padding: 30px;
   justify-content: center;
   align-items: center;
 }
 
-.header-actions {
+.header-actions{
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   flex-wrap: wrap;
-  margin-top: 5vh;
   align-items: center;
-  gap: 20px;
+  margin-top: 5vh;
+  margin-right: 30%;
+  align-items: center;
+  gap: 50px;
 }
 
-.health-logo,
-.header h1 {
-  display: inline-block;
-  vertical-align: middle;
-}
-
-.health-logo {
-  margin-left: 6vh;
-}
-
-.header-actions h1,
-.header-actions .print-btn {
-  margin-right: 6vh;
-}
-
-.header h1 {
-  margin-right: 22vh;
-}
-
-.health-container #healthLogoutBtn {
-  margin-top: -15vh;
-  margin-left: 6vh;
-}
-
-.health-form {
+.health-form{
   border: 3px solid #166088;
-  margin-top: 35vh;
+  margin-top: -20vh;
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
-#healthSurveyForm h2 {
+#healthSurveyForm h2{
   font-size: 2rem;
 }
 
-#healthSurveyForm h3 {
+#healthSurveyForm h3{
   font-size: 1.5em;
   color: var(--secondary-color);
   margin-bottom: 1rem;
@@ -991,7 +994,7 @@ tr {
 
 .health-form-group input:focus,
 .health-form-group textarea:focus,
-.health-form-group select:focus {
+.health-form-group select:focus{
   border-color: #166088;
   outline: none;
 }
@@ -1007,19 +1010,19 @@ tr {
   margin-bottom: 10px;
 }
 
-.health-form .form-section {
+.health-form .form-section{
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 1rem;
 }
 
-.health-form-group {
+.health-form-group{
   flex: 0 0 48%;
   margin-bottom: 1rem;
 }
 
-#symptoms {
+#symptoms{
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 2fr));
   margin-bottom: 1rem;
@@ -1033,48 +1036,55 @@ tr {
   gap: 5px;
 }
 
-#symptoms label:last-child {
+#symptoms label:last-child{
   grid-column: 1 / -1;
 }
 
 @media (max-width: 600px) {
-  .header-actions {
+
+  .second-header{
+    align-items: flex-start;
+    gap: 5px;
+  }
+
+  .second-header h3{
+    font-size: 1.2rem;
+  }
+  
+  .secon-header img{
+    width: 50px;
+    height: auto;
+  }
+
+  .second-header button{
+    margin-left: 0;
+  }
+
+  .header-actions{
     flex-direction: column;
     align-items: flex-start;
   }
 
-  .health-logo {
-    margin-left: 0vh;
-  }
-
-  .header h1 {
+  .header h1{
     float: none;
+    margin-top: 5vh;
     width: 100%;
     text-align: left;
   }
 
-  .health-container #healthLogoutBtn {
-    margin-top: 0vh;
-    margin-left: 0vh;
-  }
-
   /* Adjust print button for mobile */
   .print-btn {
+    /*adjusted font-size, width, and margin*/
     padding: 12px;
     font-size: 20px;
-    width: 70%;
-    margin: 10px 0;
+    width: 100%;
+    margin: 0;
   }
 
-  .health-form-group {
+  .health-form-group{
     flex: 0 0 100%;
     margin-bottom: 1rem;
   }
-
-  .health-form {
-    margin-top: 70vh;
-  }
-}
 #studentVerification {
     width: 100%;
     padding: 10px;
