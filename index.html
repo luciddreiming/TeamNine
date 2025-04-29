@@ -99,24 +99,19 @@
         </div>
     </div>
 
-    <!-- School Survey Page -->
+    <!-- School Survey Page - Mobile Optimized -->
     <div class="school-main-content" id="schoolSurveyContent" style="display: none;">
         <nav>
-           
-                <button class="logout-btn" id="schoolLogoutBtn">Logout</button>
-                <h1>School Classroom Feedback Survey</h1>
-         
+            <button class="logout-btn" id="schoolLogoutBtn">Logout</button>
+            <h1>School Classroom Feedback Survey</h1>
         </nav>
-        <div class="school-survey-background">
-            <div class="background-top">
-                <h2 id="welcome">Share your classroom experience.</h2> 
+        
+        <div class="mobile-survey-container">
+            <div class="survey-header">
+                <h2>Share your classroom experience</h2>
             </div>
-                 
-            <div class="background-bottom"></div>
-            <div id="school-survey-container">
+            
             <form class="survey-form" id="schoolSurveyForm">
-                
-                
                 <div class="form-group">
                     <label for="studentName">Your Name</label>
                     <input type="text" id="studentName" placeholder="Enter your name">
@@ -159,15 +154,15 @@
                     <label>Teacher Rating</label>
                     <div class="rating-container">
                         <input type="radio" id="teacher5" name="teacherRating" value="5">
-                        <label for="teacher5" class="star"></label>
+                        <label for="teacher5" class="star">★</label>
                         <input type="radio" id="teacher4" name="teacherRating" value="4">
-                        <label for="teacher4" class="star"></label>
+                        <label for="teacher4" class="star">★</label>
                         <input type="radio" id="teacher3" name="teacherRating" value="3">
-                        <label for="teacher3" class="star"></label>
+                        <label for="teacher3" class="star">★</label>
                         <input type="radio" id="teacher2" name="teacherRating" value="2">
-                        <label for="teacher2" class="star"></label>
+                        <label for="teacher2" class="star">★</label>
                         <input type="radio" id="teacher1" name="teacherRating" value="1">
-                        <label for="teacher1" class="star"></label>
+                        <label for="teacher1" class="star">★</label>
                     </div>
                 </div>
 
@@ -190,7 +185,7 @@
             </form>
 
             <div class="filter-controls">
-                <h2>Survey Results</h2>
+                <h3>Survey Results</h3>
                 <div class="filter-group">
                     <label for="filterSubject">Filter by Subject:</label>
                     <select id="filterSubject">
@@ -217,53 +212,26 @@
                 <button id="resetFilters" class="filter-btn">Reset Filters</button>
             </div>
 
-            
-            
-            </div>
-            <div class="school-table">
-                <table class="results-table">
-                    <thead>
-                        <tr>
-                            <th>Student</th>
-                            <th>Teacher</th>
-                            <th>Grade & Section</th>
-                            <th>Subject</th>
-                            <th>Rating</th>
-                            <th>Favorite Lesson</th>
-                            <th>Suggestions</th>
-                        </tr>
-                    </thead>
-                    <tbody id="surveyResults">
-                    </tbody>
-                </table>
+            <div class="results-container">
+                <div class="results-header">
+                    <h3>Feedback Results</h3>
+                </div>
+                <div id="surveyResults" class="results-list"></div>
             </div>
         </div>
-        
-
-        
-
-       
     </div>
 
-    
     <!-- Health Monitor Page -->
-    <!--I added id on each form field-->
-    <div class="main-content" id="healthMonitorContent">
-        <div class="second-header">
-            <button class="logout-btn" id="healthLogoutBtn">Logout</button>
-                <!--added the relocated the logos-->
-            <div class="health-logo">
-            <img src="images/barangay_seal.png" alt="barangay_seal" width="50px" height="50px">
-            <img src="images/municipal_health.png" alt="municipal_health" width="50px" height="50px">
-            </div>
-            <h3>Baranggay 123 Health Center</h3>
-        </div>
+    <div class="main-content" id="healthMonitorContent" style="display: none;">
         <div class="header">
-            <!--changed the class from container to health-container-->
             <div class="health-container">
+                <button class="logout-btn" id="healthLogoutBtn">Logout</button>
                 <div class="header-actions">
+                    <div class="health-logo">
+                        <img src="images/barangay_seal.png" alt="barangay_seal" width="100px" height="100px">
+                        <img src="images/municipal_health.png" alt="municipal_health" width="100px" height="100px">
+                    </div>
                     <h1>Barangay Health Monitoring System</h1>
-                    <!--I added a print icon, feel free to fix it!-->
                     <button id="printHealthBtn" class="print-btn">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 -3 24 24"><path fill="currentColor" d="M8 21q-.825 0-1.412-.587T6 19v-2H4q-.825 0-1.412-.587T2 15v-4q0-1.275.875-2.137T5 8h14q1.275 0 2.138.863T22 11v4q0 .825-.587 1.413T20 17h-2v2q0 .825-.587 1.413T16 21zm-4-6h2q0-.825.588-1.412T8 13h8q.825 0 1.413.588T18 15h2v-4q0-.425-.288-.712T19 10H5q-.425 0-.712.288T4 11zm12-7V5H8v3H6V5q0-.825.588-1.412T8 3h8q.825 0 1.413.588T18 5v3zm2 4.5q.425 0 .713-.288T19 11.5t-.288-.712T18 10.5t-.712.288T17 11.5t.288.713t.712.287M16 19v-4H8v4zM4 10h16z"/>
                         </svg>
@@ -278,22 +246,18 @@
                 <h2>Health Information Survey</h2>
                 <h3>Personal Information</h3>
                 <div class="form-section">
-                    <!--changed the class name to health-form-group-->
                     <div class="health-form-group">
                         <label for="fullName">Name</label>
                         <input type="text" id="fullName" name="fullName" required placeholder="Please enter your name." required>
                     </div>
-                        <!--I changed the placement of age-->
                     <div class="health-form-group">
                         <label for="age">Age</label>
                         <input type="number" id="age" name="age" min="1" max="100" required placeholder="Please enter your age." required>
                     </div>
-                        <!--I changed the placemen of contact number-->
                     <div class="health-form-group">
                         <label for="contactNumbers">Contact</label>
                         <input type="text" id="contactNumbers" name="contactNumbers" placeholder="Please enter your contact numbers." required>
                     </div>
-
                     <div class="health-form-group">
                         <label for="purok">Purok</label>
                         <select id="purok" name="purok" required>
@@ -305,12 +269,10 @@
                             <option value="Purok 5">Purok 5</option>
                         </select>
                     </div>
-                    
                     <div class="health-form-group">
                         <label for="streetAddress">Street Address</label>
                         <input type="text" id="streetAddress" name="streetAddress" placeholder="Please enter your street address." required>
                     </div>
-                    
                     <div class="health-form-group">
                         <label>Gender</label>
                         <div class="radio-group">
@@ -331,7 +293,6 @@
                             <option value="Unvaccinated">❌ Unvaccinated</option>
                         </select>
                     </div>
-                    
                     <div class="health-form-group">
                         <label>Recent Symptoms (check all that apply)</label>
                         <div id="symptoms" class="health-form-group">
@@ -343,22 +304,18 @@
                             <label>Other symptoms: <input type="text" id="otherSymptoms" name="otherSymptoms" placeholder="Specify other symptoms"></label>
                         </div>
                     </div>
-                    
                     <div class="health-form-group">
                         <label for="lastCheckup">Last Medical Checkup</label>
                         <input type="date" id="lastCheckup" name="lastCheckup">
                     </div>
-                    
                     <div class="health-form-group">
                         <label for="healthNotes">Additional Health Notes</label>
                         <textarea id="healthNotes" name="healthNotes" rows="4"></textarea>
                     </div>
                 </div>
-                
                 <button type="submit" class="submit-btn health-btn">Submit Health Information</button>
             </form>
         </div>
-
 
         <div class="container health-records print-only" id="printSection">
             <div class="print-header">
@@ -390,6 +347,6 @@
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="TeamNine.js"></script>
 </body>
 </html>
