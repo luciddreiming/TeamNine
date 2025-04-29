@@ -21,12 +21,15 @@
 body, html {
   margin: 0;
   padding: 0;
+  width: 100%;
+  height: 100%;
 }
 
 body {
   background-color: #f5f5f5;
   color: var(--dark-color);
   line-height: 1.6;
+  overflow-x: hidden;
 }
 
 .container {
@@ -261,15 +264,6 @@ position: relative;
   }
 }
 
-.service-selection .service-title-btn:hover::before {
-  transform: translateY(-100%);
-  opacity: 0;
-}
-
-.service-selection .service-title-btn:hover::after {
-  transform: translateY(0);
-  opacity: 1;
-}
 .service-selection h2 {
   color: white;
   font-size: 2rem;
@@ -701,107 +695,108 @@ nav {
  }
  
  .rating-container {
-   display: flex;
-   flex-direction: row-reverse;
-   justify-content: flex-end;
-   margin: 10px 0;
- }
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  margin: 10px 0;
+}
+
+.rating-container input {
+  display: none;
+}
+
+.rating-container label {
+  color: #ddd;
+  font-size: 24px;
+  padding: 0 5px;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.rating-container input:checked ~ label,
+.rating-container input:checked ~ label ~ label {
+  color: #ffc107;
+}
+
+.rating-container:not(.rating-selected) input:not(:checked) ~ label:hover,
+.rating-container:not(.rating-selected) input:not(:checked) ~ label:hover ~ label {
+  color: #ffc107;
+}
+
+.star::before {
+  content: "★";
+}
  
- .rating-container input {
-   display: none;
- }
+.submit-btn {
+  width: 100%;
+  padding: 12px;
+  color: #fff;
+  background-color: #34b7db;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 1rem;
+}
  
- .rating-container label {
-   color: #ddd;
-   font-size: 24px;
-   padding: 0 5px;
-   cursor: pointer;
-   transition: color 0.2s;
- }
+.health-btn {
+  background: linear-gradient(135deg, var(--barangay-blue), var(--barangay-green));
+}
  
- .rating-container input:not(:checked) ~ label:hover,
- .rating-container input:not(:checked) ~ label:hover ~ label {
-   color: #ffc107;
- }
+.health-btn:hover {
+  filter: brightness(0.9);
+}
  
- .rating-container input:checked ~ label {
-   color: #ffc107;
- }
+.education-btn {
+  background-color: var(--education-color);
+}
  
- .star::before {
-   content: "★";
- }
+.education-btn:hover {
+  background-color: #2980b9;
+}
  
- .submit-btn {
-   width: 100%;
-   padding: 12px;
-   color: #fff;
-   background-color: #34b7db;
-   border: none;
-   border-radius: 4px;
-   font-size: 16px;
-   cursor: pointer;
-   transition: background-color 0.3s;
-   margin-top: 1rem;
- }
+.filter-controls {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1.5rem;
+}
  
- .health-btn {
-   background: linear-gradient(135deg, var(--barangay-blue), var(--barangay-green));
- }
+.filter-group {
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+}
  
- .health-btn:hover {
-   filter: brightness(0.9);
- }
+.filter-group label {
+  margin-right: 10px;
+  min-width: 120px;
+}
  
- .education-btn {
-   background-color: var(--education-color);
- }
+.filter-group select {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  flex-grow: 1;
+}
  
- .education-btn:hover {
-   background-color: #2980b9;
- }
+.filter-btn {
+  padding: 8px 16px;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
  
- .filter-controls {
-   background: white;
-   padding: 1.5rem;
-   border-radius: 8px;
-   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-   margin-bottom: 1.5rem;
- }
+.filter-btn:hover {
+  background-color: var(--secondary-color);
+}
  
- .filter-group {
-   margin-bottom: 1rem;
-   display: flex;
-   align-items: center;
- }
- 
- .filter-group label {
-   margin-right: 10px;
-   min-width: 120px;
- }
- 
- .filter-group select {
-   padding: 8px;
-   border: 1px solid #ddd;
-   border-radius: 4px;
-   flex-grow: 1;
- }
- 
- .filter-btn {
-   padding: 8px 16px;
-   background-color: var(--primary-color);
-   color: white;
-   border: none;
-   border-radius: 4px;
-   cursor: pointer;
-   font-size: 14px;
- }
- 
- .filter-btn:hover {
-   background-color: var(--secondary-color);
- }
- 
- .results-table,
+.results-table,
 .health-records table {
   width: 100%;
   border-collapse: collapse;
@@ -1161,6 +1156,10 @@ nav {
    margin-top: -20vh;
    position: relative;
    z-index: 2;
+   width: 100%;
+   max-width: 1000px;
+   margin-left: auto;
+   margin-right: auto;
  }
  
  #healthSurveyForm h2{
@@ -1201,6 +1200,7 @@ nav {
  
  .health-form-group label {
    margin-bottom: 10px;
+   display: block;
  }
  
  .health-form .form-section{
@@ -1233,59 +1233,117 @@ nav {
    grid-column: 1 / -1;
  }
  
- @media (max-width: 600px) {
- 
-   .second-header{
-     align-items: flex-start;
-     gap: 5px;
-   }
- 
-   .second-header h3{
-     font-size: 1.2rem;
-   }
- 
-   .secon-header img{
-     width: 50px;
-     height: auto;
-   }
- 
-   .second-header button{
-     margin-left: 0;
-   }
- 
-   .header-actions{
-     flex-direction: column;
-     align-items: flex-start;
-   }
- 
-   .header h1{
-     float: none;
-     margin-top: 5vh;
-     width: 100%;
-     text-align: left;
-   }
+ /* Mobile-specific styles for health monitoring */
+@media (max-width: 768px) {
+  #healthMonitorContent {
+    background-size: contain;
+    background-position-y: top;
+  }
 
-   .print-btn {
-     padding: 12px;
-     font-size: 20px;
-     width: 100%;
-     margin: 0;
-   }
- 
-   .health-form-group{
-     flex: 0 0 100%;
-     margin-bottom: 1rem;
-   }
- #studentVerification {
-     width: 100%;
-     padding: 10px;
-     border: 1px solid #ddd;
-     border-radius: 4px;
-     font-size: 16px;
-     margin-bottom: 1.5rem;
- }
+  .second-header {
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    position: relative;
+  }
+
+  .second-header button {
+    margin-left: 0;
+    margin-top: 10px;
+  }
+
+  .second-header .health-logo {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .header {
+    padding: 20px;
+    padding-bottom: 15vh;
+    background-attachment: scroll;
+  }
+
+  .header h1 {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  .header-actions {
+    margin-right: 0;
+    margin-top: 3vh;
+    gap: 20px;
+    flex-direction: column;
+  }
+
+  .health-form {
+    margin-top: -10vh;
+    padding: 15px;
+    border-width: 2px;
+  }
+
+  #healthSurveyForm h2 {
+    font-size: 1.5rem;
+  }
+
+  #healthSurveyForm h3 {
+    font-size: 1.2rem;
+  }
+
+  .health-form .form-section {
+    flex-direction: column;
+  }
+
+  .health-form-group {
+    flex: 0 0 100%;
+  }
+
+  #symptoms {
+    grid-template-columns: 1fr;
+  }
+
+  .health-records {
+    padding: 15px;
+  }
+
+  .health-records h2 {
+    font-size: 1.5rem;
+  }
+
+  .table-container {
+    max-height: 500px;
+  }
 }
 
+@media (max-width: 480px) {
+  .health-form {
+    margin-top: -5vh;
+  }
+
+  #healthSurveyForm h2 {
+    font-size: 1.3rem;
+  }
+
+  .health-form-group input[type="text"],
+  .health-form-group input[type="number"],
+  .health-form-group input[type="date"],
+  .health-form-group select,
+  .health-form-group textarea {
+    padding: 12px;
+    font-size: 16px;
+  }
+
+  .submit-btn {
+    padding: 14px;
+    font-size: 16px;
+  }
+}
+
+/* Remove survey result section */
+.survey-results {
+  display: none !important;
+}
+
+/* Responsive table styles */
 @media (max-width: 768px) {
   .school-main-content {
     padding: 0;
