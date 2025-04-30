@@ -1,3 +1,4 @@
+
 :root {
   --primary-color: #166088;
   --secondary-color: #4a6fa5;
@@ -427,9 +428,8 @@ nav h1 {
    color: #0e0e0e;
  }
  .school-main-content {
-   display: none;
-   padding: 0 0;
- }
+  padding-top: 0px; 
+}
  
  #school-survey-container {
    justify-content: right;
@@ -494,9 +494,6 @@ nav h1 {
    animation-fill-mode: forwards;
    animation-iteration-count: infinite;
  }
-.background-top {
-  background-color: linear-gradient(135deg, var(--barangay-blue), var(--barangay-green));
-}
  @keyframes change {
   0% { 
     background-image: url(img/slide1.jpg); 
@@ -1355,10 +1352,13 @@ nav h1 {
   #school-survey-container {
     width: 100%;
     margin: 180px 0 20px 0;
+    margin-top: 133px;
     padding: 15px;
     float: none;
   }
-
+  .background-top {
+    height: 140px; 
+  }
   .school-survey-background {
     min-height: 100vh;
   }
