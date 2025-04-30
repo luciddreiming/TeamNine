@@ -234,7 +234,6 @@ position: relative;
   opacity: 1;
 }
 
-/* Responsive Scaling */
 @media (max-width: 992px) {
   .service-selection .service-title-btn {
     font-size: 2.2rem;
@@ -393,28 +392,31 @@ position: relative;
   opacity: 1;
   transform: translateY(0);
 }
-
 nav {
-   display: flex;
-   align-items: center;
-   width: 100%; 
-   min-height: 10vh;
-   padding: 0 3rem;
-   position: fixed;
-   width: 100%;
-   justify-content: left;
-   z-index: 2;
- }
- 
- nav h1 {
-   color: #fff;
-   font-size: 20px;
-   letter-spacing: 2px;
-   transition: 200ms ease-in-out color;
-   padding-left: 50px;
-   padding-right: 180px;
- }
- 
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background-color: var(--primary-color);
+  color: white;
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+nav h1 {
+  margin: 0;
+  font-size: 1.2rem;
+  flex-grow: 1;
+  text-align: center;
+}
+
+.nav-buttons {
+  display: flex;
+  gap: 10px;
+}
  .active_nav {
    background-color: #fff;
    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.6);
@@ -923,7 +925,7 @@ nav {
    margin: 10px 0;
    transition: background-color 0.3s;
  }
- /* Changed hover */
+
  .print-btn:hover {
    filter: brightness(1);
  }
@@ -1076,7 +1078,6 @@ nav {
    }
  }
  
- /*health monitoring*/
  
  #healthMonitorContent{
    background-image: url('https://img.freepik.com/premium-vector/seamless-pattern-doodle-drawings-medical-equipment-first-aid-items-doodle-seamless-pattern_947681-1551.jpg?semt=ais_hybrid&w=740');
@@ -1238,7 +1239,6 @@ nav {
    grid-column: 1 / -1;
  }
  
- /* Mobile-specific styles for health monitoring */
 @media (max-width: 768px) {
   #healthMonitorContent {
     background-size: contain;
@@ -1343,12 +1343,10 @@ nav {
   }
 }
 
-/* Remove survey result section */
 .survey-results {
   display: none !important;
 }
 
-/* Responsive table styles */
 @media (max-width: 768px) {
   .school-main-content {
     padding: 0;
