@@ -36,8 +36,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     let userAccounts = [
         { 
-            username: 'admin', 
-            password: 'admin', 
+            username: 'drei', 
+            password: 'drei', 
             name: 'Administrator', 
             email: 'admin@community.gov',
             isStudent: true 
